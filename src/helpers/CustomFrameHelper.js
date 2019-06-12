@@ -21,5 +21,6 @@ export default class CustomFrameHelper {
     static setFrameStyle(el, config) {
         el.style.width = `${config.width}px`;
         el.style.height = `${config.height}px`;
+        el.style.border = 'solid 2px black';
     }
 }
