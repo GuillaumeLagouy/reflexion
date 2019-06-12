@@ -1,6 +1,6 @@
 import rough from 'roughjs/dist/rough.umd';
 
-export class Frame {
+export default class Frame {
     constructor(id, posX, posY, width, height) {
         this.id = id;
         this.posX = posX;
