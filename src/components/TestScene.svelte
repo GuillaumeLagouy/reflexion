@@ -1,12 +1,13 @@
 <script >
-    import { Frame } from '../common/Frame';
-    import { onMount } from 'svelte';
+    import CustomFrame from './CustomFrame.svelte';
 
-    onMount(() => {
-        const container = document.getElementById('scene-container');
-        const frame1 = new Frame('frame1', 0, 0, 200, 100).create();
-        container.append(frame1);
-    });
+    const frameConfig = {
+        id: 'frame1',
+        x: 0,
+        y: 0,
+        width: 200,
+        height: 100
+    };
 
 </script>
 
@@ -22,3 +23,7 @@
     <!--  Force unused css class -->
     <template class="frame"></template>
 </div>
+
+<CustomFrame config={frameConfig}>
+Frame content here.
+</CustomFrame>
