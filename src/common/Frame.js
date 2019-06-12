@@ -9,7 +9,19 @@ export class Frame {
         this.height = height;
     }
 
-    draw(){
+    create(){
+        const div = document.createElement('div');
+
+        div.style.width = `${this.width}px`;
+        div.style.height = `${this.height}px`;
+        div.classList.add('frame');
+        div.setAttribute('id', this.id);
+
+        return div;
+    }
+
+    // TODO : WIP of sketchy frame with Rough JS
+    drawRough(){
         const padding = 10;
 
         const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
