@@ -5,22 +5,12 @@ export default class CustomFrameHelper {
      * @returns {*|boolean}
      */
     static isValidConfig(config) {
+        if (!config) return;
         return config.id
             && config.x !== undefined
             && config.y !== undefined
             && config.width !== undefined
             && config.height !== undefined
             ;
-    }
-
-    /**
-     *
-     * @param el
-     * @param config
-     */
-    static setFrameStyle(el, config) {
-        el.style.width = `${config.width}px`;
-        el.style.height = `${config.height}px`;
-        el.style.border = 'solid 2px black';
     }
 }

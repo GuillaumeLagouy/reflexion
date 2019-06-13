@@ -4,24 +4,30 @@
 
     export let config;
 
-    let el;
     const dataId = Math.random().toString(36).substr(2, 9);
+    let style = '';
 
-    onMount(() => {
-        if (!validConfig()) return;
-
-        el = document.querySelector(`div[data-id="${dataId}"]`);
-
-        CustomFrameHelper.setFrameStyle(el, config);
-    });
+    $: style = validConfig() ? `
+    width:${config.width}px;
+    height:${config.height}px;
+    border:solid 2px black;
+    left:${config.x}px;
+    top:${config.y}px;
+    ` : '';
 
     function validConfig() {
       return CustomFrameHelper.isValidConfig(config)
     }
 </script>
 
+<style>
+    .frame{
+        position: absolute;
+    }
+</style>
+
 {#if validConfig()}
-<div class="frame" id={config.id} data-id={dataId}>
+<div class="frame" id={config.id} data-id={dataId} style="{style}">
     <slot/>
 </div>
 {/if}
