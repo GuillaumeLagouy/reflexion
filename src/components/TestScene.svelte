@@ -1,28 +1,30 @@
 <script >
     import CustomFrame from './CustomFrame.svelte';
+    import { onMount } from 'svelte'
 
-    const frame1Config = {
-        id: 'frame1',
-        x: 0,
-        y: 0,
-        width: 200,
-        height: 100
-    };
+    let frame1Config = null;
 
-    const frame2Config = {
-        id: 'frame2',
-        x: 0,
-        y: 0,
-        width: 400,
-        height: 300
-    };
+    onMount(() => {
+        const container = document.getElementById('scene-container');
+        const getPositionX = (value) => (value * container.offsetWidth) / 100;
+        const getPositionY = (value) => (value * container.offsetHeight) / 100;
 
+        frame1Config = {
+            id: 'frame1',
+            x: getPositionX(0),
+            y: getPositionY(100),
+            width: 400,
+            height: 400
+        };
+    });
 </script>
 
 <style>
     #scene-container {
         border: solid 1px gray;
         height: 98vh;
+        position: relative;
+        overflow: hidden;
     }
 </style>
 
@@ -30,9 +32,4 @@
     <CustomFrame config={frame1Config}>
         Frame content here.
     </CustomFrame>
-
-    <CustomFrame config={frame2Config}>
-        Frame content here. Another frame.
-    </CustomFrame>
 </div>
-
