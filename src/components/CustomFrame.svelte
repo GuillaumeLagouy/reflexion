@@ -18,6 +18,12 @@
     function validConfig() {
       return CustomFrameHelper.isValidConfig(config)
     }
+
+    onMount(() => {
+        if(!config || !config.callback) return;
+
+        config.callback(config.id);
+    })
 </script>
 
 <style>
