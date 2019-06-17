@@ -21,7 +21,6 @@
 
     onMount(() => {
         if(!config || !config.callback) return;
-
         config.callback(config.id);
     })
 </script>
@@ -32,8 +31,6 @@
     }
 </style>
 
-{#if validConfig()}
 <div class="frame" id={config.id} data-id={dataId} style="{style}">
     <slot/>
 </div>
-{/if}
