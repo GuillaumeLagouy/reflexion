@@ -6,8 +6,8 @@ export default [
         id: 'frame1',
         x: 0,
         y: 0,
-        width: 200,
-        height: 200,
+        width: 20,
+        height: 20,
         anchor: anchor.topLeft,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
@@ -19,8 +19,8 @@ export default [
         id: 'frame2',
         x: 0,
         y: 100,
-        width: 200,
-        height: 100,
+        width: 20,
+        height: 10,
         anchor: anchor.bottomLeft,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
@@ -32,8 +32,8 @@ export default [
         id: 'frame3',
         x: 100,
         y: 0,
-        width: 400,
-        height: 200,
+        width: 40,
+        height: 20,
         anchor: anchor.topRight,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
@@ -45,8 +45,8 @@ export default [
         id: 'frame4',
         x: 100,
         y: 100,
-        width: 400,
-        height: 200,
+        width: 40,
+        height: 20,
         anchor: anchor.bottomRight,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
@@ -59,8 +59,8 @@ export default [
         id: 'frame5',
         x: 50,
         y: 50,
-        width: 400,
-        height: 200,
+        width: 40,
+        height: 20,
         anchor: anchor.center,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);

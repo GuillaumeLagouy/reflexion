@@ -11,6 +11,8 @@
         TestSceneConfig.forEach(config => {
             frames[frames.length] = new Frame(config, container);
         });
+
+        // TODO : Recalculate position and size when window size changes
     });
 </script>
 
