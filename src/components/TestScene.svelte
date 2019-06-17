@@ -19,7 +19,6 @@
         border: solid 1px gray;
         height: 98vh;
         position: relative;
-        overflow: hidden;
     }
 </style>
 

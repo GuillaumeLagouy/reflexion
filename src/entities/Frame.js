@@ -1,16 +1,19 @@
+import anchorFunc from '../constants/anchorFunctions';
+import anchor from '../constants/anchor';
+
 export default class Frame {
     constructor(config, container) {
         this.config = config;
         this.container = container;
-        this.setPositionX();
-        this.setPositionY();
+        this.setPosition();
     }
 
-    setPositionX(){
-        this.config.x = (this.config.x * this.container.offsetWidth)/100;
-    }
+    setPosition(){
+        // topLeft by default
+        this.config.anchor = !this.config.anchor ? anchor.topLeft : this.config.anchor;
 
-    setPositionY(){
-        this.config.y = (this.config.y * this.container.offsetHeight)/100;
+        const {x, y} = anchorFunc[this.config.anchor](this.container, this.config);
+        this.config.x = x;
+        this.config.y = y;
     }
 }
