@@ -13,6 +13,19 @@ export default [
         }
     },
 
-    {id: 'frame2', x: 10, y: 0, width: 200, height: 100},
-    {id: 'frame3', x: 50, y: 50, width: 400, height: 200},
+    {
+        id: 'frame2',
+        x: 10,
+        y: 0,
+        width: 200,
+        height: 100
+    },
+
+    {
+        id: 'frame3',
+        x: 90,
+        y: 90,
+        width: 400,
+        height: 200
+    },
 ];
