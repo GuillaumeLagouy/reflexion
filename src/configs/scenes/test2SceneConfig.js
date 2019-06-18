@@ -6,7 +6,8 @@ export default [
         x: 50,
         y: 50,
         width: 40,
-        height: 35,
+        height: 40,
+        square: true,
         anchor: anchor.center,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);

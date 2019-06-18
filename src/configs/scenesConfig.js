@@ -4,11 +4,6 @@ import testSceneConfig from "./scenes/testSceneConfig";
 
 export default [
     {
-        id: 'introduction-scene',
-        config: introSceneConfig,
-    },
-
-    {
         id: 'swimming-pool-scene',
         config: test2SceneConfig,
     }
