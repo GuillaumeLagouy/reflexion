@@ -8,7 +8,7 @@
 
     onMount(() => {
         const container = document.getElementById('scene-container');
-        TestSceneConfig.forEach(config => {
+        TestSceneConfig.reverse().forEach(config => {
             frames[frames.length] = new Frame(config, container);
         });
 

@@ -11,8 +11,14 @@ export default class Frame {
     }
 
     setRelativeSize(){
-        this.config.width = (this.config.width * this.container.offsetWidth) / 100;
-        this.config.height = (this.config.height * this.container.offsetHeight) / 100;
+        if(this.config.width === this.config.height) {
+            this.config.width = (this.config.width * this.container.offsetWidth) / 100;
+            this.config.height = this.config.width;
+        } else {
+            this.config.width = (this.config.width * this.container.offsetWidth) / 100;
+            this.config.height = (this.config.height * this.container.offsetHeight) / 100;
+        }
+
     }
 
     setRelativePosition(){
