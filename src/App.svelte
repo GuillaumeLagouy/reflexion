@@ -9,5 +9,5 @@
 
 
 {#each scenesConfig as sceneConfig}
-    <Scene framesConfig={sceneConfig.config} />
+    <Scene id={sceneConfig.id} framesConfig={sceneConfig.config} />
 {/each}

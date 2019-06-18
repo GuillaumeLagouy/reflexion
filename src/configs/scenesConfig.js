@@ -1,14 +1,15 @@
-import testSceneConfig from '../configs/scenes/testSceneConfig';
-import test2SceneConfig from '../configs/scenes/test2SceneConfig';
+import introSceneConfig from '../configs/scenes/introSceneConfig';
+import test2SceneConfig from '../configs/scenes/test2SceneConfig'
+import testSceneConfig from "./scenes/testSceneConfig";
 
 export default [
     {
-        id: 'scene-test',
-        config: testSceneConfig,
+        id: 'introduction-scene',
+        config: introSceneConfig,
     },
 
     {
-        id: 'scene-test2',
+        id: 'swimming-pool-scene',
         config: test2SceneConfig,
     }
 ]
