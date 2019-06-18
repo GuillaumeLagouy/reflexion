@@ -4,9 +4,12 @@
     import Frame from '../entities/Frame';
 
     export let framesConfig;
+    export let id;
+
     const frames = [];
 
     onMount(() => {
+        console.log(frames);
         const container = document.querySelector('.scene-container');
         framesConfig.reverse().forEach(config => {
             frames[frames.length] = new Frame(config, container);
@@ -24,10 +27,10 @@
     }
 </style>
 
-<div class="scene-container">
+<div id={id} class="scene-container">
     {#each frames as frame}
         <CustomFrame config={frame.config}>
-            Frame content here.
+            <svelte:component this={frame.config.content} />
         </CustomFrame>
     {/each}
 </div>
