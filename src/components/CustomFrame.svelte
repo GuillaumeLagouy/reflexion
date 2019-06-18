@@ -4,7 +4,6 @@
 
     export let config;
 
-    const dataId = Math.random().toString(36).substr(2, 9);
     let style = '';
 
     $: style = validConfig() ? `
@@ -31,6 +30,6 @@
     }
 </style>
 
-<div class="frame" id={config.id} data-id={dataId} style="{style}">
+<div class="frame" id={config.id} style="{style}">
     <slot/>
 </div>
