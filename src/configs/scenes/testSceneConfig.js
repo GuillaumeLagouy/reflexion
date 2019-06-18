@@ -1,6 +1,6 @@
 import TweenMax from 'gsap';
-import anchor from '../constants/anchor';
-import {frameNumber} from "../stores/frameStore";
+import anchor from '../../constants/anchor';
+import {frameNumber} from "../../stores/frameStore";
 
 export default [
     {

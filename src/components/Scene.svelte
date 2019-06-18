@@ -1,14 +1,14 @@
 <script >
     import CustomFrame from './CustomFrame.svelte';
     import { onMount } from 'svelte';
-    import TestSceneConfig from '../configs/testSceneConfig';
     import Frame from '../entities/Frame';
 
-    export const frames = [];
+    export let framesConfig;
+    const frames = [];
 
     onMount(() => {
-        const container = document.getElementById('scene-container');
-        TestSceneConfig.reverse().forEach(config => {
+        const container = document.querySelector('.scene-container');
+        framesConfig.reverse().forEach(config => {
             frames[frames.length] = new Frame(config, container);
         });
 
@@ -17,14 +17,14 @@
 </script>
 
 <style>
-    #scene-container {
+    .scene-container {
         border: solid 1px gray;
         height: 98vh;
         position: relative;
     }
 </style>
 
-<div id="scene-container">
+<div class="scene-container">
     {#each frames as frame}
         <CustomFrame config={frame.config}>
             Frame content here.

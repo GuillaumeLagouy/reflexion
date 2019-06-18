@@ -1,9 +1,13 @@
 <script>
-    import TestScene from './components/TestScene.svelte';
+    import Scene from './components/Scene.svelte';
+    import scenesConfig from './configs/scenesConfig'
 </script>
 
 <style>
 
 </style>
 
-<TestScene />
+
+{#each scenesConfig as sceneConfig}
+    <Scene framesConfig={sceneConfig.config} />
+{/each}
