@@ -36,6 +36,7 @@
         height: 105%;
         width: auto;
         position: absolute;
+        touch-action: manipulation;
     }
 </style>
 
