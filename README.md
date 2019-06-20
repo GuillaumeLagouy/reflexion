@@ -1,5 +1,5 @@
 # Reflexion
-Final Gobelins project
+Final Gobelins project.
 
 ### Start project
 >`npm install`
