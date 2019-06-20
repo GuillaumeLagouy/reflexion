@@ -1,4 +1,41 @@
+<script>
+    import { onMount } from 'svelte';
+    import TweenMax from 'gsap';
+
+    let miniBulle1Src = "./assets/png/Swimming-pool/miniBulle1.png";
+    let miniBulle2Src = "./assets/png/Swimming-pool/miniBulle2.png";
+    let miniBulle3Src = "./assets/png/Swimming-pool/miniBulle3.png";
+    let mouthSrc = "./assets/png/Swimming-pool/mouth.png";
+    let leftArrowSrc = "./assets/png/Swimming-pool/left_arrow.png";
+    let rightArrowSrc = "./assets/png/Swimming-pool/right_arrow.png";
+    let monsterSrc = "./assets/png/Swimming-pool/mc.png";
+    let male1Src = "./assets/png/Swimming-pool/m0.png";
+    let male2Src = "./assets/png/Swimming-pool/m1.png";
+    let male3Src = "./assets/png/Swimming-pool/m2.png";
+    let male4Src = "./assets/png/Swimming-pool/m3.png";
+    let male5Src = "./assets/png/Swimming-pool/m4.png";
+    let female1Src = "./assets/png/Swimming-pool/f0.png";
+    let female2Src = "./assets/png/Swimming-pool/f1.png";
+    let female3Src = "./assets/png/Swimming-pool/f2.png";
+    let female4Src = "./assets/png/Swimming-pool/f3.png";
+    let female5Src = "./assets/png/Swimming-pool/f4.png";
+
+    onMount(() => {
+    });
+</script>
+
 <style>
+    img::selection {
+        background: none;
+    }
+
+    .frame-container{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
     #changing-room {
         background-image: url("./assets/png/Swimming-pool/Vestiaires_garçons.png");
         background-size: 100%;
@@ -76,7 +113,7 @@
     }
 
     li img {
-        margin-left: 31.5%;
+        margin-left: 37.5%;
         margin-top: 2%;
         width: 24%;
     }
@@ -104,14 +141,14 @@
         height: 80%;
         width: auto;
         position: absolute;
-        left: calc(50% - 46px);
-        top: calc(50% - 59px);
+        left: calc(50% - 44px);
+        top: calc(50% - 60px);
     }
 
     .cross {
         position: absolute;
         width: 90px;
-        left: 19%;
+        left: 24%;
         height: 0;
         background-size: contain;
         background-repeat: no-repeat;
@@ -139,31 +176,31 @@
 </style>
 
 <div id="changing-room">
-    <img id="mini-bulle-1" src="./assets/png/Swimming-pool/miniBulle1.png"/>
-    <img id="mini-bulle-2" src="./assets/png/Swimming-pool/miniBulle2.png"/>
-    <img id="mini-bulle-3" src="./assets/png/Swimming-pool/miniBulle3.png"/>
-    <img id="mouth" src="./assets/png/Swimming-pool/mouth.png">
+    <img id="mini-bulle-1" src={miniBulle1Src} alt=""/>
+    <img id="mini-bulle-2" src={miniBulle2Src} alt=""/>
+    <img id="mini-bulle-3" src={miniBulle3Src} alt=""/>
+    <img id="mouth" src={mouthSrc} alt="">
     <div id="nuage">
         <div class="content">
             <div id="left-cross" class="cross"></div>
             <div id="right-cross" class="cross"></div>
-            <img id="left-arrow" class="arrow" src="./assets/png/Swimming-pool/left_arrow.png"/>
+            <img id="left-arrow" class="arrow" src={leftArrowSrc} alt=""/>
             <div class="carousel-container">
                 <ul>
-                    <li><img class="male" src="./assets/png/Swimming-pool/m0.png"/></li>
-                    <li><img class="male" src="./assets/png/Swimming-pool/m1.png"/></li>
-                    <li><img class="male" src="./assets/png/Swimming-pool/m2.png"/></li>
-                    <li><img class="male" src="./assets/png/Swimming-pool/m3.png"/></li>
-                    <li><img class="male" src="./assets/png/Swimming-pool/m4.png"/></li>
-                    <li><img class="female" src="./assets/png/Swimming-pool/f0.png"/></li>
-                    <li><img class="female" src="./assets/png/Swimming-pool/f1.png"/></li>
-                    <li><img class="female" src="./assets/png/Swimming-pool/f2.png"/></li>
-                    <li><img class="female" src="./assets/png/Swimming-pool/f3.png"/></li>
-                    <li><img class="female" src="./assets/png/Swimming-pool/f4.png"/></li>
+                    <li><img class="male" src={male1Src} alt=""/></li>
+                    <li><img class="male" src={male2Src} alt=""/></li>
+                    <li><img class="male" src={male3Src} alt=""/></li>
+                    <li><img class="male" src={male4Src} alt=""/></li>
+                    <li><img class="male" src={male5Src} alt=""/></li>
+                    <li><img class="female" src={female1Src} alt=""/></li>
+                    <li><img class="female" src={female2Src} alt=""/></li>
+                    <li><img class="female" src={female3Src} alt=""/></li>
+                    <li><img class="female" src={female4Src} alt=""/></li>
+                    <li><img class="female" src={female5Src} alt=""/></li>
                 </ul>
             </div>
-            <img id="monster-model" src="./assets/png/Swimming-pool/mc.png"/>
-            <img id="right-arrow" class="arrow" src="./assets/png/Swimming-pool/right_arrow.png"/>
+            <img id="monster-model" src={monsterSrc} alt=""/>
+            <img id="right-arrow" class="arrow" src={rightArrowSrc} alt=""/>
         </div>
     </div>
 </div>

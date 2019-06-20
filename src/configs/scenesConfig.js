@@ -4,7 +4,7 @@ import breakfastSceneConfig from "../configs/scenes/breakfastSceneConfig";
 import poolSceneConfig from "./scenes/poolSceneConfig";
 
 export default [
-    {
+    /* {
         id: 'wakeup-scene',
         config: introSceneConfig,
     },
@@ -17,7 +17,7 @@ export default [
     {
         id: 'breakfast-scene',
         config: breakfastSceneConfig,
-    },
+    }, */
 
     {
         id: 'swimming-pool-scene',

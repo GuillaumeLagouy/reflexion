@@ -182,7 +182,6 @@ export default [
             Object.assign(el.style, {
                 opacity: "0",
                 visibility: "hidden",
-                backgroundColor: "white",
             });
             frameNumber.subscribe(value => {
                 value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 2.1}) : null;
@@ -219,11 +218,11 @@ export default [
                 zIndex: "999"
             });
             frameNumber.subscribe(value => {
-                if(value === 4) {
+                if (value === 4) {
                     TweenMax.to(el, 0, {autoAlpha: 1});
                     TweenMax.to(el.querySelector('#bus'), 4, {left: "100%", delay: 1});
                 }
             });
         }
     }
-]
+];

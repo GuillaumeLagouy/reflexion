@@ -1,4 +1,14 @@
 <style>
+    img::selection {
+        background: none;
+    }
+    .frame-container{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
     #changing-rooms {
         background-image: url("./assets/png/Swimming-pool/Vestiaires_portes_final.png");
         background-position: center;
