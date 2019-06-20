@@ -9,7 +9,6 @@
     const frames = [];
 
     onMount(() => {
-        console.log(frames);
         const container = document.querySelector('.scene-container');
         framesConfig.reverse().forEach(config => {
             frames[frames.length] = new Frame(config, container);
@@ -22,10 +21,19 @@
 <style>
     .scene-container {
         border: solid 1px gray;
-        height: 98vh;
+        height: 100vh;
         position: relative;
     }
+
+    :global(body){
+        padding: 0;
+        -overflow: hidden;
+    }
 </style>
+
+<svelte:head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</svelte:head>
 
 <div id={id} class="scene-container">
     {#each frames as frame}

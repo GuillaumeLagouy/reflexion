@@ -6,15 +6,12 @@ export default class Frame {
         this.config = config;
         this.container = container;
 
-        console.log(this.config);
-
         this.setRelativeSize();
         this.setRelativePosition();
     }
 
     setRelativeSize(){
         if(this.config.square){
-            console.log(this.config.square);
             this.config.width = (this.config.width * this.container.offsetWidth) / 100;
             this.config.height = this.config.width;
         } else {
