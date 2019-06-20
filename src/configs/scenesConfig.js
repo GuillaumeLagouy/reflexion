@@ -1,10 +1,20 @@
 import introSceneConfig from '../configs/scenes/introSceneConfig';
-import test2SceneConfig from '../configs/scenes/test2SceneConfig'
-import testSceneConfig from "./scenes/testSceneConfig";
+import bathroomSceneConfig from "../configs/scenes/bathroomSceneConfig";
+import breakfastSceneConfig from "../configs/scenes/breakfastSceneConfig";
 
 export default [
     {
-        id: 'swimming-pool-scene',
-        config: test2SceneConfig,
+        id: 'wakeup-scene',
+        config: introSceneConfig,
+    },
+
+    {
+        id: 'bathroom-scene',
+        config: bathroomSceneConfig,
+    },
+
+    {
+        id: 'breakfast-scene',
+        config: breakfastSceneConfig,
     }
 ]

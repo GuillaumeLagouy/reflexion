@@ -9,7 +9,9 @@
     $: style = validConfig() ? `
     width:${config.width}px;
     height:${config.height}px;
-    border:solid 2px black;
+    border: 8px solid transparent;
+    border-image: url('/assets/png/FrameBorder.png') 50 stretch;
+    overflow:hidden;
     left:${config.x}px;
     top:${config.y}px;
     ` : '';
