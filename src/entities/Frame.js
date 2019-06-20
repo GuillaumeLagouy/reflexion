@@ -5,10 +5,22 @@ export default class Frame {
     constructor(config, container) {
         this.config = config;
         this.container = container;
-        this.setPosition();
+      
+        this.setRelativeSize();
+        this.setRelativePosition();
     }
 
-    setPosition(){
+    setRelativeSize(){
+        if(this.config.square){
+            this.config.width = (this.config.width * this.container.offsetWidth) / 100;
+            this.config.height = this.config.width;
+        } else {
+            this.config.width = (this.config.width * this.container.offsetWidth) / 100;
+            this.config.height = (this.config.height * this.container.offsetHeight) / 100;
+        }
+    }
+
+    setRelativePosition(){
         // topLeft by default
         this.config.anchor = !this.config.anchor ? anchor.topLeft : this.config.anchor;
 

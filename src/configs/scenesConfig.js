@@ -1,0 +1,20 @@
+import introSceneConfig from '../configs/scenes/introSceneConfig';
+import bathroomSceneConfig from "../configs/scenes/bathroomSceneConfig";
+import breakfastSceneConfig from "../configs/scenes/breakfastSceneConfig";
+
+export default [
+    {
+        id: 'wakeup-scene',
+        config: introSceneConfig,
+    },
+
+    {
+        id: 'bathroom-scene',
+        config: bathroomSceneConfig,
+    },
+
+    {
+        id: 'breakfast-scene',
+        config: breakfastSceneConfig,
+    }
+]
