@@ -74,6 +74,7 @@ export default [
             const el = document.querySelector(`#${id}`);
 
             el.style.border = "none";
+            el.style.borderImage = "none";
             el.style.transformOrigin = "bottom right";
             el.style.transform = "rotate(-90deg)";
             el.style.zIndex = 4;

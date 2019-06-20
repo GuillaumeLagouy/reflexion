@@ -2,7 +2,6 @@
     let phoneSrc = "/assets/png/breakfast/phone/S1_Phone.png";
     let homeSrc  = "/assets/png/breakfast/phone/S1_PhoneHome.png";
     let calendarSrc = "/assets/png/breakfast/phone/S1_PhoneCalendar.png";
-
 </script>
 
 <style>
