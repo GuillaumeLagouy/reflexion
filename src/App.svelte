@@ -7,7 +7,6 @@
 
 </style>
 
-
 {#each scenesConfig as sceneConfig}
     <Scene id={sceneConfig.id} framesConfig={sceneConfig.config} />
 {/each}

@@ -5,7 +5,7 @@ export default class Frame {
     constructor(config, container) {
         this.config = config;
         this.container = container;
-
+      
         this.setRelativeSize();
         this.setRelativePosition();
     }
