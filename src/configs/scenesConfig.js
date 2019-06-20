@@ -18,6 +18,7 @@ export default [
         id: 'breakfast-scene',
         config: breakfastSceneConfig,
     },
+
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig
