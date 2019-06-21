@@ -5,6 +5,7 @@
 
     export let framesConfig;
     export let id;
+    export let sequence;
 
     const frames = [];
 
@@ -35,7 +36,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </svelte:head>
 
-<div id={id} class="scene-container">
+<div id={id} class="scene-container" data-sequence={sequence}>
     {#each frames as frame}
         <CustomFrame config={frame.config}>
             <svelte:component this={frame.config.content} />
