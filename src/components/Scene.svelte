@@ -6,6 +6,7 @@
     export let framesConfig;
     export let id;
     export let sequence;
+    export let config;
 
     const frames = [];
 
@@ -14,6 +15,8 @@
         framesConfig.reverse().forEach(config => {
             frames[frames.length] = new Frame(config, container);
         });
+
+        config.callback(id);
 
         // TODO : Recalculate position and size when window size changes
     });
