@@ -1,15 +1,27 @@
 <script>
     import { onMount } from 'svelte';
     import TweenMax from 'gsap';
-    import TimelineMax from 'gsap/TimelineMax';
+    import {frameNumber, gender} from "../../../stores/frameStore";
 
     let monsterSrc = "./assets/png/swimming-pool/swimming-monster.png";
     let fogSrc = "./assets/png/swimming-pool/vapeur.png";
+    let monsterX = 0, waterX = 0;
+
+    function swim() {
+        const monster = document.querySelector('#swimming-monster');
+        const water = document.querySelector('#water');
+
+        monsterX += 80;
+        waterX += 60;
+        TweenMax.to(monster, 0.25, {bottom: 5});
+        TweenMax.to(monster, 0.25, {bottom: -15, delay: 0.25});
+        TweenMax.to(monster, 0.5, {right: monsterX, ease: Power1.easeIn});
+        TweenMax.to(water, 0.2, {backgroundPosition: -waterX + "px bottom"});
+        if (monsterX > 460) frameNumber.update(n => n + 1);
+    }
 
     onMount(() => {
         const fog = document.getElementById('fog');
-
-        const tl = new TimelineMax({repeat: -1});
         TweenMax.to(fog, 1, {y: -10, repeat: -1, yoyo: true, yoyoEase: true});
     });
 </script>
@@ -60,7 +72,7 @@
     }
 </style>
 
-<div id="pool">
+<div id="pool" on:click={swim}>
     <img id="fog" src={fogSrc} alt=""/>
     <img id="swimming-monster" src={monsterSrc} alt=""/>
     <div id="water"></div>

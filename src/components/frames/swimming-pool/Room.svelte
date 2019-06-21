@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import {frameNumber, gender} from "../../../stores/frameStore";
     import TweenMax from 'gsap';
 
     let miniBulle1Src = "./assets/png/Swimming-pool/miniBulle1.png";
@@ -21,6 +22,77 @@
     let female5Src = "./assets/png/Swimming-pool/f4.png";
 
     onMount(() => {
+        const frame = document.querySelector(`#scene2-frame2`);
+        const image = document.querySelector("#changing-room");
+
+        frameNumber.subscribe(value => {
+            if (value !== 1) return;
+                let previousDoor;
+                gender.subscribe(genderValue => {
+                    if (genderValue === "male") {
+                        previousDoor = document.querySelector('#boys-room');
+                        document.querySelectorAll('.female').forEach((item) => {
+                            item.parentNode.remove();
+                        });
+                    } else {
+                        previousDoor = document.querySelector('#girls-room');
+                        image.style.backgroundImage = 'url("./assets/png/Swimming-pool/Vestiaires_filles.png")';
+                            document.querySelectorAll('.male').forEach((item) => {
+                            item.parentNode.remove();
+                        });
+                    }
+                    Object.assign(image.style, {
+                        width: frame.offsetWidth + "px",
+                        height: frame.offsetHeight + "px",
+                        left: -previousDoor.offsetLeft * 2 + "px",
+                        top: -previousDoor.offsetTop * 2 + 10 + "px"
+                    });
+                    const x = frame.offsetLeft;
+                    const y = frame.offsetTop;
+                    Object.assign(frame.style, {
+                        top: previousDoor.offsetTop + previousDoor.parentNode.offsetTop + "px",
+                        left: previousDoor.offsetLeft + previousDoor.parentNode.offsetLeft + "px",
+                        width: previousDoor.offsetWidth + "px",
+                        height: previousDoor.offsetHeight + "px",
+                    });
+                    TweenMax.to(frame, 1, {
+                        top: y + "px",
+                        left: x + "px",
+                        width: image.offsetWidth + "px",
+                        height: image.offsetHeight + "px",
+                        delay: 2
+                    });
+                    TweenMax.to(frame, 0.2, {autoAlpha: 1});
+                    TweenMax.to(image, 1, {left: 0, top: 0, delay: 2});
+
+                    let slide = 0;
+                    const slideHandler = function () {
+                        if (this.id === "right-arrow" && slide < 4) slide += 1;
+                        else if (this.id === "left-arrow" && slide > 0) slide -= 1;
+                        if (slide === 0) document.querySelector('#left-arrow').removeEventListener("touchstart", slideHandler);
+                        else document.querySelector('#left-arrow').addEventListener("touchstart", slideHandler);
+                        if (slide === 4) {
+                            document.querySelector('#right-arrow').removeEventListener("touchstart", slideHandler);
+                            TweenMax.to(document.querySelector('#mouth'), 0.5, {autoAlpha: 1, delay: 1.1});
+                            frameNumber.update(n => n = 2);
+                        } else document.querySelector('#right-arrow').addEventListener("touchstart", slideHandler);
+                        TweenMax.to(document.querySelector('#left-cross'), 0, {height: 0});
+                        TweenMax.to(document.querySelector('#right-cross'), 0, {height: 0});
+                        TweenMax.to(document.querySelector('ul'), 0.5, {xPercent: -20 * slide});
+                        TweenMax.to(document.querySelector('#left-cross'), 0.2, {height: 93, delay: 0.5});
+                        TweenMax.to(document.querySelector('#right-cross'), 0.2, {height: 110, delay: 0.7});
+                    };
+                    document.querySelectorAll('.arrow').forEach((arrow) => {
+                        arrow.addEventListener("touchstart", slideHandler);
+                    });
+                    TweenMax.to(document.querySelector('#mini-bulle-1'), 0.5, {autoAlpha: 1, scale: 1, delay: 3});
+                    TweenMax.to(document.querySelector('#mini-bulle-2'), 0.5, {autoAlpha: 1, scale: 1, delay: 3.5});
+                    TweenMax.to(document.querySelector('#mini-bulle-3'), 0.5, {autoAlpha: 1, scale: 1, delay: 4});
+                    TweenMax.to(document.querySelector('#nuage'), 1, {autoAlpha: 1, scale: 1, delay: 4.5});
+                    TweenMax.to(document.querySelector('#left-cross'), 0.2, {height: 93, delay: 5.5});
+                    TweenMax.to(document.querySelector('#right-cross'), 0.2, {height: 110, delay: 5.7});
+                });
+        });
     });
 </script>
 
@@ -114,7 +186,7 @@
 
     li img {
         margin-left: 37.5%;
-        margin-top: 2%;
+        margin-top: 13%;
         width: 24%;
     }
 
