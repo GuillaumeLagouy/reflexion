@@ -15,8 +15,9 @@
         framesConfig.reverse().forEach(config => {
             frames[frames.length] = new Frame(config, container);
         });
-
-        config.callback(id);
+        if(config.callback){
+            config.callback(id);
+        }
 
         // TODO : Recalculate position and size when window size changes
     });

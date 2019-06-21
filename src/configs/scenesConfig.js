@@ -5,9 +5,10 @@ import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeSceneConfig from './scenes/playtimeSceneConfig';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
 import classSceneConfig from './scenes/classSceneConfig';
+import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-   /*{
+    {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -34,7 +35,7 @@ export default [
     {
         id: 'playtime-scene',
         config: playtimeSceneConfig,
-        sequence: 0,
+        sequence: 4,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
@@ -46,24 +47,30 @@ export default [
     {
         id: 'lunch-scene',
         config: lunchSceneConfig,
-        sequence: 0,
+        sequence: 5,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 height: '200vh',
             })
         }
-    },*/
+    },
 
     {
         id: 'class-scene',
         config: classSceneConfig,
-        sequence: 0,
+        sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 height: '200vh',
             })
         }
+    },
+
+    {
+        id: 'home-scene',
+        config: homeSceneConfig,
+        sequence: 7,
     }
 ]
