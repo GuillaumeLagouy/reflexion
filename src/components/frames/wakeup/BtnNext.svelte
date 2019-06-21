@@ -1,10 +1,10 @@
 <script>
     import {onMount} from 'svelte';
 
-    function nextScene(){
-        const nextScene = document.getElementById("bathroom-scene");
-        nextScene.scrollIntoView({behavior:"instant", block: "start"})
+    import {activeSceneNb} from '../../../stores/scenesStore';
 
+    function nextScene(){
+        activeSceneNb.update(n => n + 1);
     }
 
 </script>

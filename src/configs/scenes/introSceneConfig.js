@@ -49,7 +49,8 @@ export default [
 
             el.style.display = 'none';
             el.style.opacity = 0;
-            el.style.border = 'none';
+            el.style.border = 0;
+            el.style.borderImage = "none";
 
             frameNumber.subscribe(value => {
                 if(value !== 1) return;
