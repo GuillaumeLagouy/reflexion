@@ -12,9 +12,7 @@
     })
 </script>
 
-<style>
-
-</style>
+<style></style>
 
 {#each scenesConfig as sceneConfig}
     {#if activeSceneNbValue === sceneConfig.sequence}
