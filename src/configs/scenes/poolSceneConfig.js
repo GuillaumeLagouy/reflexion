@@ -1,6 +1,6 @@
 import anchor from '../../constants/anchor';
 import TweenMax from 'gsap';
-import {frameNumber, gender} from "../../stores/frameStore";
+import {frameNumber} from "../../stores/frameStore";
 import ChangingRooms from '../../components/frames/swimming-pool/ChangingRooms.svelte';
 import Room from '../../components/frames/swimming-pool/Room.svelte';
 import Next from '../../components/Next.svelte';
@@ -64,7 +64,7 @@ export default [
                 opacity: "0",
                 visibility: "hidden",
                 backgroundColor: "white",
-                zIndex: "999"
+                zIndex: "1"
             });
             frameNumber.subscribe(value => {
                value === 2? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):null;
@@ -110,7 +110,7 @@ export default [
                 opacity: "0",
                 visibility: "hidden",
                 border: "transparent",
-                zIndex: "999"
+                zIndex: "1"
             });
             frameNumber.subscribe(value => {
                 if (value !== 4) return;

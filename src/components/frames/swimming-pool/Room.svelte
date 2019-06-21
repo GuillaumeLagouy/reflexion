@@ -1,65 +1,65 @@
 <script>
-    import { onMount } from 'svelte';
-    import {frameNumber, gender} from "../../../stores/frameStore";
+    import {onMount} from 'svelte';
+    import {frameNumber, gender} from '../../../stores/frameStore';
     import TweenMax from 'gsap';
 
-    let miniBulle1Src = "./assets/png/Swimming-pool/miniBulle1.png";
-    let miniBulle2Src = "./assets/png/Swimming-pool/miniBulle2.png";
-    let miniBulle3Src = "./assets/png/Swimming-pool/miniBulle3.png";
-    let mouthSrc = "./assets/png/Swimming-pool/mouth.png";
-    let leftArrowSrc = "./assets/png/Swimming-pool/left_arrow.png";
-    let rightArrowSrc = "./assets/png/Swimming-pool/right_arrow.png";
-    let monsterSrc = "./assets/png/Swimming-pool/mc.png";
-    let male1Src = "./assets/png/Swimming-pool/m0.png";
-    let male2Src = "./assets/png/Swimming-pool/m1.png";
-    let male3Src = "./assets/png/Swimming-pool/m2.png";
-    let male4Src = "./assets/png/Swimming-pool/m3.png";
-    let male5Src = "./assets/png/Swimming-pool/m4.png";
-    let female1Src = "./assets/png/Swimming-pool/f0.png";
-    let female2Src = "./assets/png/Swimming-pool/f1.png";
-    let female3Src = "./assets/png/Swimming-pool/f2.png";
-    let female4Src = "./assets/png/Swimming-pool/f3.png";
-    let female5Src = "./assets/png/Swimming-pool/f4.png";
+    let miniBulle1Src = "./assets/png/Swimming-pool/S3_MiniBubble1.png";
+    let miniBulle2Src = "./assets/png/Swimming-pool/S3_MiniBubble2.png";
+    let miniBulle3Src = "./assets/png/Swimming-pool/S3_MiniBubble3.png";
+    let mouthSrc = './assets/png/Swimming-pool/S3_Mouth.png';
+    let leftArrowSrc = './assets/png/Swimming-pool/S3_LeftArrow.png';
+    let rightArrowSrc = './assets/png/Swimming-pool/S3_RightArrow.png';
+    let monsterSrc = './assets/png/Swimming-pool/S3_MonsterShape.png';
+    let male1Src = "./assets/png/Swimming-pool/S3_m0.png";
+    let male2Src = "./assets/png/Swimming-pool/S3_m1.png";
+    let male3Src = "./assets/png/Swimming-pool/S3_m2.png";
+    let male4Src = "./assets/png/Swimming-pool/S3_m3.png";
+    let male5Src = "./assets/png/Swimming-pool/S3_m4.png";
+    let female1Src = "./assets/png/Swimming-pool/S3_f0.png";
+    let female2Src = "./assets/png/Swimming-pool/S3_f1.png";
+    let female3Src = "./assets/png/Swimming-pool/S3_f2.png";
+    let female4Src = "./assets/png/Swimming-pool/S3_f3.png";
+    let female5Src = "./assets/png/Swimming-pool/S3_f4.png";
 
     onMount(() => {
-        const frame = document.querySelector(`#scene2-frame2`);
-        const image = document.querySelector("#changing-room");
+        const frame = document.querySelector('#scene2-frame2');
+        const image = document.querySelector('#changing-room');
 
         frameNumber.subscribe(value => {
             if (value !== 1) return;
                 let previousDoor;
                 gender.subscribe(genderValue => {
-                    if (genderValue === "male") {
+                    if (genderValue === 'male') {
                         previousDoor = document.querySelector('#boys-room');
                         document.querySelectorAll('.female').forEach((item) => {
                             item.parentNode.remove();
                         });
                     } else {
                         previousDoor = document.querySelector('#girls-room');
-                        image.style.backgroundImage = 'url("./assets/png/Swimming-pool/Vestiaires_filles.png")';
+                        image.style.backgroundImage = 'url("./assets/png/Swimming-pool/S3_GirlsRoom.png")';
                             document.querySelectorAll('.male').forEach((item) => {
                             item.parentNode.remove();
                         });
                     }
                     Object.assign(image.style, {
-                        width: frame.offsetWidth + "px",
-                        height: frame.offsetHeight + "px",
-                        left: -previousDoor.offsetLeft * 2 + "px",
-                        top: -previousDoor.offsetTop * 2 + 10 + "px"
+                        width: `${frame.offsetWidth}px`,
+                        height: `${frame.offsetHeight}px`,
+                        left: -previousDoor.offsetLeft * 2 + 'px',
+                        top: -previousDoor.offsetTop * 2 + 10 + 'px'
                     });
                     const x = frame.offsetLeft;
                     const y = frame.offsetTop;
                     Object.assign(frame.style, {
-                        top: previousDoor.offsetTop + previousDoor.parentNode.offsetTop + "px",
-                        left: previousDoor.offsetLeft + previousDoor.parentNode.offsetLeft + "px",
-                        width: previousDoor.offsetWidth + "px",
-                        height: previousDoor.offsetHeight + "px",
+                        top: previousDoor.offsetTop + previousDoor.parentNode.offsetTop + 'px',
+                        left: previousDoor.offsetLeft + previousDoor.parentNode.offsetLeft + 'px',
+                        width: `${previousDoor.offsetWidth}px`,
+                        height: `${previousDoor.offsetHeight}px`,
                     });
                     TweenMax.to(frame, 1, {
-                        top: y + "px",
-                        left: x + "px",
-                        width: image.offsetWidth + "px",
-                        height: image.offsetHeight + "px",
+                        top: `${y}px`,
+                        left: `${x}px`,
+                        width: `${image.offsetWidth}px`,
+                        height: `${image.offsetHeight}px`,
                         delay: 2
                     });
                     TweenMax.to(frame, 0.2, {autoAlpha: 1});
@@ -67,15 +67,15 @@
 
                     let slide = 0;
                     const slideHandler = function () {
-                        if (this.id === "right-arrow" && slide < 4) slide += 1;
-                        else if (this.id === "left-arrow" && slide > 0) slide -= 1;
-                        if (slide === 0) document.querySelector('#left-arrow').removeEventListener("touchstart", slideHandler);
-                        else document.querySelector('#left-arrow').addEventListener("touchstart", slideHandler);
+                        if (this.id === 'right-arrow' && slide < 4) slide += 1;
+                        else if (this.id === 'left-arrow' && slide > 0) slide -= 1;
+                        if (slide === 0) document.querySelector('#left-arrow').removeEventListener('touchstart', slideHandler);
+                        else document.querySelector('#left-arrow').addEventListener('touchstart', slideHandler);
                         if (slide === 4) {
                             document.querySelector('#right-arrow').removeEventListener("touchstart", slideHandler);
                             TweenMax.to(document.querySelector('#mouth'), 0.5, {autoAlpha: 1, delay: 1.1});
                             frameNumber.update(n => n = 2);
-                        } else document.querySelector('#right-arrow').addEventListener("touchstart", slideHandler);
+                        } else document.querySelector('#right-arrow').addEventListener('touchstart', slideHandler);
                         TweenMax.to(document.querySelector('#left-cross'), 0, {height: 0});
                         TweenMax.to(document.querySelector('#right-cross'), 0, {height: 0});
                         TweenMax.to(document.querySelector('ul'), 0.5, {xPercent: -20 * slide});
@@ -83,12 +83,12 @@
                         TweenMax.to(document.querySelector('#right-cross'), 0.2, {height: 110, delay: 0.7});
                     };
                     document.querySelectorAll('.arrow').forEach((arrow) => {
-                        arrow.addEventListener("touchstart", slideHandler);
+                        arrow.addEventListener('touchstart', slideHandler);
                     });
                     TweenMax.to(document.querySelector('#mini-bulle-1'), 0.5, {autoAlpha: 1, scale: 1, delay: 3});
                     TweenMax.to(document.querySelector('#mini-bulle-2'), 0.5, {autoAlpha: 1, scale: 1, delay: 3.5});
                     TweenMax.to(document.querySelector('#mini-bulle-3'), 0.5, {autoAlpha: 1, scale: 1, delay: 4});
-                    TweenMax.to(document.querySelector('#nuage'), 1, {autoAlpha: 1, scale: 1, delay: 4.5});
+                    TweenMax.to(document.querySelector('#bubble'), 1, {autoAlpha: 1, scale: 1, delay: 4.5});
                     TweenMax.to(document.querySelector('#left-cross'), 0.2, {height: 93, delay: 5.5});
                     TweenMax.to(document.querySelector('#right-cross'), 0.2, {height: 110, delay: 5.7});
                 });
@@ -101,15 +101,8 @@
         background: none;
     }
 
-    .frame-container{
-        width: 100%;
-        height: 100%;
-        position: relative;
-        overflow: hidden;
-    }
-
     #changing-room {
-        background-image: url("./assets/png/Swimming-pool/Vestiaires_garçons.png");
+        background-image: url("./assets/png/Swimming-pool/S3_BoysRoom.png");
         background-size: 100%;
         background-repeat: no-repeat;
         position: absolute;
@@ -145,8 +138,8 @@
         opacity: 0;
     }
 
-    #nuage {
-        background-image: url("./assets/png/Swimming-pool/bulle.png");
+    #bubble {
+        background-image: url("./assets/png/Swimming-pool/S3_Bubble.png");
         width: 30%;
         height: 30%;
         background-size: contain;
@@ -228,12 +221,12 @@
 
     #left-cross {
          top: 15%;
-         background-image: url("./assets/png/Swimming-pool/croix1.png");
+         background-image: url("./assets/png/Swimming-pool/S3_FirstCross.png");
     }
 
     #right-cross {
         bottom: calc(15% + 10px);
-        background-image: url("./assets/png/Swimming-pool/croix2.png");
+        background-image: url("./assets/png/Swimming-pool/S3_SecondCross.png");
     }
 
     #mouth {
@@ -252,7 +245,7 @@
     <img id="mini-bulle-2" src={miniBulle2Src} alt=""/>
     <img id="mini-bulle-3" src={miniBulle3Src} alt=""/>
     <img id="mouth" src={mouthSrc} alt="">
-    <div id="nuage">
+    <div id="bubble">
         <div class="content">
             <div id="left-cross" class="cross"></div>
             <div id="right-cross" class="cross"></div>
