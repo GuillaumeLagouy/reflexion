@@ -4,6 +4,7 @@ import breakfastSceneConfig from '../configs/scenes/breakfastSceneConfig';
 import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeSceneConfig from './scenes/playtimeSceneConfig';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
+import classSceneConfig from './scenes/classSceneConfig';
 
 export default [
    /*{
@@ -40,11 +41,23 @@ export default [
                 height: '200vh',
             })
         }
-    },*/
+    },
 
     {
         id: 'lunch-scene',
         config: lunchSceneConfig,
+        sequence: 0,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                height: '200vh',
+            })
+        }
+    },*/
+
+    {
+        id: 'class-scene',
+        config: classSceneConfig,
         sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
