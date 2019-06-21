@@ -3,6 +3,7 @@ import bathroomSceneConfig from '../configs/scenes/bathroomSceneConfig';
 import breakfastSceneConfig from '../configs/scenes/breakfastSceneConfig';
 import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeSceneConfig from './scenes/playtimeSceneConfig';
+import lunchSceneConfig from './scenes/lunchSceneConfig';
 
 export default [
    /*{
@@ -27,7 +28,7 @@ export default [
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
         sequence: 3,
-    },*/
+    },
 
     {
         id: 'playtime-scene',
@@ -35,7 +36,18 @@ export default [
         sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
-            console.log(el);
+            Object.assign(el.style, {
+                height: '200vh',
+            })
+        }
+    },*/
+
+    {
+        id: 'lunch-scene',
+        config: lunchSceneConfig,
+        sequence: 0,
+        callback: id => {
+            const el = document.getElementById(id);
             Object.assign(el.style, {
                 height: '200vh',
             })
