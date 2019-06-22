@@ -1,5 +1,6 @@
 <script>
-    import {frameNumber, gender} from '../../../stores/frameStore';
+    import {frameNumberPool, gender} from '../../../stores/frameStore';
+    import TweenMax from 'gsap';
 
     function selectDoor(e) {
         const frame = document.querySelector('#scene2-frame1');
@@ -23,7 +24,7 @@
         h = this.offsetHeight;
         changingRooms.style.backgroundPosition = `${-x}px ${-y}px`;
         TweenMax.to(frame, 1, {left: x + frame.offsetLeft, top: y + frame.offsetTop, width: w, height: h});
-        frameNumber.update(n => n + 1);
+        frameNumberPool.update(n => n + 1);
     }
 </script>
 

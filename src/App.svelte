@@ -16,6 +16,11 @@
 
 {#each scenesConfig as sceneConfig}
     {#if activeSceneNbValue === sceneConfig.sequence}
-        <Scene id={sceneConfig.id} framesConfig={sceneConfig.config} sequence={sceneConfig.sequence} />
+        <Scene
+                id={sceneConfig.id}
+                framesConfig={sceneConfig.config}
+                sequence={sceneConfig.sequence}
+                config={sceneConfig}
+        />
     {/if}
 {/each}

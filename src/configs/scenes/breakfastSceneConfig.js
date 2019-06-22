@@ -5,6 +5,7 @@ import TweenMax from 'gsap';
 import Meal from '../../components/frames/breakfast/Meal.svelte';
 import Table from '../../components/frames/breakfast/Table.svelte';
 import Phone from '../../components/frames/breakfast/Phone.svelte';
+import BtnNext from "../../components/frames/wakeup/BtnNext.svelte";
 
 export default [
     {
@@ -23,13 +24,9 @@ export default [
 
             TweenMax.to(el, 1, {display: "block", opacity: 1, delay: .5});
 
-            el.addEventListener("click", () => {
+            setTimeout(() => {
                 frameNumberBreakfast.update(n => n + 1);
-            });
-
-            /*setTimeout(() => {
-                frameNumberBreakfast.update(n => n + 1);
-            }, 2000);*/
+            }, 2000);
         }
     },
 
@@ -81,10 +78,32 @@ export default [
             el.style.zIndex = 4;
 
             frameNumberBreakfast.subscribe(value => {
-               if(value === 2){
-                   TweenMax.to(el, 1, {rotation: "+=90", ease: Power2.easeOut});
-               }
+               if(value !== 2) return;
+
+               TweenMax.to(el, 1, {rotation: "+=90", ease: Power2.easeOut});
             });
         }
     },
+
+    {
+        id: 'breakfast-next-scene',
+        x: 95,
+        y: 95,
+        anchor: anchor.bottomRight,
+        width: 20,
+        height: 10,
+        content: BtnNext,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                display: 'none',
+                opacity: 0,
+                zIndex: 5,
+            });
+            frameNumberBreakfast.subscribe(value => {
+                if(value !== 3) return;
+                TweenMax.to(el, 1, {display: 'block', opacity: 1});
+            });
+        }
+    }
 ]

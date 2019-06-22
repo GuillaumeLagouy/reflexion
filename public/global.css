@@ -103,3 +103,11 @@ button:active {
 button:focus {
 	border-color: #666;
 }
+
+@font-face {
+	font-family: 'Mikado';
+	src: url('./assets/font/MikadoBlack.woff2') format('woff2'),
+	url('./assets/font/MikadoBlack.woff') format('woff');
+	font-weight: 900;
+	font-style: normal;
+}

@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte';
-    import CustomFrameHelper from '../helpers/CustomFrameHelper'
+    import CustomFrameHelper from '../helpers/CustomFrameHelper';
+
+    import Title from '../components/Title.svelte';
 
     export let config;
 
@@ -34,5 +36,11 @@
 </style>
 
 <div class="frame" id={config.id} style="{style}">
-    <slot/>
+    {#if config.title}
+        <Title>
+            {config.title}
+        </Title>
+    {:else}
+        <slot/>
+    {/if}
 </div>

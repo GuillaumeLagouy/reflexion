@@ -1,7 +1,7 @@
 <script>
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
-    import {frameNumber} from '../../../stores/frameStore';
+    import {frameNumberPool} from '../../../stores/frameStore';
 
     let monsterSrc = './assets/png/swimming-pool/S3_SwimmingMonster.png';
     let steamSrc = './assets/png/swimming-pool/S3_Steam.png';
@@ -14,7 +14,7 @@
         TweenMax.to('#swimming-monster', 0.25, {bottom: -15, delay: 0.25});
         TweenMax.to('#swimming-monster', 0.5, {right: monsterX, ease: Power1.easeIn});
         TweenMax.to('#water', 0.2, {backgroundPosition: -waterX + 'px bottom'});
-        if (monsterX > 460) frameNumber.update(n => n + 1);
+        if (monsterX > 460) frameNumberPool.update(n => n + 1);
     }
 
     onMount(() => {
