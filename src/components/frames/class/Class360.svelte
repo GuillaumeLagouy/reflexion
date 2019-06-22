@@ -1,6 +1,7 @@
 <script>
     import Marzipano from 'marzipano';
     import {onMount} from 'svelte';
+    import {DeviceOrientationControlMethod} from '../../../constants/DeviceOrientationControlMethod';
 
     onMount(() => {
         const panoElement = document.getElementById('pano');
@@ -9,7 +10,19 @@
                 mouseViewMode: 'drag',
             }
         };
+
         const viewer = new Marzipano.Viewer(panoElement, viewerOpts);
+
+        const deviceOrientationControlMethod = new DeviceOrientationControlMethod();
+        const controls = viewer.controls();
+        controls.registerMethod('deviceOrientation', deviceOrientationControlMethod);
+
+        deviceOrientationControlMethod.getPitch(function(err, pitch) {
+            if (!err) {
+                view.setPitch(pitch);
+            }
+        });
+        controls.enableMethod('deviceOrientation');
 
         const levels = [
             {'tileSize': 256, 'size': 256, 'fallbackOnly': true},
@@ -25,11 +38,7 @@
 
         const limiter = Marzipano.RectilinearView.limit.traditional(1524.5, 100*Math.PI/180, 120*Math.PI/180);
 
-        const view = new Marzipano.RectilinearView({
-            yaw: 2.922611003940605,
-            pitch: 0.16785301526249619,
-            fov: 1.427448757889531
-        },limiter);
+        const view = new Marzipano.RectilinearView(null,limiter);
 
         const scene = viewer.createScene({
             source: source,
@@ -37,7 +46,7 @@
             view: view,
             pinFirstLevel: true
         });
-        scene.switchTo(scene);
+        scene.switchTo();
     })
 
 </script>
