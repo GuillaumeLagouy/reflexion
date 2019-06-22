@@ -1,6 +1,6 @@
 import anchor from '../../constants/anchor';
 import TweenMax from 'gsap';
-import {frameNumber} from "../../stores/frameStore";
+import {frameNumberPool} from "../../stores/frameStore";
 import ChangingRooms from '../../components/frames/swimming-pool/ChangingRooms.svelte';
 import Room from '../../components/frames/swimming-pool/Room.svelte';
 import Next from '../../components/Next.svelte';
@@ -24,7 +24,7 @@ export default [
             });
             TweenMax.from(el, 1, {top: "100%"});
             TweenMax.to(el, 1, {autoAlpha: 1});
-            frameNumber.subscribe(value => {
+            frameNumberPool.subscribe(value => {
                 if (value !== 0) TweenMax.to(el, 0, {autoAlpha: 0, delay: 1});
             });
         }
@@ -45,7 +45,7 @@ export default [
                 visibility: "hidden",
                 backgroundColor: "white",
             });
-            frameNumber.subscribe(value => {
+            frameNumberPool.subscribe(value => {
                 if(value === 1) TweenMax.to(el, 0.2, {autoAlpha: 1});
             });
         }
@@ -66,11 +66,11 @@ export default [
                 backgroundColor: "white",
                 zIndex: "1"
             });
-            frameNumber.subscribe(value => {
+            frameNumberPool.subscribe(value => {
                value === 2? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):null;
             });
             el.addEventListener('touchstart', function () {
-                frameNumber.update(n => n = 3);
+                frameNumberPool.update(n => n = 3);
                 TweenMax.to(document.querySelector('#scene2-frame2'), 1, {autoAlpha: 0, delay: 1});
                 TweenMax.to(el, 1, {autoAlpha: 0, delay: 1.1});
             });
@@ -90,7 +90,7 @@ export default [
                 opacity: "0",
                 visibility: "hidden",
             });
-            frameNumber.subscribe(value => {
+            frameNumberPool.subscribe(value => {
                 if(value !== 3) TweenMax.to(el, 2, {autoAlpha: 0});
                 else TweenMax.to(el, 1, {autoAlpha: 1, delay: 2.1});
             });
@@ -112,10 +112,9 @@ export default [
                 border: "transparent",
                 zIndex: "1"
             });
-            frameNumber.subscribe(value => {
+            frameNumberPool.subscribe(value => {
                 if (value !== 4) return;
                 TweenMax.to(el, 0, {autoAlpha: 1});
-
             });
         }
     }

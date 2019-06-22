@@ -1,11 +1,13 @@
 import anchor from '../../constants/anchor';
 import { frameNumberBathroom } from '../../stores/frameStore';
 import TweenMax from 'gsap';
+import activeSceneNb from '../../stores/scenesStore';
 
 import Shower from '../../components/frames/bathroom/Shower.svelte';
 import Tap from '../../components/frames/bathroom/Tap.svelte';
 import Sink from '../../components/frames/bathroom/Sink.svelte';
 import Mirror from '../../components/frames/bathroom/Mirror.svelte';
+import BtnNext from '../../components/frames/wakeup/BtnNext.svelte';
 
 export default [
     {
@@ -85,20 +87,44 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
 
-            el.style.display = 'none';
-            el.style.opacity = 0;
-            el.style.zIndex = 4;
-            el.style.backgroundColor = 'white';
+            Object.assign(el.style, {
+                display: 'none',
+                opacity: 0,
+                zIndex: 4,
+                backgroundColor: 'white',
+            });
 
             frameNumberBathroom.subscribe(value => {
                 if(value === 2) {
                     TweenMax.to(el, 1, {display: 'block', opacity: 1});
+                    frameNumberBathroom.update(n => n + 1);
                 }
             })
         }
     },
 
     {
+        id: 's2-btnNext',
+        x: 90,
+        y: 90,
+        anchor: anchor.bottomRight,
+        width: 20,
+        height: 10,
+        content: BtnNext,
+        callback: id => {
+            const el = document.getElementById(id);
+            console.log(el);
 
+            Object.assign(el.style, {
+                display: 'none',
+                opacity: 0,
+                zIndex: 5,
+            });
+
+            frameNumberBathroom.subscribe(value => {
+                console.log(value);
+                if(value === 3) TweenMax.to(el, 1, {display: 'block', opacity: 1});
+            });
+        },
     }
 ]

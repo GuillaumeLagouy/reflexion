@@ -1,6 +1,6 @@
 <script>
     import {onMount} from 'svelte';
-    import {frameNumber, gender} from '../../../stores/frameStore';
+    import {frameNumberPool, gender} from '../../../stores/frameStore';
     import TweenMax from 'gsap';
 
     let miniBulle1Src = "./assets/png/Swimming-pool/S3_MiniBubble1.png";
@@ -25,7 +25,7 @@
         const frame = document.querySelector('#scene2-frame2');
         const image = document.querySelector('#changing-room');
 
-        frameNumber.subscribe(value => {
+        frameNumberPool.subscribe(value => {
             if (value !== 1) return;
                 let previousDoor;
                 gender.subscribe(genderValue => {
@@ -74,7 +74,7 @@
                         if (slide === 4) {
                             document.querySelector('#right-arrow').removeEventListener("touchstart", slideHandler);
                             TweenMax.to(document.querySelector('#mouth'), 0.5, {autoAlpha: 1, delay: 1.1});
-                            frameNumber.update(n => n = 2);
+                            frameNumberPool.update(n => n = 2);
                         } else document.querySelector('#right-arrow').addEventListener('touchstart', slideHandler);
                         TweenMax.to(document.querySelector('#left-cross'), 0, {height: 0});
                         TweenMax.to(document.querySelector('#right-cross'), 0, {height: 0});

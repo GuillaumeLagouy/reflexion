@@ -5,18 +5,14 @@
     const eyeSrc = '/assets/png/eyeFrames/eye_0.png';
     let eyeSrcNb = 0;
 
-    function changeSrc(){
-        bedroomRoofSrc = '/assets/png/S1_BedroomRoofON.png';
-        frameNumber.update(n => n + 1);
-    }
-
     function openEye() {
         const eye = document.getElementById("eye");
         eyeSrcNb++;
-        if(eyeSrcNb < 11) {
+        if(eyeSrcNb <= 10) {
             eye.src = `/assets/png/eyeFrames/eye_${eyeSrcNb}.png`;
         } else {
-            eye.src = '';
+            console.log("test");
+            frameNumber.update(n => n + 1);
         }
     }
 </script>
@@ -38,9 +34,12 @@
         position: absolute;
         touch-action: manipulation;
     }
+    #bedroomRoof{
+        pointer-events: none;
+    }
 </style>
 
 <div class='frame-container'>
-    <img src={bedroomRoofSrc} on:click={changeSrc} alt="">
+    <img id="bedroomRoof" src={bedroomRoofSrc} alt="">
     <img id="eye" src={eyeSrc} on:click={openEye} alt="">
 </div>
