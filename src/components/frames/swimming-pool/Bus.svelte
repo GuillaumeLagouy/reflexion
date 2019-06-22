@@ -1,13 +1,13 @@
 <script>
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
-    import {frameNumber} from '../../../stores/frameStore';
+    import {frameNumberPool} from '../../../stores/frameStore';
 
     let busSrc = './assets/png/Swimming-pool/S3_Bus.png';
     let wheelSrc = './assets/png/Swimming-pool/S3_Wheel.png';
 
     onMount(() => {
-        frameNumber.subscribe(value => {
+        frameNumberPool.subscribe(value => {
             if (value !== 4) return;
             TweenMax.to('#bus', 4, {left: '100%'});
             TweenMax.to('#bus', 0.2, {y: -5, repeat: -1, yoyo: true, yoyoEase: true});

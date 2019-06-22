@@ -18,7 +18,6 @@
         ctx.globalAlpha = 1.0;
         canvas.addEventListener("touchmove", e => {
             e.preventDefault();
-            console.log("test");
             const x = e.touches[0].pageX - canvas.getBoundingClientRect().left;
             const y = e.touches[0].pageY - canvas.getBoundingClientRect().top;
             ctx.globalCompositeOperation = "destination-out";
