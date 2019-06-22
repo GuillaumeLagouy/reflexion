@@ -1,7 +1,7 @@
 import anchor from '../../constants/anchor';
 import { frameNumberBathroom } from '../../stores/frameStore';
 import TweenMax from 'gsap';
-import activeSceneNb from '../../stores/scenesStore';
+import {activeSceneNb} from '../../stores/scenesStore';
 
 import Shower from '../../components/frames/bathroom/Shower.svelte';
 import Tap from '../../components/frames/bathroom/Tap.svelte';
