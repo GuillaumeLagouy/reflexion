@@ -8,7 +8,7 @@ import classSceneConfig from './scenes/classSceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-    {
+   {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,

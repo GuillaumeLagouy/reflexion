@@ -5,3 +5,4 @@ export const frameNumberPool = writable(0);
 export const frameNumberBathroom = writable(0);
 export const frameNumberBreakfast = writable(0);
 export const gender = writable("unknown");
+
