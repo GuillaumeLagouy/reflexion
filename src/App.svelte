@@ -9,7 +9,7 @@
 
     activeSceneNb.subscribe(value => {
         activeSceneNbValue = value;
-    })
+    });
 </script>
 
 <style></style>

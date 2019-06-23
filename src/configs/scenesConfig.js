@@ -8,7 +8,7 @@ import classSceneConfig from './scenes/classSceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-   {
+   /*{
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -29,13 +29,13 @@ export default [
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 3,
-    },
+        sequence: 0,
+    },*/
 
     {
         id: 'playtime-scene',
         config: playtimeSceneConfig,
-        sequence: 4,
+        sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {

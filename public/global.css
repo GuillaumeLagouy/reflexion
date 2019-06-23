@@ -111,3 +111,8 @@ button:focus {
 	font-weight: 900;
 	font-style: normal;
 }
+
+.stop-scrolling {
+	height: 100%;
+	overflow: hidden;
+}

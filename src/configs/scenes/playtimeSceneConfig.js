@@ -1,6 +1,7 @@
 import anchor from '../../constants/anchor';
 
 import Title from '../../components/Title.svelte';
+import Playground from '../../components/frames/playtime/Playground.svelte';
 
 export default [
     {
@@ -10,6 +11,11 @@ export default [
         anchor: anchor.center,
         width: 30,
         height: 30,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+            })
+        }
     },
 
     {
@@ -23,9 +29,10 @@ export default [
         title: 'LA RÉCRÉATION',
         callback: id => {
             const el = document.getElementById(id);
-            Object.assign(el.style, {
-                border: 0,
-                webkitBorderImage: 'none',
+            window.addEventListener('scroll', () => {
+                if(el.getBoundingClientRect().top <= 0){
+
+                }
             })
         }
     },
@@ -37,11 +44,13 @@ export default [
         anchor: anchor.center,
         width: 100,
         height: 100,
+        content: Playground,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                border: '2px solid red',
+                border: '1px red solid',
                 webkitBorderImage: 'none',
+                position: 'fixed',
             });
         }
     },
@@ -53,6 +62,14 @@ export default [
         anchor: anchor.bottomRight,
         width: 10,
         height: 10,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                //display: 'none',
+                position: 'fixed',
+                zIndex: '2'
+            });
+        }
     },
 
     {
@@ -65,10 +82,8 @@ export default [
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                border: 0,
-                webkitBorderImage: 'none',
-                backgroundColor: 'lightgrey',
-            })
+                display: 'none',
+            });
         }
-    }
+    },
 ]

@@ -113,7 +113,6 @@ export default [
         content: BtnNext,
         callback: id => {
             const el = document.getElementById(id);
-            console.log(el);
 
             Object.assign(el.style, {
                 display: 'none',
@@ -122,7 +121,6 @@ export default [
             });
 
             frameNumberBathroom.subscribe(value => {
-                console.log(value);
                 if(value === 3) TweenMax.to(el, 1, {display: 'block', opacity: 1});
             });
         },
