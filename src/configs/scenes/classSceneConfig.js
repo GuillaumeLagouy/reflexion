@@ -27,17 +27,30 @@ export default [
             Object.assign(el.style, {
                 border: 0,
                 webkitBorderImage: 'none',
-            })
+            });
+            const classFrame = document.getElementById('s6-class');
+            const initialTop = Math.round(el.getBoundingClientRect().top);
+            window.addEventListener('scroll', () => {
+                const titlePosPercent = 100 - ((Math.round(el.getBoundingClientRect().top) * 100)/initialTop);
+
+                classFrame.style.opacity = `${(titlePosPercent / 100)}`;
+            });
         }
     },
 
     {
         id: 's6-class',
         x: 50,
-        y: 50,
+        y: 100,
         anchor: anchor.center,
         width: 50,
         height: 50,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+               opacity: 0,
+            });
+        }
     },
 
     {
@@ -47,6 +60,12 @@ export default [
         anchor: anchor.topRight,
         width: 40,
         height: 100,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                display: 'none',
+            });
+        }
     },
 
     {
@@ -56,6 +75,12 @@ export default [
         anchor: anchor.bottomLeft,
         width: 30,
         height: 10,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                display: 'none',
+            });
+        }
     },
 
     {
@@ -65,6 +90,12 @@ export default [
         anchor: anchor.center,
         width: 10,
         height: 20,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                display: 'none',
+            });
+        }
     },
 
     {
@@ -80,6 +111,7 @@ export default [
             Object.assign(el.style, {
                 border: 0,
                 borderImage: 'none',
+                display: 'none',
             })
         }
     },
@@ -91,5 +123,11 @@ export default [
         anchor: anchor.center,
         width: 100,
         height: 100,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                display: 'none',
+            });
+        }
     },
 ]

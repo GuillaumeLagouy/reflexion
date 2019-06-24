@@ -28,11 +28,11 @@
         border: solid 1px gray;
         height: 100vh;
         position: relative;
+
     }
 
     :global(body){
         padding: 0;
-        -overflow: hidden;
     }
 </style>
 

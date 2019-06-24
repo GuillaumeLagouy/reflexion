@@ -29,17 +29,17 @@ export default [
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 0,
-    },*/
+        sequence: 3,
+    },
 
     {
         id: 'playtime-scene',
         config: playtimeSceneConfig,
-        sequence: 0,
+        sequence: 4,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                height: '200vh',
+                height: '150vh',
             })
         }
     },
@@ -47,23 +47,23 @@ export default [
     {
         id: 'lunch-scene',
         config: lunchSceneConfig,
-        sequence: 5,
+        sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                height: '200vh',
+                height: '150vh',
             })
         }
-    },
+    },*/
 
     {
         id: 'class-scene',
         config: classSceneConfig,
-        sequence: 6,
+        sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                height: '200vh',
+                height: '150vh',
             })
         }
     },
@@ -71,6 +71,6 @@ export default [
     {
         id: 'home-scene',
         config: homeSceneConfig,
-        sequence: 7,
+        sequence: 2,
     }
 ]
