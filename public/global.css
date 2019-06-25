@@ -105,14 +105,17 @@ button:focus {
 }
 
 @font-face {
-	font-family: 'Mikado';
+	font-family: 'MikadoBlack';
 	src: url('./assets/font/MikadoBlack.woff2') format('woff2'),
 	url('./assets/font/MikadoBlack.woff') format('woff');
 	font-weight: 900;
 	font-style: normal;
 }
 
-.stop-scrolling {
-	height: 100%;
-	overflow: hidden;
+@font-face {
+	font-family: 'MikadoBold';
+	src: url('./assets/font/subset-MikadoBold.woff2') format('woff2'),
+	url('./assets/font/subset-MikadoBold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
 }

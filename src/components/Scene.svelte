@@ -18,16 +18,15 @@
         if(config.callback){
             config.callback(id);
         }
-
-        // TODO : Recalculate position and size when window size changes
     });
 </script>
 
 <style>
     .scene-container {
-        border: solid 1px gray;
+        -border: solid 1px red;
         height: 100vh;
         position: relative;
+        overflow: hidden;
 
     }
 
