@@ -16,17 +16,16 @@ import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-   /*{
+    {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
     },
-    */
 
     {
         id: 'bathroom-scene',
         config: bathroomSceneConfig,
-        sequence: 0,
+        sequence: 1,
     },
 
     {

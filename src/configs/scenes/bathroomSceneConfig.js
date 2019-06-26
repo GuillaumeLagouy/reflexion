@@ -10,7 +10,7 @@ import Mirror from '../../components/frames/bathroom/Mirror.svelte';
 import BtnNext from '../../components/frames/wakeup/BtnNext.svelte';
 
 export default [
-    /*{
+    {
         id: 'shower',
         x: 50,
         y: 50,
@@ -60,21 +60,21 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
 
-            el.style.display = 'none';
+            el.style.display = 'block';
             el.style.opacity = 0;
             el.style.zIndex = 3;
             el.style.backgroundColor = 'white';
 
             frameNumberBathroom.subscribe(value => {
                 if(value === 1) {
-                    TweenMax.to(el, 1, {display: 'block', opacity: 1});
+                    TweenMax.to(el, 1, {opacity: 1});
                     setTimeout(() => {
                         frameNumberBathroom.update(n => n + 1);
                     }, 10000);
                 }
             })
         }
-    },*/
+    },
 
     {
         id: 'mirror',

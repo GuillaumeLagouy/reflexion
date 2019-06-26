@@ -1,5 +1,6 @@
 <script>
     import { onMount } from 'svelte';
+    import {frameNumberBathroom} from '../../../stores/frameStore';
 
     let sinkSrc = '/assets/png/bathroom/S1_Sink.png';
     let mirrorSrc = '/assets/png/bathroom/S1_Mirror.png';
@@ -9,16 +10,13 @@
         const canvas = document.getElementById("mist");
         const mirror = document.getElementById('mirror');
 
-        console.log(mirror.getBoundingClientRect().top, mirror.getBoundingClientRect().left);
-        canvas.style.top = mirror.getBoundingClientRect().top - (mirror.getBoundingClientRect().top)/2 + 'px';
-        canvas.style.left = mirror.getBoundingClientRect().left - (mirror.getBoundingClientRect().left)/2 + 'px';
+        canvas.style.top = mirror.getBoundingClientRect().top - 1.6*(mirror.getBoundingClientRect().top - 90) + 'px';
+        canvas.style.left = mirror.getBoundingClientRect().left - 1.6*(mirror.getBoundingClientRect().left/2) + 'px';
         canvas.height = mirror.getBoundingClientRect().height;
-
-
 
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "lightblue";
-        ctx.globalAlpha = 0.99;
+        ctx.globalAlpha = 0.98;
         ctx.rect(0, 0, canvas.width, canvas.height);
         ctx.fill();
         ctx.globalAlpha = 1.0;

@@ -10,7 +10,6 @@
         eyeSrcNb++;
         if(eyeSrcNb <= 10) {
             eye.src = `/assets/png/eyeFrames/eye_${eyeSrcNb}.png`;
-            console.log(eyeSrcNb);
         }
         if(eyeSrcNb === 10){
             frameNumber.update(n => n + 1);
@@ -39,6 +38,9 @@
     }
     #bedroomRoof{
         pointer-events: none;
+    }
+    #eye{
+        width: 100%;
     }
 </style>
 
