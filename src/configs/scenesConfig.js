@@ -1,14 +1,22 @@
+import Hammer from 'hammerjs';
+import jump from 'jump.js';
+
+import {disableScroll} from '../helpers/ScrollHelper';
+
+import {frameNumberClass} from '../stores/frameStore';
+
 import introSceneConfig from '../configs/scenes/introSceneConfig';
 import bathroomSceneConfig from '../configs/scenes/bathroomSceneConfig';
 import breakfastSceneConfig from '../configs/scenes/breakfastSceneConfig';
 import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeSceneConfig from './scenes/playtimeSceneConfig';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
-import classSceneConfig from './scenes/classSceneConfig';
+import class1SceneConfig from './scenes/class1SceneConfig';
+import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-   {
+    {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -39,7 +47,7 @@ export default [
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                height: '200vh',
+                height: '150vh',
             })
         }
     },
@@ -51,20 +59,44 @@ export default [
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                height: '200vh',
+                height: '150vh',
             })
         }
     },
 
     {
-        id: 'class-scene',
-        config: classSceneConfig,
+        id: 'class-scene-part1',
+        config: class1SceneConfig,
         sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
-            Object.assign(el.style, {
-                height: '200vh',
-            })
+
+            //Swipe bottom
+            const hammer = new Hammer(el);
+            hammer.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL});
+            hammer.on('swipeup', () => {
+                const scenePart2 = document.getElementById('class-scene-part2');
+                jump(scenePart2, {callback: () => frameNumberClass.update(n => n + 1)});
+                disableScroll();
+            });
+        }
+    },
+
+    {
+        id: 'class-scene-part2',
+        config: class2SceneConfig,
+        sequence: 6,
+        callback: id => {
+            const el = document.getElementById(id);
+
+            //Swipe bottom
+            const hammer = new Hammer(el);
+            hammer.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL});
+            hammer.on('swipedown', () => {
+                const scenePart1 = document.getElementById('class-scene-part1');
+                jump(scenePart1);
+                disableScroll();
+            });
         }
     },
 

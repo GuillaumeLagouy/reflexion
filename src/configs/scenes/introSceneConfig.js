@@ -24,9 +24,9 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
 
-            el.style.transform = 'rotate(-3deg)';
+            el.style.transform = 'rotate(-2deg)';
             el.style.backgroundColor = 'white';
-            const a = TweenMax.to(el, .1, {rotation: '8deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
+            const a = TweenMax.to(el, .1, {rotation: '2deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
 
             el.addEventListener('click', ()=>{
                 TweenMax.to(el, .6, {opacity:0, display: 'none'});
@@ -75,17 +75,16 @@ export default [
 
             el.style.display = 'none';
             el.style.opacity = 0;
-            el.style.transform = 'rotate(-3deg)';
+            el.style.transform = 'rotate(-1deg)';
             el.style.backgroundColor = 'white';
 
             frameNumber.subscribe(value => {
                 if(value !== 1) return;
                 TweenMax.to(el, .1, {display: 'block', delay: 2, opacity: 1});
-                const a = TweenMax.to(el, .1, {rotation: '10deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
+                const a = TweenMax.to(el, .1, {rotation: '1deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
                 el.addEventListener('click', () => {
                     a.kill();
                     TweenMax.to(el, .3, {y: -85, rotation: 0});
-                    //el.style.transform = 'rotate(0deg)';
                     frameNumber.update(n => n + 1);
                 })
             });

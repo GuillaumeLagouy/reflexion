@@ -11,7 +11,7 @@
     $: style = validConfig() ? `
     width:${config.width}px;
     height:${config.height}px;
-    border: 8px solid transparent;
+    border: 7px solid white;
     border-image: url('/assets/png/FrameBorder.png') 50 stretch;
     -webkit-border-image: url('/assets/png/FrameBorder.png') 50 stretch;
     overflow:hidden;

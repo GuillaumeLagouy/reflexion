@@ -9,6 +9,10 @@
     onMount(() => {
         Draggable.create("#tapHandle", {
             type:"rotation",
+            bounds:{
+                minRotation: 300,
+                maxRotation: 0
+            },
             throwProps: true,
             onDrag: function(){
                 const water = document.getElementById("water");

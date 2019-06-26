@@ -9,7 +9,7 @@
     h1{
         text-align: center;
         width: 100%;
-        font-family: 'Mikado', sans-serif;
+        font-family: 'MikadoBlack', sans-serif;
         font-size: 46px;
     }
 </style>

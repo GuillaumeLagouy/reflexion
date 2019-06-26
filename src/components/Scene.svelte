@@ -18,26 +18,25 @@
         if(config.callback){
             config.callback(id);
         }
-
-        // TODO : Recalculate position and size when window size changes
     });
 </script>
 
 <style>
     .scene-container {
-        border: solid 1px gray;
+        -border: solid 1px red;
         height: 100vh;
         position: relative;
+        overflow: hidden;
+
     }
 
     :global(body){
         padding: 0;
-        -overflow: hidden;
     }
 </style>
 
 <svelte:head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </svelte:head>
 
 <div id={id} class="scene-container" data-sequence={sequence}>
