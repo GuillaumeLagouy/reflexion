@@ -21,11 +21,12 @@ export default [
         config: introSceneConfig,
         sequence: 0,
     },
+    */
 
     {
         id: 'bathroom-scene',
         config: bathroomSceneConfig,
-        sequence: 1,
+        sequence: 0,
     },
 
     {
@@ -55,19 +56,19 @@ export default [
     {
         id: 'lunch-scene',
         config: lunchSceneConfig,
-        sequence: 0,
+        sequence: 5,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 height: '150vh',
             })
         }
-    },*/
+    },
 
     {
         id: 'class-scene-part1',
         config: class1SceneConfig,
-        sequence: 0,
+        sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -85,7 +86,7 @@ export default [
     {
         id: 'class-scene-part2',
         config: class2SceneConfig,
-        sequence: 0,
+        sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -103,6 +104,6 @@ export default [
     {
         id: 'home-scene',
         config: homeSceneConfig,
-        sequence: 2,
+        sequence: 7,
     }
 ]

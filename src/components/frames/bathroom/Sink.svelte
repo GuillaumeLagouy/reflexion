@@ -7,12 +7,18 @@
 
     onMount(() => {
         const canvas = document.getElementById("mist");
-        canvas.width = 180;
-        canvas.height = 320;
+        const mirror = document.getElementById('mirror');
+
+        console.log(mirror.getBoundingClientRect().top, mirror.getBoundingClientRect().left);
+        canvas.style.top = mirror.getBoundingClientRect().top - (mirror.getBoundingClientRect().top)/2 + 'px';
+        canvas.style.left = mirror.getBoundingClientRect().left - (mirror.getBoundingClientRect().left)/2 + 'px';
+        canvas.height = mirror.getBoundingClientRect().height;
+
+
 
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "lightblue";
-        ctx.globalAlpha = 0.9;
+        ctx.globalAlpha = 0.99;
         ctx.rect(0, 0, canvas.width, canvas.height);
         ctx.fill();
         ctx.globalAlpha = 1.0;
@@ -41,9 +47,6 @@
         position: absolute;
         height: 100%;
     }
-    canvas{
-        transform: translateX(10px);
-    }
     #monsterSmall {
         z-index: 2;
         background: transparent;
@@ -53,9 +56,10 @@
         z-index: 3;
         background: transparent;
         filter: blur(4px);
+        position: absolute;
     }
     #mirror {
-        z-index: 2;
+        z-index: 3;
         background: transparent;
         pointer-events: none;
     }
@@ -68,7 +72,7 @@
 
 <div class="frame-container">
     <img id="monsterSmall" src={monsterSmallSrc} alt="">
+    <canvas id="mist"></canvas>
     <img id="mirror" src={mirrorSrc} alt="">
     <img id="sink" src={sinkSrc} alt="">
-    <canvas id="mist"></canvas>
 </div>

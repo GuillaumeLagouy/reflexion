@@ -1,15 +1,31 @@
 <script>
     import Draggable from 'gsap/Draggable'
     import {onMount} from 'svelte';
+    import {frameNumberClass} from '../../../stores/frameStore';
 
     onMount(() => {
+        let goodAnswer = 0;
+
         Draggable.create('.draggable', {
             bounds: '.exercice',
             onDragEnd: function(e){
                 const responses = document.getElementsByClassName('exercice_question_response');
                 Array.from(responses).forEach(response => {
                     if(this.target.dataset.response === response.dataset.response && this.hitTest(response, '50%')){
-                        console.log('correct !');
+                        /*
+                        const responsePos = response.getBoundingClientRect();
+
+                        const responseX = responsePos.top + responsePos.width/2;
+                        const responseY = responsePos.left + responsePos.height/2;
+
+                        this.target.style.top = responseX + 'px';
+                        this.target.style.left = responseY + 'px';
+                        */
+                        this.disable();
+                        goodAnswer ++;
+                    }
+                    if(goodAnswer === 3) {
+                        frameNumberClass.update(n => n + 1);
                     }
                 });
             }

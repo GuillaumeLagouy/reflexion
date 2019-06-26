@@ -43,38 +43,38 @@ export default [
                 if(value !== 1) return;
                 TweenMax.from(el, 1, {x: 850, rotation: '8deg', scale: 1.1, delay: 1});
                 TweenMax.to(el, .1, {display: 'block'});
-
-                // When the interaction ends
-                //frameNumberClass.update(n => n + 1);
             })
         }
     },
-/*
+
     {
         id: 's6-noise',
         x: 5,
-        y: 146,
+        y: 95,
         anchor: anchor.bottomLeft,
-        width: 30,
-        height: 15,
+        width: 50,
+        height: 20,
         content: Noise,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 display: 'none',
                 opacity: 0,
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
+                zIndex: 4,
+                backgroundColor: 'transparent',
             });
 
             frameNumberClass.subscribe(value => {
-                console.log(value);
-               if(value !== 2) return;
-               TweenMax.to(el, 1, {display: 'block', opacity: 1, onComplete: () => {
-                   frameNumberClass.update(n => n + 1);
-               }});
+                console.log('frame : ' + value);
+                if(value !== 2) return;
+                TweenMax.to(el, 1, {display: 'block', opacity: 1});
             });
         }
     },
-
+    /*
     {
         id: 's6-alone',
         x: 50,
