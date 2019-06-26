@@ -10,9 +10,11 @@
         eyeSrcNb++;
         if(eyeSrcNb <= 10) {
             eye.src = `/assets/png/eyeFrames/eye_${eyeSrcNb}.png`;
-        } else {
-            console.log("test");
+        }
+        if(eyeSrcNb === 10){
             frameNumber.update(n => n + 1);
+            const roof = document.getElementById('bedroomRoof');
+            roof.src = '/assets/png/S1_BedroomRoofOn.png';
         }
     }
 </script>
@@ -36,6 +38,9 @@
     }
     #bedroomRoof{
         pointer-events: none;
+    }
+    #eye{
+        width: 100%;
     }
 </style>
 

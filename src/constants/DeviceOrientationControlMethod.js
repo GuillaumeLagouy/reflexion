@@ -42,7 +42,6 @@ DeviceOrientationControlMethod.prototype.getPitch = function(cb) {
 
 
 DeviceOrientationControlMethod.prototype._handleData = function handleData(data) {
-    console.log('test');
     var previous = this._previous,
         current = this._current,
         tmp = this._tmp;

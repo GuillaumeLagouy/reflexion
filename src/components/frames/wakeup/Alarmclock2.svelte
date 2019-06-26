@@ -11,7 +11,7 @@
         const frameContainer = document.getElementById('alarmclock2-container');
         const img = document.getElementById('alarmclock2');
         frameContainer.addEventListener('click', () => {
-            img.style.height = '80%';
+            img.style.height = '90%';
         })
     });
 </script>

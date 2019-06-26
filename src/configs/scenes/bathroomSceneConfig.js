@@ -14,7 +14,7 @@ export default [
         id: 'shower',
         x: 50,
         y: 50,
-        width: 30,
+        width: 26,
         height: 70,
         anchor: anchor.center,
         content: Shower,
@@ -60,17 +60,17 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
 
-            el.style.display = 'none';
+            el.style.display = 'block';
             el.style.opacity = 0;
             el.style.zIndex = 3;
             el.style.backgroundColor = 'white';
 
             frameNumberBathroom.subscribe(value => {
                 if(value === 1) {
-                    TweenMax.to(el, 1, {display: 'block', opacity: 1});
+                    TweenMax.to(el, 1, {opacity: 1});
                     setTimeout(() => {
                         frameNumberBathroom.update(n => n + 1);
-                    }, 5000);
+                    }, 10000);
                 }
             })
         }
@@ -88,8 +88,8 @@ export default [
             const el = document.querySelector(`#${id}`);
 
             Object.assign(el.style, {
-                display: 'none',
-                opacity: 0,
+                display: 'block',
+                opacity: 1,
                 zIndex: 4,
                 backgroundColor: 'white',
             });
@@ -113,7 +113,6 @@ export default [
         content: BtnNext,
         callback: id => {
             const el = document.getElementById(id);
-            console.log(el);
 
             Object.assign(el.style, {
                 display: 'none',
@@ -122,7 +121,6 @@ export default [
             });
 
             frameNumberBathroom.subscribe(value => {
-                console.log(value);
                 if(value === 3) TweenMax.to(el, 1, {display: 'block', opacity: 1});
             });
         },
