@@ -83,7 +83,7 @@ export default [
                 if(value !== 1) return;
                 el.addEventListener('click', () => {
                     const tl = new TimelineMax({onComplete: () => {
-                        activeSceneNb.update(n => n +1);
+                        activeSceneNb.update(n => n + 1);
                     }});
                     tl.to(el, .5, {display: 'block', opacity: 1})
                       .to(el, .5, {width: 500, height: 350, top: '-=150', left: '-=150'}, 2)
