@@ -6,4 +6,4 @@
     }
 </style>
 
-<div>NEXT</div>
+<div>SUIVANT</div>

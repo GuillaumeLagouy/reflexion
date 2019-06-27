@@ -1,10 +1,10 @@
 import anchor from '../../constants/anchor';
 import TweenMax from 'gsap';
-import {frameNumberPool} from "../../stores/frameStore";
+import {frameNumberPool} from '../../stores/frameStore';
 import ChangingRooms from '../../components/frames/swimming-pool/ChangingRooms.svelte';
 import Room from '../../components/frames/swimming-pool/Room.svelte';
 import Next from '../../components/Next.svelte';
-import Bus from "../../components/frames/swimming-pool/Bus.svelte";
+import Bus from '../../components/frames/swimming-pool/Bus.svelte';
 import SwimmingMonster from '../../components/frames/swimming-pool/SwimmingMonster.svelte';
 
 export default [
