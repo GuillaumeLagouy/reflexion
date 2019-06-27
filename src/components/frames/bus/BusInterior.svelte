@@ -1,5 +1,5 @@
 <script>
-    import {frameNumberBus} from "../../../stores/frameStore";
+    import {frameNumberBus} from '../../../stores/frameStore';
     import {onMount} from 'svelte';
 
     let row0Src = './assets/png/bus/S2_Row0.png';

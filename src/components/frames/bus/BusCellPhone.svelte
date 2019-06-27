@@ -26,7 +26,7 @@
             const actions = item.querySelectorAll('.like, .retweet');
             actions.forEach((a) => {
                 if(e.touches[0].clientY - translate > item.offsetTop + a.offsetTop + feed.offsetTop - 50 && e.touches[0].clientY - translate < a.offsetTop + a.offsetHeight + feed.offsetTop + item.offsetTop && e.touches[0].clientX > a.offsetLeft + feed.offsetLeft + frame.offsetLeft + item.offsetLeft && e.touches[0].clientX < a.offsetWidth + a.offsetLeft + feed.offsetLeft + frame.offsetLeft + item.offsetLeft)
-                    a.src = a.classList.contains("like")?likeSrc:retweetSrc;
+                    a.src = a.classList.contains('like')?likeSrc:retweetSrc;
             });
         }
 
@@ -45,15 +45,15 @@
             if(translate < - maximumSize - 99) {
                 const width = lastPhoto.querySelector('.publication').offsetWidth;
                 const height = lastPhoto.querySelector('.publication').offsetHeight;
-                phone.removeEventListener("touchmove", move);
+                phone.removeEventListener('touchmove', move);
                 TweenMax.to(frame, 1, {borderWidth: 8, width: width, height: height, left: lastPhoto.offsetLeft + frame.offsetLeft + feed.offsetLeft, top: lastPhoto.offsetTop + feed.offsetTop + translate + 100, delay: 1});
                 TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 1, {autoAlpha: 0, delay: 1});
                 TweenMax.to('#phone, #phone-hitbox, #hand, #navbar, #social-media-feed', 0, {autoAlpha: 0, delay: 1});
                 TweenMax.to('.scene-container', 4, {height: "100vh", delay: 1});
-                TweenMax.to(frame, 0, {backgroundImage: 'url("./assets/png/bus/S2_Feed5.png")', backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "100%", delay: 1});
-                TweenMax.to(frame, 1, {position: "absolute", left: `calc(50% - ${width / 2}px)`, top: `calc(50% - ${height / 2}px)`, delay: 3});
+                TweenMax.to(frame, 0, {backgroundImage: 'url("./assets/png/bus/S2_Feed5.png")', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
+                TweenMax.to(frame, 1, {position: 'absolute', left: `calc(50% - ${width / 2}px)`, top: `calc(50% - ${height / 2}px)`, delay: 3});
                 TweenMax.to(frame, 1, {backgroundImage: 'url("./assets/png/bus/S2_Pool.png")', delay: 4});
-                TweenMax.to(frame, 1, {transformOrigin: "center", scale: 2,  delay: 5});
+                TweenMax.to(frame, 1, {transformOrigin: 'center', scale: 2,  delay: 5});
             }
         }
     });

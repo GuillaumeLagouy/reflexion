@@ -17,11 +17,6 @@ import lunchSceneConfig from './scenes/lunchSceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-    {
-        id: 'bus-scene',
-        config: busSceneConfig,
-        sequence: 0,
-    }
     /* {
         id: 'wakeup-scene',
         config: introSceneConfig,
@@ -44,15 +39,15 @@ export default [
         id: 'bus-scene',
         config: busSceneConfig,
         sequence: 3,
-    },
+    }, */
 
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 4,
+        sequence: 0,
     },
 
-    {
+   /*  {
         id: 'playtime-scene',
         config: playtimeSceneConfig,
         sequence: 5,
