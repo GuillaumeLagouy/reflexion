@@ -1,11 +1,11 @@
-import Hammer from 'hammerjs';
-import jump from 'jump.js';
+// import Hammer from 'hammerjs';
+// import jump from 'jump.js';
 
 import {disableScroll} from '../helpers/ScrollHelper';
 
 import {frameNumberClass} from '../stores/frameStore';
 
-import introSceneConfig from '../configs/scenes/introSceneConfig';
+/* import introSceneConfig from '../configs/scenes/introSceneConfig';
 import bathroomSceneConfig from '../configs/scenes/bathroomSceneConfig';
 import breakfastSceneConfig from '../configs/scenes/breakfastSceneConfig';
 import busSceneConfig from './scenes/busSceneConfig';
@@ -14,10 +14,17 @@ import playtimeSceneConfig from './scenes/playtimeSceneConfig';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
 import class1SceneConfig from './scenes/class1SceneConfig';
 import class2SceneConfig from './scenes/class2SceneConfig';
-import homeSceneConfig from './scenes/homeSceneConfig';
+import homeSceneConfig from './scenes/homeSceneConfig'; */
+
+import homePageConfig from './scenes/homePageConfig'
 
 export default [
     {
+        id: 'homepage-scene',
+        config: homePageConfig,
+        sequence: 0,
+    }
+    /* {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -111,5 +118,5 @@ export default [
         id: 'home-scene',
         config: homeSceneConfig,
         sequence: 8,
-    }
+    } */
 ]
