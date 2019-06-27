@@ -1,14 +1,20 @@
-import introSceneConfig from '../configs/scenes/introSceneConfig';
-import bathroomSceneConfig from '../configs/scenes/bathroomSceneConfig';
-import breakfastSceneConfig from '../configs/scenes/breakfastSceneConfig';
+import introSceneConfig from './scenes/introSceneConfig';
+import bathroomSceneConfig from './scenes/bathroomSceneConfig';
+import breakfastSceneConfig from './scenes/breakfastSceneConfig';
+import busSceneConfig from './scenes/busSceneConfig';
 import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeSceneConfig from './scenes/playtimeSceneConfig';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
-import classSceneConfig from './scenes/classSceneConfig';
+// import classSceneConfig from './scenes/classSceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-   {
+    {
+        id: 'bus-scene',
+        config: busSceneConfig,
+        sequence: 0
+    }
+   /* {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -72,5 +78,5 @@ export default [
         id: 'home-scene',
         config: homeSceneConfig,
         sequence: 7,
-    }
+    } */
 ]
