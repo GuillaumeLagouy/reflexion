@@ -17,7 +17,7 @@ import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-    /*{
+    {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -34,7 +34,7 @@ export default [
         config: breakfastSceneConfig,
         sequence: 2,
     },
-    
+
     {
         id: 'bus-scene',
         config: busSceneConfig,
@@ -105,11 +105,11 @@ export default [
                 disableScroll();
             });
         }
-    },*/
+    },
 
     {
         id: 'home-scene',
         config: homeSceneConfig,
         sequence: 8,
-    } */
+    }
 ]
