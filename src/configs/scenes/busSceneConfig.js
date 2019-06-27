@@ -5,7 +5,7 @@ import BusMonster from '../../components/frames/bus/BusMonster.svelte';
 import BusStop from '../../components/frames/bus/BusStop.svelte';
 import Clock from '../../components/frames/bus/Clock.svelte';
 import TweenMax from 'gsap';
-import {frameNumber} from "../../stores/frameStore";
+import {frameNumberBus} from "../../stores/frameStore";
 
 export default [
     {
@@ -41,7 +41,7 @@ export default [
                 opacity: "0",
                 visibility: "hidden"
             });
-            frameNumber.subscribe(value => {
+            frameNumberBus.subscribe(value => {
                 value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 6.2}) : null;
             });
         }
@@ -61,7 +61,7 @@ export default [
                 visibility: "hidden",
                 background: "white",
             });
-            frameNumber.subscribe(value => {
+            frameNumberBus.subscribe(value => {
                 value === 2 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 14}) : null;
             });
         }
@@ -81,7 +81,7 @@ export default [
                 visibility: "hidden",
                 background: "white",
             });
-            frameNumber.subscribe(value => {
+            frameNumberBus.subscribe(value => {
                 value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 21}) : null;
             });
         }

@@ -1,7 +1,7 @@
 <script>
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
-    import {frameNumber} from '../../../stores/frameStore';
+    import {frameNumberBus} from '../../../stores/frameStore';
 
     let busStopSrc = "./assets/png/bus/S2_BusStop.png";
     let cloudSrc = "./assets/png/bus/S2_Clouds.png";
@@ -17,7 +17,7 @@
         TweenMax.to('#bus-container', 2, {left: "-110%", delay: 12});
         TweenMax.to('#bus-container', 0.2, {y: -3, repeat: -1, yoyo: true, yoyoEase: true});
         TweenMax.staggerTo('#s2-front-wheel, #s2-rear-wheel', 0.5, {rotation: 720, repeat: -1});
-        frameNumber.update(n => n = 2);
+        frameNumberBus.update(n => n = 2);
     });
 </script>
 

@@ -1,5 +1,5 @@
 <script>
-    import {frameNumber} from "../../../stores/frameStore";
+    import {frameNumberBus} from "../../../stores/frameStore";
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
 
@@ -16,7 +16,7 @@
 
     onMount(() => {
         TweenMax.to('#bus-interior', 4, { yPercent: 45, delay: 15 });
-        frameNumber.update(n => n = 3);
+        frameNumberBus.update(n => n = 3);
     });
 </script>
 

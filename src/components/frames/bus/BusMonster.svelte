@@ -1,5 +1,5 @@
 <script>
-    import {frameNumber} from "../../../stores/frameStore";
+    import {frameNumberBus} from "../../../stores/frameStore";
     import {onMount} from 'svelte';
 
     onMount(() => {
@@ -8,7 +8,7 @@
           backgroundPosition: "2683px 0px",
           ease: Linear.easeNone
         });
-        frameNumber.update(n => n = 4);
+        frameNumberBus.update(n => n = 4);
     });
 </script>
 

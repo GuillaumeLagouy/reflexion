@@ -1,5 +1,5 @@
 <script>
-    import {frameNumber} from '../../../stores/frameStore';
+    import {frameNumberBus} from '../../../stores/frameStore';
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
     import TimelineMax from 'gsap';
@@ -16,7 +16,7 @@
         TweenMax.to('#scene2-frame1', 1, {top: "0", autoAlpha: 0, delay: 5});
         TweenMax.to('#hour-hand', 1, {rotation: 25, delay: 3});
         TweenMax.to('#minute-hand', 0.5, {rotation: -80, delay: 3});
-        frameNumber.update(n => n = 1);
+        frameNumberBus.update(n => n = 1);
     });
 </script>
 

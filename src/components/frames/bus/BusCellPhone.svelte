@@ -1,5 +1,4 @@
 <script>
-    import {frameNumber} from "../../../stores/frameStore";
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
 
