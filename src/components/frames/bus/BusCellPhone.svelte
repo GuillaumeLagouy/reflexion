@@ -1,6 +1,5 @@
 <script>
     import {onMount} from 'svelte';
-    import TweenMax from 'gsap';
 
     let titleSrc = './assets/png/bus/S2_FeedTitle.png';
     let noLikeSrc = './assets/png/bus/S2_NoLike.png';
@@ -12,7 +11,7 @@
         let yStart;
         let translate = 0;
         let maximumSize = 0;
-        document.querySelectorAll('.feed').forEach( (item) => { maximumSize += item.offsetWidth});
+        document.querySelectorAll('.feed').forEach((item) => {maximumSize += item.offsetWidth});
 
         const frame = document.querySelector('#scene2-frame5');
         const phone = document.querySelector('#phone-hitbox');
@@ -25,7 +24,7 @@
 
         function setActive(e, item) {
             const actions = item.querySelectorAll('.like, .retweet');
-            actions.forEach( (a) => {
+            actions.forEach((a) => {
                 if(e.touches[0].clientY - translate > item.offsetTop + a.offsetTop + feed.offsetTop - 50 && e.touches[0].clientY - translate < a.offsetTop + a.offsetHeight + feed.offsetTop + item.offsetTop && e.touches[0].clientX > a.offsetLeft + feed.offsetLeft + frame.offsetLeft + item.offsetLeft && e.touches[0].clientX < a.offsetWidth + a.offsetLeft + feed.offsetLeft + frame.offsetLeft + item.offsetLeft)
                     a.src = a.classList.contains("like")?likeSrc:retweetSrc;
             });
@@ -39,22 +38,23 @@
         phone.addEventListener("touchmove", (e) => move(e));
 
         function move(e) {
+            e.preventDefault();
             if(yStart < e.touches[0].clientY && translate < 0) translate += 8;
             else if(yStart > e.touches[0].clientY && translate > - maximumSize - 100) translate -= 8;
-            document.querySelectorAll('#social-media-feed .feed').forEach( (item) => { item.style.transform = `translateY(${translate}px)`; });
-                if(translate < - maximumSize - 99) {
-                    const width = lastPhoto.querySelector('.publication').offsetWidth;
-                    const height = lastPhoto.querySelector('.publication').offsetHeight;
-                    phone.removeEventListener("touchmove", move);
-                    TweenMax.to(frame, 1, {borderWidth: 8, width: width, height: height, left: lastPhoto.offsetLeft + frame.offsetLeft + feed.offsetLeft, top: lastPhoto.offsetTop + feed.offsetTop + translate + 100, delay: 1});
-                    TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 1, {autoAlpha: 0, delay: 1});
-                    TweenMax.to('#phone, #phone-hitbox, #hand, #navbar, #social-media-feed', 0, {autoAlpha: 0, delay: 1});
-                    TweenMax.to(frame, 1, { position: "absolute", left: `calc(50% - ${width / 2}px)`, top: `calc(50% - ${height / 2}px)`, delay: 3});
-                    TweenMax.to(frame, 0, {backgroundImage: 'url("./assets/png/bus/S2_Feed5.png")', backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "100%", delay: 1});
-                    TweenMax.to(frame, 1, {backgroundImage: 'url("./assets/png/bus/S2_Pool.png")', delay: 4});
-                    TweenMax.to(frame, 1, {transformOrigin: "center", scale: 2,  delay: 5});
-
-                }
+            document.querySelectorAll('#social-media-feed .feed').forEach((item) => { item.style.transform = `translateY(${translate}px)`; });
+            if(translate < - maximumSize - 99) {
+                const width = lastPhoto.querySelector('.publication').offsetWidth;
+                const height = lastPhoto.querySelector('.publication').offsetHeight;
+                phone.removeEventListener("touchmove", move);
+                TweenMax.to(frame, 1, {borderWidth: 8, width: width, height: height, left: lastPhoto.offsetLeft + frame.offsetLeft + feed.offsetLeft, top: lastPhoto.offsetTop + feed.offsetTop + translate + 100, delay: 1});
+                TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 1, {autoAlpha: 0, delay: 1});
+                TweenMax.to('#phone, #phone-hitbox, #hand, #navbar, #social-media-feed', 0, {autoAlpha: 0, delay: 1});
+                TweenMax.to('.scene-container', 4, {height: "100vh", delay: 1});
+                TweenMax.to(frame, 0, {backgroundImage: 'url("./assets/png/bus/S2_Feed5.png")', backgroundRepeat: "no-repeat", backgroundPosition: "center", backgroundSize: "100%", delay: 1});
+                TweenMax.to(frame, 1, {position: "absolute", left: `calc(50% - ${width / 2}px)`, top: `calc(50% - ${height / 2}px)`, delay: 3});
+                TweenMax.to(frame, 1, {backgroundImage: 'url("./assets/png/bus/S2_Pool.png")', delay: 4});
+                TweenMax.to(frame, 1, {transformOrigin: "center", scale: 2,  delay: 5});
+            }
         }
     });
 </script>
@@ -104,10 +104,10 @@
         padding-top: 50px;
         background-color: white;
         position: absolute;
-        width: 46%;
-        height: 49%;
-        top: 26.5%;
-        left: 21.5%;
+        width: calc(46% + 2px);
+        height: calc(50% + 11px);
+        top: 26%;
+        left: calc(21% + 2px);
         display: flex;
         overflow: hidden;
         flex-direction: column;
@@ -125,7 +125,6 @@
     .publication {
         border: 3px solid black;
         width: 100%;
-        height: 80%;
     }
 
     #social-media-feed img:first-of-type:not(.like) {

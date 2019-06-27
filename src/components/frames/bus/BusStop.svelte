@@ -1,6 +1,5 @@
 <script>
     import {onMount} from 'svelte';
-    import TweenMax from 'gsap';
     import {frameNumberBus} from '../../../stores/frameStore';
 
     let busStopSrc = "./assets/png/bus/S2_BusStop.png";

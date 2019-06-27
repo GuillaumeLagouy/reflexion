@@ -8,6 +8,7 @@
           backgroundPosition: "2683px 0px",
           ease: Linear.easeNone
         });
+        TweenMax.to('.scene-container', 4, { height: "150vh", delay: 21 });
         frameNumberBus.update(n => n = 4);
     });
 </script>

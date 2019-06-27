@@ -1,5 +1,5 @@
 import Hammer from 'hammerjs';
-import jump from 'jump.js';
+// import jump from 'jump.js';
 
 import {disableScroll} from '../helpers/ScrollHelper';
 
@@ -12,12 +12,17 @@ import busSceneConfig from './scenes/busSceneConfig';
 import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeSceneConfig from './scenes/playtimeSceneConfig';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
-import class1SceneConfig from './scenes/class1SceneConfig';
-import class2SceneConfig from './scenes/class2SceneConfig';
+//import class1SceneConfig from './scenes/class1SceneConfig';
+//import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-    /*{
+    {
+        id: 'bus-scene',
+        config: busSceneConfig,
+        sequence: 0,
+    }
+    /* {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -105,7 +110,7 @@ export default [
                 disableScroll();
             });
         }
-    },*/
+    },
 
     {
         id: 'home-scene',

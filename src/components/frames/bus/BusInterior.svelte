@@ -1,7 +1,6 @@
 <script>
     import {frameNumberBus} from "../../../stores/frameStore";
     import {onMount} from 'svelte';
-    import TweenMax from 'gsap';
 
     let row0Src = './assets/png/bus/S2_Row0.png';
     let row1Src = './assets/png/bus/S2_Row1.png';
