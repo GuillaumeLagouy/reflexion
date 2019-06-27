@@ -8,6 +8,7 @@ import {frameNumberClass} from '../stores/frameStore';
 import introSceneConfig from '../configs/scenes/introSceneConfig';
 import bathroomSceneConfig from '../configs/scenes/bathroomSceneConfig';
 import breakfastSceneConfig from '../configs/scenes/breakfastSceneConfig';
+import busSceneConfig from './scenes/busSceneConfig';
 import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeSceneConfig from './scenes/playtimeSceneConfig';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
@@ -33,17 +34,23 @@ export default [
         config: breakfastSceneConfig,
         sequence: 2,
     },
+    
+    {
+        id: 'bus-scene',
+        config: busSceneConfig,
+        sequence: 3,
+    },
 
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 3,
+        sequence: 4,
     },
 
     {
         id: 'playtime-scene',
         config: playtimeSceneConfig,
-        sequence: 4,
+        sequence: 5,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
@@ -55,7 +62,7 @@ export default [
     {
         id: 'lunch-scene',
         config: lunchSceneConfig,
-        sequence: 5,
+        sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
@@ -67,7 +74,7 @@ export default [
     {
         id: 'class-scene-part1',
         config: class1SceneConfig,
-        sequence: 6,
+        sequence: 7,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -85,7 +92,7 @@ export default [
     {
         id: 'class-scene-part2',
         config: class2SceneConfig,
-        sequence: 6,
+        sequence: 7,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -103,6 +110,6 @@ export default [
     {
         id: 'home-scene',
         config: homeSceneConfig,
-        sequence: 0,
-    }
+        sequence: 8,
+    } */
 ]

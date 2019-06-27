@@ -1,6 +1,7 @@
 import {writable} from "svelte/store";
 
 export const frameNumber = writable(0);
+export const frameNumberBus = writable(0);
 export const frameNumberPool = writable(0);
 export const frameNumberBathroom = writable(0);
 export const frameNumberBreakfast = writable(0);
