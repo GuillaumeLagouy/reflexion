@@ -53,6 +53,7 @@
         background-color: #E0E9FF;
         z-index: 4;
         opacity: 1;
+        pointer-events: none;
         animation: spinner4 950ms linear infinite;
     }
 

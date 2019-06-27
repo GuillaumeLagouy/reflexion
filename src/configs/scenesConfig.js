@@ -16,7 +16,7 @@ import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 
 export default [
-    {
+    /*{
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -98,11 +98,11 @@ export default [
                 disableScroll();
             });
         }
-    },
+    },*/
 
     {
         id: 'home-scene',
         config: homeSceneConfig,
-        sequence: 7,
+        sequence: 0,
     }
 ]
