@@ -136,7 +136,7 @@ export default [
         width: 15,
         height: 10,
         content: BtnLink,
-        link: 'FIL SANTÉ JEUNE',
+        link: 'EN PARLER',
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
