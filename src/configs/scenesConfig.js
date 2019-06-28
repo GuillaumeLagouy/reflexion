@@ -17,6 +17,7 @@ import lunchSceneConfig from './scenes/lunchSceneConfig';
 import class1SceneConfig from './scenes/class1SceneConfig';
 import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
+import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
 
 export default [
     /*{
@@ -47,7 +48,7 @@ export default [
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
         sequence: 4,
-    },*/
+    },
 
     {
         id: 'playtime-scene-part1',
@@ -139,5 +140,11 @@ export default [
         id: 'home-scene',
         config: homeSceneConfig,
         sequence: 3,
+    }*/
+
+    {
+        id: 'replay-playtime',
+        config: replayPlaytimeSceneConfig,
+        sequence: 0,
     }
 ]
