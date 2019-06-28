@@ -30,7 +30,7 @@
     });
 
     function start() {
-        if(screen.width < 1366 && screen.width > 700) { // condition tablette
+        /*if(screen.width < 1366 && screen.width > 700) { // condition tablette
             activeSceneNb.update((value => value = 1));
             // TODO : Go to first scene
         }
@@ -44,7 +44,9 @@
             img.src = './assets/png/homepage/pad.png';
             parent.appendChild(img);
             parent.appendChild(p);
-        }
+        }*/
+        activeSceneNb.update((value => value = 1));
+        // TODO : Go to first scene
     }
 
     function sound() {

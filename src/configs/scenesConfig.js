@@ -16,7 +16,7 @@ import playtimeScenePart2Config from './scenes/playtime/playtimeScenePart2Config
 import lunchSceneConfig from './scenes/lunchSceneConfig';
 import class1SceneConfig from './scenes/class1SceneConfig';
 import class2SceneConfig from './scenes/class2SceneConfig';
-import homeSceneConfig from './scenes/homeSceneConfig'; */
+import homeSceneConfig from './scenes/homeSceneConfig';
 import homePageConfig from './scenes/homePageConfig'
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
 
@@ -25,8 +25,8 @@ export default [
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
-    }
-  
+    },
+
     {
         id: 'wakeup-scene',
         config: introSceneConfig,
