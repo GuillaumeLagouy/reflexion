@@ -1,6 +1,8 @@
 import anchor from "../../constants/anchor";
 import {frameNumberClass} from '../../stores/frameStore';
+import {activeSceneNb} from '../../stores/scenesStore';
 import TweenMax from 'gsap';
+import TimelineMax from 'gsap/TimelineMax';
 
 import Class from "../../components/frames/class/Class.svelte";
 import MathFrame from '../../components/frames/class/MathFrame.svelte';
@@ -49,10 +51,10 @@ export default [
 
     {
         id: 's6-noise',
-        x: 5,
-        y: 95,
+        x: 2,
+        y: 97,
         anchor: anchor.bottomLeft,
-        width: 50,
+        width: 40,
         height: 20,
         content: Noise,
         callback: id => {
@@ -66,11 +68,11 @@ export default [
                 zIndex: 4,
                 backgroundColor: 'transparent',
             });
-
             frameNumberClass.subscribe(value => {
-                console.log('frame : ' + value);
                 if(value !== 2) return;
-                TweenMax.to(el, 1, {display: 'block', opacity: 1});
+                TweenMax.to(el, 1, {display: 'block', opacity: 1, onComplete: () => {
+                    frameNumberClass.update(n => n + 1);
+                }});
             });
         }
     },
@@ -101,13 +103,13 @@ export default [
                 }});
             })
         }
-    },
+    },*/
 
     {
         id: 's6-360',
-        x: 100,
-        y: 154,
-        anchor: anchor.bottomRight,
+        x: 50,
+        y: 50,
+        anchor: anchor.center,
         width: 100,
         height: 100,
         content: Class360,
@@ -118,17 +120,22 @@ export default [
                 borderImage: 'none',
                 webkitBorderImage: 'none',
                 visibility: 'hidden',
+                zIndex: 5,
             });
 
             frameNumberClass.subscribe(value => {
-               if(value !== 4) return;
-               console.log(value);
-               TweenMax.to(el, 1, {visibility: 'visible', zIndex: 2})
+               if(value !== 3) return;
+
+               const tl = new TimelineMax({onComplete: () => {
+                   activeSceneNb.update(n => n + 1);
+               }});
+               tl.to(el, 1, {visibility: 'visible', delay: 1});
+               tl.to('#class-scene-part2', 1, {opacity: 0, delay: 10});
             });
 
         }
     },
-
+    /*
     {
         id: 's6-ink',
         x: 50,
