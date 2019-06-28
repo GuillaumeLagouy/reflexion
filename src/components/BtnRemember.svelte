@@ -2,8 +2,10 @@
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
 
+    import {activeSceneNb} from '../stores/scenesStore';
+
     function handleClick(){
-        //TweenMax.to('#s7-remember', 0.4, {y: '+=5px', scale: 0.99})
+        activeSceneNb.update(n => n + 1);
     }
 
 </script>
