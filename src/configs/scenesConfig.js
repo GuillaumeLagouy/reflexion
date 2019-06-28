@@ -16,44 +16,51 @@ import playtimeScenePart2Config from './scenes/playtime/playtimeScenePart2Config
 import lunchSceneConfig from './scenes/lunchSceneConfig';
 import class1SceneConfig from './scenes/class1SceneConfig';
 import class2SceneConfig from './scenes/class2SceneConfig';
-import homeSceneConfig from './scenes/homeSceneConfig';
+import homeSceneConfig from './scenes/homeSceneConfig'; */
+import homePageConfig from './scenes/homePageConfig'
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
 
 export default [
     {
+        id: 'homepage-scene',
+        config: homePageConfig,
+        sequence: 0,
+    }
+  
+    {
         id: 'wakeup-scene',
         config: introSceneConfig,
-        sequence: 0,
+        sequence: 1,
     },
 
     {
         id: 'bathroom-scene',
         config: bathroomSceneConfig,
-        sequence: 1,
+        sequence: 2,
     },
 
     {
         id: 'breakfast-scene',
         config: breakfastSceneConfig,
-        sequence: 2,
+        sequence: 3,
     },
 
     {
         id: 'bus-scene',
         config: busSceneConfig,
-        sequence: 3,
+        sequence: 4,
     },
 
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 4,
+        sequence: 5,
     },
 
     {
         id: 'playtime-scene-part1',
         config: playtimeScenePart1Config,
-        sequence: 5,
+        sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -71,7 +78,7 @@ export default [
     {
         id: 'playtime-scene-part2',
         config: playtimeScenePart2Config,
-        sequence: 5,
+        sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -91,7 +98,7 @@ export default [
     {
         id: 'lunch-scene',
         config: lunchSceneConfig,
-        sequence: 6,
+        sequence: 7,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
@@ -103,7 +110,7 @@ export default [
     {
         id: 'class-scene-part1',
         config: class1SceneConfig,
-        sequence: 7,
+        sequence: 8,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -121,7 +128,7 @@ export default [
     {
         id: 'class-scene-part2',
         config: class2SceneConfig,
-        sequence: 7,
+        sequence: 8,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -139,12 +146,12 @@ export default [
     {
         id: 'replay-playtime',
         config: replayPlaytimeSceneConfig,
-        sequence: 8,
+        sequence: 9,
     },
 
     {
         id: 'home-scene',
         config: homeSceneConfig,
-        sequence: 9,
+        sequence: 10,
     },
 ]
