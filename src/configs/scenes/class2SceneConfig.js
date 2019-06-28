@@ -130,7 +130,7 @@ export default [
                    activeSceneNb.update(n => n + 1);
                }});
                tl.to(el, 1, {visibility: 'visible', delay: 1});
-               tl.to('#class-scene-part2', 1, {opacity: 0, delay: 10});
+               tl.to('#class-scene-part2', 1, {opacity: 0, delay: 18});
             });
 
         }
