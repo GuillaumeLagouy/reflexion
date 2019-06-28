@@ -1,5 +1,5 @@
 import Hammer from 'hammerjs';
-// import jump from 'jump.js';
+import jump from 'jump.js';
 
 import {disableScroll} from '../helpers/ScrollHelper';
 
@@ -14,13 +14,13 @@ import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeScenePart1Config from './scenes/playtime/playtimeScenePart1Config';
 import playtimeScenePart2Config from './scenes/playtime/playtimeScenePart2Config';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
-//import class1SceneConfig from './scenes/class1SceneConfig';
-//import class2SceneConfig from './scenes/class2SceneConfig';
+import class1SceneConfig from './scenes/class1SceneConfig';
+import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
 
 export default [
-    /* {
+    {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -35,25 +35,25 @@ export default [
     {
         id: 'breakfast-scene',
         config: breakfastSceneConfig,
-        sequence: 0,
+        sequence: 2,
     },
 
     {
         id: 'bus-scene',
         config: busSceneConfig,
         sequence: 3,
-    }, */
+    },
 
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 0,
+        sequence: 4,
     },
-  
+
     {
         id: 'playtime-scene-part1',
         config: playtimeScenePart1Config,
-        sequence: 0,
+        sequence: 5,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -71,7 +71,7 @@ export default [
     {
         id: 'playtime-scene-part2',
         config: playtimeScenePart2Config,
-        sequence: 0,
+        sequence: 5,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -91,7 +91,7 @@ export default [
     {
         id: 'lunch-scene',
         config: lunchSceneConfig,
-        sequence: 1,
+        sequence: 6,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
@@ -103,7 +103,7 @@ export default [
     {
         id: 'class-scene-part1',
         config: class1SceneConfig,
-        sequence: 2,
+        sequence: 7,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -121,7 +121,7 @@ export default [
     {
         id: 'class-scene-part2',
         config: class2SceneConfig,
-        sequence: 2,
+        sequence: 7,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -137,14 +137,14 @@ export default [
     },
 
     {
-        id: 'home-scene',
-        config: homeSceneConfig,
-        sequence: 3,
-    }
-
-    {
         id: 'replay-playtime',
         config: replayPlaytimeSceneConfig,
-        sequence: 0,
-    }
+        sequence: 8,
+    },
+
+    {
+        id: 'home-scene',
+        config: homeSceneConfig,
+        sequence: 9,
+    },
 ]

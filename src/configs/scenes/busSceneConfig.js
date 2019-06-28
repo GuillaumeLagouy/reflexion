@@ -6,6 +6,7 @@ import BusStop from '../../components/frames/bus/BusStop.svelte';
 import Clock from '../../components/frames/bus/Clock.svelte';
 import TweenMax from 'gsap';
 import {frameNumberBus} from '../../stores/frameStore';
+import {activeSceneNb} from "../../stores/scenesStore";
 
 export default [
     {
@@ -82,10 +83,15 @@ export default [
                 background: 'white',
             });
             frameNumberBus.subscribe(value => {
-                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 21}) : null;
+                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 21, onComplete: () => {
+                    setTimeout(() => {
+                        activeSceneNb.update(n => n + 1);
+                    }, 4000)
+                }}) : null;
             });
         }
     },
+    /*
     {
         id: 'scene2-frame5',
         x: 100,
@@ -104,5 +110,5 @@ export default [
                 zIndex: '1'
             });
         }
-    },
+    },*/
 ];
