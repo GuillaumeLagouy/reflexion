@@ -19,9 +19,10 @@ import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 import homePageConfig from './scenes/homePageConfig'
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
+import endSCeneConfig from './scenes/endSceneConfig';
 
 export default [
-    {
+    /*{
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
@@ -144,14 +145,20 @@ export default [
     },
 
     {
-        id: 'replay-playtime',
-        config: replayPlaytimeSceneConfig,
+        id: 'home-scene',
+        config: homeSceneConfig,
         sequence: 9,
     },
 
     {
-        id: 'home-scene',
-        config: homeSceneConfig,
+        id: 'replay-playtime',
+        config: replayPlaytimeSceneConfig,
         sequence: 10,
-    },
+    },*/
+
+    {
+        id: 'end-scene',
+        config: endSCeneConfig,
+        sequence: 0,
+    }
 ]
