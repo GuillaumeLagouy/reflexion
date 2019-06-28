@@ -22,7 +22,7 @@ export default [
         width: 30,
         height: 10,
         content: Title,
-        title: 'TITRE',
+        title: 'LA CLASSE',
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {

@@ -106,12 +106,12 @@ export default [
                 height: '150vh',
             })
         }
-    },
+    },*/
 
     {
         id: 'class-scene-part1',
         config: class1SceneConfig,
-        sequence: 8,
+        sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -129,7 +129,7 @@ export default [
     {
         id: 'class-scene-part2',
         config: class2SceneConfig,
-        sequence: 8,
+        sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -142,7 +142,7 @@ export default [
                 disableScroll();
             });
         }
-    },
+    },/*
 
     {
         id: 'home-scene',
@@ -154,11 +154,11 @@ export default [
         id: 'replay-playtime',
         config: replayPlaytimeSceneConfig,
         sequence: 10,
-    },*/
+    },
 
     {
         id: 'end-scene',
         config: endSCeneConfig,
-        sequence: 0,
-    }
+        sequence: 11,
+    }*/
 ]
