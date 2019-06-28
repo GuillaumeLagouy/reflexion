@@ -14,9 +14,9 @@
         frameNumberPlaytime.subscribe(value => {
            if(value !== 4) return;
            const tl = new TimelineMax({onComplete: startInteraction()});
-           tl.to(insult, 0.3, {backgroundImage: 'url(./assets/png/playtime/S4_Insult_1.png)'})
-             .to(insult, 0.3, {backgroundImage: 'url(./assets/png/playtime/S4_Insult_2.png)', delay: 0.3})
-             .to(insult, 0.3, {backgroundImage: 'url(./assets/png/playtime/S4_Insult_3.png)', delay: 0.3})
+           tl.to(insult, 0.5, {backgroundImage: 'url(./assets/png/playtime/S4_Insult_1.png)'})
+             .to(insult, 0.5, {backgroundImage: 'url(./assets/png/playtime/S4_Insult_2.png)', delay: 0.5})
+             .to(insult, 0.5, {backgroundImage: 'url(./assets/png/playtime/S4_Insult_3.png)', delay: 0.5})
              .to(insultMonster, 1, {display: 'block'})
              .to(interaction, 1, {display: 'block'});
         });

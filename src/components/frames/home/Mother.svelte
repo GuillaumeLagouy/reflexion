@@ -27,6 +27,6 @@
 
 <div class="frame-container">
     <div class="bubble-container">
-        <p><span class="big">Comment c'est passé <br> ta journée mon chérie ?</p>
+        <p><span class="big">Comment c'est passé <br> ta journée mon chéri ?</p>
     </div>
 </div>
