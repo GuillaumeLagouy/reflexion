@@ -119,3 +119,18 @@ button:focus {
 	font-weight: bold;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: 'MikadoRegular';
+	src: url('./assets/font/subset-MikadoRegular.woff2') format('woff2'),
+	url('./assets/font/subset-MikadoRegular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'Verveine';
+	src: url('./assets/font/subset-Verveine-Regular.woff2') format('woff2'),
+	url('./assets/font/subset-Verveine-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

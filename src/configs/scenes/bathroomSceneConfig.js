@@ -88,7 +88,7 @@ export default [
             const el = document.querySelector(`#${id}`);
 
             Object.assign(el.style, {
-                display: 'block',
+                display: 'none',
                 opacity: 1,
                 zIndex: 4,
                 backgroundColor: 'white',
