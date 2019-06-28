@@ -1,13 +1,14 @@
 <script>
-    import {frameNumberBus} from "../../../stores/frameStore";
+    import {frameNumberBus} from '../../../stores/frameStore';
     import {onMount} from 'svelte';
 
     onMount(() => {
         const tl = new TimelineMax({repeat:-1});
-        tl.to("#infinite-bg", 20,{
-          backgroundPosition: "2683px 0px",
+        tl.to('#infinite-bg', 20,{
+          backgroundPosition: '2683px 0px',
           ease: Linear.easeNone
         });
+        TweenMax.to('.scene-container', 4, { height: '150vh', delay: 21 });
         frameNumberBus.update(n => n = 4);
     });
 </script>

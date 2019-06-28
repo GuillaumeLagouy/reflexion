@@ -9,11 +9,11 @@ import SwimmingMonster from '../../components/frames/swimming-pool/SwimmingMonst
 
 export default [
     {
-        id: 'scene2-frame1',
+        id: 'scene3-frame1',
         x: 50,
         y: 50,
         width: 50,
-        height: 49.9,
+        height: 50,
         anchor: anchor.center,
         content: ChangingRooms,
         callback: (id) => {
@@ -31,12 +31,12 @@ export default [
     },
 
     {
-        id: 'scene2-frame2',
-        x: 50,
-        y: 53,
+        id: 'scene3-frame2',
+        x: 5,
+        y: 10,
         width: 90,
         height: 80,
-        anchor: anchor.center,
+        anchor: anchor.topLeft,
         content: Room,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
@@ -51,7 +51,7 @@ export default [
         }
     },
     {
-        id: 'scene2-frame3',
+        id: 'scene3-frame3',
         x: 90,
         y: 90,
         width: 15,
@@ -71,13 +71,13 @@ export default [
             });
             el.addEventListener('touchstart', function () {
                 frameNumberPool.update(n => n = 3);
-                TweenMax.to(document.querySelector('#scene2-frame2'), 1, {autoAlpha: 0, delay: 1});
+                TweenMax.to('#scene3-frame2', 1, {autoAlpha: 0, delay: 1});
                 TweenMax.to(el, 1, {autoAlpha: 0, delay: 1.1});
             });
         }
     },
     {
-        id: 'scene2-frame4',
+        id: 'scene3-frame4',
         x: 10,
         y: 30,
         width: 80,
@@ -97,7 +97,7 @@ export default [
         }
     },
     {
-        id: 'scene2-frame5',
+        id: 'scene3-frame5',
         x: 0,
         y: 0,
         width: 100,

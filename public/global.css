@@ -127,3 +127,10 @@ button:focus {
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'Verveine';
+	src: url('./assets/font/subset-Verveine-Regular.woff2') format('woff2'),
+	url('./assets/font/subset-Verveine-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}

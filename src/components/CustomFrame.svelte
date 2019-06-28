@@ -3,6 +3,7 @@
     import CustomFrameHelper from '../helpers/CustomFrameHelper';
 
     import Title from '../components/Title.svelte';
+    import Maxim from '../components/Maxim.svelte';
 
     export let config;
 
@@ -40,6 +41,10 @@
         <Title>
             {config.title}
         </Title>
+    {:else if config.maxim}
+        <Maxim>
+            {config.maxim}
+        </Maxim>
     {:else}
         <slot/>
     {/if}

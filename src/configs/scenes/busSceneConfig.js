@@ -5,7 +5,8 @@ import BusMonster from '../../components/frames/bus/BusMonster.svelte';
 import BusStop from '../../components/frames/bus/BusStop.svelte';
 import Clock from '../../components/frames/bus/Clock.svelte';
 import TweenMax from 'gsap';
-import {frameNumberBus} from "../../stores/frameStore";
+import {frameNumberBus} from '../../stores/frameStore';
+import {activeSceneNb} from "../../stores/scenesStore";
 
 export default [
     {
@@ -20,8 +21,8 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
-                opacity: "0",
-                visibility: "hidden"
+                opacity: '0',
+                visibility: 'hidden'
             });
             TweenMax.from(el, 1, {yPercent: 100});
             TweenMax.to(el, 1, {autoAlpha: 1});
@@ -38,7 +39,7 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
-                opacity: "0",
+                opacity: '0',
                 visibility: "hidden"
             });
             frameNumberBus.subscribe(value => {
@@ -57,9 +58,9 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
-                opacity: "0",
-                visibility: "hidden",
-                background: "white",
+                opacity: '0',
+                visibility: 'hidden',
+                background: 'white',
             });
             frameNumberBus.subscribe(value => {
                 value === 2 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 14}) : null;
@@ -77,15 +78,20 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
-                opacity: "0",
-                visibility: "hidden",
-                background: "white",
+                opacity: '0',
+                visibility: 'hidden',
+                background: 'white',
             });
             frameNumberBus.subscribe(value => {
-                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 21}) : null;
+                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 21, onComplete: () => {
+                    setTimeout(() => {
+                        activeSceneNb.update(n => n + 1);
+                    }, 4000)
+                }}) : null;
             });
         }
     },
+    /*
     {
         id: 'scene2-frame5',
         x: 100,
@@ -97,12 +103,12 @@ export default [
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
-                opacity: "0",
-                visibility: "hidden",
+                opacity: '0',
+                visibility: 'hidden',
                 borderWidth: '0',
-                position: "fixed",
+                position: 'fixed',
                 zIndex: '1'
             });
         }
-    },
+    },*/
 ];

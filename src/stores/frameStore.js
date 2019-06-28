@@ -9,6 +9,7 @@ export const frameNumberPlaytime = writable(0);
 export const frameNumberLunch = writable(0);
 export const frameNumberClass = writable(0);
 export const frameNumberHome = writable(0);
+export const frameNumberReplayPlaytime = writable(0);
 
 export const gender = writable("unknown");
 
