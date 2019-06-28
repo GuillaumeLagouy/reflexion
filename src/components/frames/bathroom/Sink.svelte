@@ -10,13 +10,14 @@
         const canvas = document.getElementById("mist");
         const mirror = document.getElementById('mirror');
 
-        canvas.style.top = mirror.getBoundingClientRect().top - 1.6*(mirror.getBoundingClientRect().top - 90) + 'px';
-        canvas.style.left = mirror.getBoundingClientRect().left - 1.6*(mirror.getBoundingClientRect().left/2) + 'px';
+        canvas.style.top = mirror.offsetTop + 'px';
+        canvas.style.left = mirror.offsetLeft - mirror.style.width/2 + 'px';
+
         canvas.height = mirror.getBoundingClientRect().height;
 
         const ctx = canvas.getContext("2d");
         ctx.fillStyle = "lightblue";
-        ctx.globalAlpha = 0.98;
+        ctx.globalAlpha = 0.99;
         ctx.rect(0, 0, canvas.width, canvas.height);
         ctx.fill();
         ctx.globalAlpha = 1.0;
@@ -60,6 +61,7 @@
         z-index: 3;
         background: transparent;
         pointer-events: none;
+        position: absolute;
     }
     #sink {
         z-index: 4;
