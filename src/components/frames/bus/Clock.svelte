@@ -1,8 +1,6 @@
 <script>
     import {frameNumberBus} from '../../../stores/frameStore';
     import {onMount} from 'svelte';
-    import TweenMax from 'gsap';
-    import TimelineMax from 'gsap';
 
     let dialSrc = './assets/png/bus/S2_ClockDial.png';
     let hourHandSrc = './assets/png/bus/S2_HourHand.png';
@@ -13,7 +11,7 @@
         TweenMax.from('#hour-hand', 1, {rotation: 15, delay: 3});
         TweenMax.from('#minute-hand', 0.5, {rotation: -180, delay: 3});
         TweenMax.from('#second-hand', 1, {rotation: -5400, delay: 3});
-        TweenMax.to('#scene2-frame1', 1, {top: "0", autoAlpha: 0, delay: 5});
+        TweenMax.to('#scene2-frame1', 1, {top: 0, autoAlpha: 0, delay: 5});
         TweenMax.to('#hour-hand', 1, {rotation: 25, delay: 3});
         TweenMax.to('#minute-hand', 0.5, {rotation: -80, delay: 3});
         frameNumberBus.update(n => n = 1);
@@ -58,7 +56,7 @@
         position: absolute;
         width: 4%;
         left: calc(50% - 6px);
-        top: calc(50% - 84px);
+        top: calc(45% - 84px);
     }
 </style>
 

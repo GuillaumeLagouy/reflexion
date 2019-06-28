@@ -1,5 +1,5 @@
 import Hammer from 'hammerjs';
-import jump from 'jump.js';
+// import jump from 'jump.js';
 
 import {disableScroll} from '../helpers/ScrollHelper';
 
@@ -14,13 +14,13 @@ import poolSceneConfig from './scenes/poolSceneConfig';
 import playtimeScenePart1Config from './scenes/playtime/playtimeScenePart1Config';
 import playtimeScenePart2Config from './scenes/playtime/playtimeScenePart2Config';
 import lunchSceneConfig from './scenes/lunchSceneConfig';
-import class1SceneConfig from './scenes/class1SceneConfig';
-import class2SceneConfig from './scenes/class2SceneConfig';
+//import class1SceneConfig from './scenes/class1SceneConfig';
+//import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
 
 export default [
-    /*{
+    /* {
         id: 'wakeup-scene',
         config: introSceneConfig,
         sequence: 0,
@@ -42,14 +42,14 @@ export default [
         id: 'bus-scene',
         config: busSceneConfig,
         sequence: 3,
-    },
+    }, */
 
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 4,
+        sequence: 0,
     },
-
+  
     {
         id: 'playtime-scene-part1',
         config: playtimeScenePart1Config,
@@ -140,7 +140,7 @@ export default [
         id: 'home-scene',
         config: homeSceneConfig,
         sequence: 3,
-    }*/
+    }
 
     {
         id: 'replay-playtime',

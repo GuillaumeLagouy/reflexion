@@ -3,15 +3,15 @@
     import TweenMax from 'gsap';
 
     function selectDoor(e) {
-        const frame = document.querySelector('#scene2-frame1');
+        const frame = document.querySelector('#scene3-frame1');
         const changingRooms = document.querySelector('#changing-rooms');
 
         if (e.currentTarget.id === 'girls-room') {
             gender.update(n => n = 'female');
             changingRooms.style.backgroundImage = 'url("./assets/png/Swimming-pool/S3_GirlsDoorOpen.png")';
         } else {
-            changingRooms.style.backgroundImage = 'url("./assets/png/Swimming-pool/S3_BoysDoorOpen.png")';
             gender.update(n => n = 'male');
+            changingRooms.style.backgroundImage = 'url("./assets/png/Swimming-pool/S3_BoysDoorOpen.png")';
         }
         Object.assign(changingRooms.style, {
             height: `${changingRooms.offsetHeight}px`,
