@@ -12,7 +12,6 @@ import Class360 from '../../components/frames/class/Class360.svelte';
 import Ink from '../../components/frames/class/Ink.svelte';
 
 export default [
-
     {
         id: 's6-class',
         x: 50,
@@ -76,11 +75,11 @@ export default [
             });
         }
     },
-    /*
+
     {
         id: 's6-alone',
         x: 50,
-        y: 100,
+        y: 50,
         anchor: anchor.center,
         width: 12,
         height: 22,
@@ -89,6 +88,9 @@ export default [
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 display: 'none',
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
             });
 
             frameNumberClass.subscribe(value => {
@@ -97,13 +99,12 @@ export default [
                 const mathframe = document.getElementById('S6-math');
                 const noise = document.getElementById('s6-noise');
 
-                TweenMax.staggerTo([classFrame, noise, mathframe], 1, {display: 'none', opacity: 0, onComplete: () => {
+                TweenMax.staggerTo([classFrame, noise, mathframe], .2, {display: 'none', opacity: 0, onComplete: () => {
                     TweenMax.to(el, 1, {display: 'block'});
-                    frameNumberClass.update(n => n + 1);
                 }});
             })
         }
-    },*/
+    },
 
     {
         id: 's6-360',
@@ -124,18 +125,18 @@ export default [
             });
 
             frameNumberClass.subscribe(value => {
-               if(value !== 3) return;
+               if(value !== 4) return;
 
                const tl = new TimelineMax({onComplete: () => {
-                   activeSceneNb.update(n => n + 1);
+                   frameNumberClass.update(n => n + 1);
                }});
                tl.to(el, 1, {visibility: 'visible', delay: 1});
-               tl.to('#class-scene-part2', 1, {opacity: 0, delay: 18});
+               tl.to('#class-scene-part2', 1, {opacity: 0, delay: 2});
             });
 
         }
     },
-    /*
+
     {
         id: 's6-ink',
         x: 50,
@@ -147,8 +148,13 @@ export default [
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                display: 'none',
+                opacity: 0,
+                visibility: 'hidden',
+            });
+            frameNumberClass.subscribe(value => {
+                if(value !== 5) return;
+                TweenMax.to(el, 1, {autoAlpha: 1});
             });
         }
-    },*/
+    },
 ]
