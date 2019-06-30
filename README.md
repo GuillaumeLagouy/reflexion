@@ -4,11 +4,13 @@
 Final Gobelins project.
 
 ### Start project
->`npm install`
+`git clone https://github.com/GuillaumeLagouy/reflexion.git`
 
->`npm run dev`
+`npm install`
 
-### Create a scene
+`npm run dev`
+
+### 🎭 Create a scene
 
 1. Create `(nameOfYourScene)Config.js` in `src/configs/scenes`
 2. Open `src/configs/scenesConfig.js`
@@ -23,7 +25,7 @@ import YourSceneConfig from '../configs/scenes/(nameOfYourScene)Config.js'
 }
 ```
 
-### Create frames in your scene
+### 🖼️ Create frames in your scene
 
 1. Go to your  `(nameOfYourScene)Config.js`
 2. Add a frame
