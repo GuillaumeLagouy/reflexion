@@ -24,7 +24,7 @@ import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
 import endSCeneConfig from './scenes/endSceneConfig';
 
 export default [
-    {
+    /*{
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
@@ -134,12 +134,12 @@ export default [
                 disableScroll();
             });
         }
-    },
+    },*/
 
     {
         id: 'class-scene-part1',
         config: class1SceneConfig,
-        sequence: 8,
+        sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
             jump(el, {
@@ -159,7 +159,7 @@ export default [
     {
         id: 'class-scene-part2',
         config: class2SceneConfig,
-        sequence: 8,
+        sequence: 0,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -172,7 +172,7 @@ export default [
                 disableScroll();
             });
         }
-    },
+    },/*
 
     {
         id: 'home-scene',
@@ -190,5 +190,5 @@ export default [
         id: 'end-scene',
         config: endSCeneConfig,
         sequence: 11,
-    }
+    }*/
 ]
