@@ -136,7 +136,7 @@ export default [
 
         }
     },
-
+    /*
     {
         id: 's6-ink',
         x: 50,
@@ -152,9 +152,9 @@ export default [
                 visibility: 'hidden',
             });
             frameNumberClass.subscribe(value => {
-                if(value !== 5) return;
+                if(value !== 0) return;
                 TweenMax.to(el, 1, {autoAlpha: 1});
             });
         }
-    },
+    },*/
 ]
