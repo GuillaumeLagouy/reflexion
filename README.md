@@ -3,6 +3,8 @@
 # Reflexion
 Final Gobelins project.
 
+🏭 framework : [Svelte](https://svelte.dev/)
+
 ### Start project
 `git clone https://github.com/GuillaumeLagouy/reflexion.git`
 
