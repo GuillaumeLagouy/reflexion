@@ -21,6 +21,7 @@ import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 import homePageConfig from './scenes/homePageConfig'
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
+import replayClassroomSceneConfig from './scenes/replayClassroomSceneConfig';
 import endSCeneConfig from './scenes/endSceneConfig';
 
 export default [
@@ -134,7 +135,7 @@ export default [
                 disableScroll();
             });
         }
-    },*/
+    },
 
     {
         id: 'class-scene-part1',
@@ -172,7 +173,7 @@ export default [
                 disableScroll();
             });
         }
-    },/*
+    },
 
     {
         id: 'home-scene',
@@ -184,7 +185,13 @@ export default [
         id: 'replay-playtime',
         config: replayPlaytimeSceneConfig,
         sequence: 10,
-    },
+    },*/
+
+    {
+        id: 'replay-classroom',
+        config: replayClassroomSceneConfig,
+        sequence: 0,
+    },/*
 
     {
         id: 'end-scene',
