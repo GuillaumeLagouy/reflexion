@@ -3,7 +3,10 @@
 # Reflexion
 Final Gobelins project.
 
-🏭 framework : [Svelte](https://svelte.dev/)
+🏭 framework : [Svelte](https://svelte.dev/) \
+🚚 deployment : [Netlify](https://www.netlify.com/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3985f1a6-6efb-46bf-b207-f263009d5d4b/deploy-status)](https://app.netlify.com/sites/reflexion/deploys)
 
 </br>
 </br>
