@@ -25,7 +25,8 @@ import replayClassroomSceneConfig from './scenes/replayClassroomSceneConfig';
 import endSCeneConfig from './scenes/endSceneConfig';
 
 export default [
-    /*{
+/*
+    {
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
@@ -52,9 +53,9 @@ export default [
     {
         id: 'bus-scene',
         config: busSceneConfig,
-        sequence: 4,
+        sequence: 0,
     },
-
+/*
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
@@ -185,17 +186,18 @@ export default [
         id: 'replay-playtime',
         config: replayPlaytimeSceneConfig,
         sequence: 10,
-    },*/
-
+    },
+*/
     {
         id: 'replay-classroom',
         config: replayClassroomSceneConfig,
         sequence: 0,
-    },/*
-
+    },
+/*
     {
         id: 'end-scene',
         config: endSCeneConfig,
         sequence: 11,
-    }*/
+    }
+*/
 ]
