@@ -116,6 +116,7 @@
         flex-direction: column;
         justify-content: space-between;
         transform: translate(0);
+        height: auto;
     }
 
     .publication {
