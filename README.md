@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3985f1a6-6efb-46bf-b207-f263009d5d4b/deploy-status)](https://app.netlify.com/sites/reflexion/deploys)
+
 ![alt text](https://res.cloudinary.com/dcqc12ai5/image/upload/v1561905885/logo_readme.png "Logo Reflexion")
 
 # Reflexion
@@ -6,17 +8,18 @@ Final Gobelins project.
 🏭 framework : [Svelte](https://svelte.dev/) \
 🚚 deployment : [Netlify](https://www.netlify.com/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/3985f1a6-6efb-46bf-b207-f263009d5d4b/deploy-status)](https://app.netlify.com/sites/reflexion/deploys)
-
 </br>
 </br>
 
-### 🏁 Start project
+### 🏁 Start project (for developement)
 `git clone https://github.com/GuillaumeLagouy/reflexion.git`
 
 `npm install`
 
-`npm run dev`
+`npm run dev` 
+👉 [http://localhost:5000](http://localhost:5000)
+
+`npm run build`
 
 </br>
 </br>
