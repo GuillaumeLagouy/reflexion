@@ -13,7 +13,7 @@ import Mother from '../../components/frames/home/Mother.svelte';
 import BtnRemember from '../../components/BtnRemember.svelte';
 
 export default [
-    /*{
+    {
         id: 's7-stain',
         x: 50,
         y: 50,
@@ -109,14 +109,14 @@ export default [
                 }});
             })
         },
-    },*/
+    },
 
     {
         id: 's7-mirror',
         x: 50,
         y: 45,
         anchor: anchor.center,
-        width: 50,
+        width: 40,
         height: 75,
         content: Mirror,
         callback: id => {
@@ -126,9 +126,12 @@ export default [
                 opacity: 0,
                 backgroundColor: 'white',
                 zIndex: 4,
+                border: 0,
+                backgroundImage: 'none',
+                webkitBorderImage: 'none',
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 0) return;
+                if(value !== 7) return;
                 const school = document.getElementById('s7-school');
                 const house = document.getElementById('s7-house');
                 const bathroom = document.getElementById('s7-bathroom');
@@ -140,10 +143,10 @@ export default [
                 const tl = new TimelineMax({delay: 1, onComplete: () => {
                     frameNumberHome.update(n => n + 1);
                 }});
-                tl.to(school, 0.5, {x: '-= 500px', autoAlpha: 0}, 0)
-                    .to(house, 0.5, {x: '+= 500px', autoAlpha: 0}, 0)
-                    .to(bathroom, 0.5, {x: '-= 500px', autoAlpha: 0}, 0)
-                    .to(stain, 0.5, {scale: 0.5, autoAlpha: 0}, 0);
+                tl.to(school, 2, {x: '-= 500px', autoAlpha: 0}, 0)
+                    .to(house, 2, {x: '+= 500px', autoAlpha: 0}, 0)
+                    .to(bathroom, 2, {x: '-= 500px', autoAlpha: 0}, 0)
+                    .to(stain, .2, {scale: 0.5, autoAlpha: 0}, 0);
             });
         },
     },
@@ -166,7 +169,7 @@ export default [
                 zIndex: 5,
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 1) return;
+                if(value !== 8) return;
                 const tl = new TimelineMax({delay: 3, onComplete: () => {
                     frameNumberHome.update(n => n + 1);
                 }});
@@ -193,11 +196,12 @@ export default [
                 borderImage: 'none',
                 webkitBorderImage: 'none',
                 zIndex: 6,
+                overflow: 'visible',
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 2) return;
-                TweenMax.from(el, 0.5, {y: '+=100px'});
-                TweenMax.to(el, 0.5, {autoAlpha: 1});
+                if(value !== 9) return;
+                TweenMax.from(el, 0.5, {y: '+=100px', delay: 2});
+                TweenMax.to(el, 0.5, {autoAlpha: 1, delay: 2});
             });
         },
     }
