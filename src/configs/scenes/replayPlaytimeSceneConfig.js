@@ -64,7 +64,7 @@ export default [
         width: 55,
         height: 15,
         content: Maxim,
-        maxim: "Ceux qui te jugent comptent-ils pour toi ? Poses toi cette question et tu seras quelle importance accorder à leurs remarques.",
+        maxim: "Ceux qui te jugent comptent-ils pour toi ? Pose-toi cette question et tu sauras quelle importance accorder à leurs remarques.",
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {

@@ -2,26 +2,29 @@
     import {onMount} from 'svelte';
     import {activeSceneNb} from '../../../stores/scenesStore';
 
-    let lang = "fr", textArray;
+    let lang = "fr", textArray, textArrayEn;
+    let strongClass;
     const textArrayFr = [];
-    const textArrayEn = [
-        "About",
-        "<strong>Puberty</strong> is a difficult period in a teenager's life in which the youngster can easily feel uncomfortable because of the way he considers his physical appearance.",
-        "<strong>\"Réflexion\"</strong> is an interactive story which tells you about an average middle schooler day lived by a monster who will feel affected by their <strong>difference</strong> with others.",
-        "Our goal is that the user sees themself through the monster, in order to bring them some reflection to help them take a step back about their complexes and accept themself.",
-        "Finally, we wish to bring help to teenagers by leading them without judgement to an associative plateform in which they'll be able to express their thoughts.",
-        "Start the experience",
-        "Developper",
-        "Developper",
-        "Website created for a student project"
-    ];
 
     onMount(() => {
+        strongClass = document.querySelector('strong').classList[0];
+        textArrayEn = [
+            "About",
+            "<strong class='" + strongClass + "'>Puberty</strong> is a difficult period in a teenager's life in which the youngster can easily feel uncomfortable because of the way he considers his physical appearance.",
+            "<strong class='" + strongClass + "'>\"Réflexion\"</strong> is an interactive story which tells you about an average middle schooler day lived by a monster who will feel affected by their <strong class='" + strongClass + "'>difference</strong> with others.",
+            "Our goal is that the user sees themself through the monster, in order to bring them some reflection to help them take a step back about their complexes and accept themself.",
+            "Finally, we wish to bring help to teenagers by leading them without judgement to an associative plateform in which they'll be able to express their thoughts.",
+            "Start the experience",
+            "Developper",
+            "Developper",
+            "Website created for a student project"
+        ];
         textArray = document.querySelectorAll('.lang');
         textArray.forEach((text) => { textArrayFr.push(text.innerHTML); });
     });
 
     function switchLanguage(e) {
+        if(lang === e.currentTarget.innerHTML.toLocaleLowerCase()) return;
         if(lang === "fr") lang = "en";
         else lang = "fr";
         document.querySelector('.active').classList.remove('active');
@@ -64,7 +67,7 @@
         margin-top: 22vh;
     }
 
-    #about strong {
+    strong {
         font-family: "MikadoBold", sans-serif;
         text-transform: uppercase;
     }
@@ -97,9 +100,8 @@
         width: 100%;
         background-image: url("./assets/png/about-page/header.png");
         background-size: 100%;
-        background-position-x: -85vh;
+        background-position: -575px -650px;
         background-repeat: no-repeat;
-        background-position-y: -100vh;
         position: absolute;
         left: 0;
         top: 0;
@@ -251,7 +253,7 @@
     }
 
     footer div:last-of-type {
-        align-self: end;
+        align-self: flex-end;
         margin-right: 5%;
         margin-bottom: 2.5%;
     }
@@ -281,7 +283,7 @@
         <p class="lang">Notre objectif est ainsi de projeter l’utilisateur au travers du monstre, afin de lui apporter des pistes de reflexion pouvant l’aider à prendre du recul sur ses complexes et s’accepter pour tout ce qu’il est. </p>
         <p class="lang"> Enfin, nous souhaitons apporter une aide aux adolescents en les guidant sans jugement vers une plateforme associative vers laquelle ils pourront s’exprimer. </p>
         <p id="start2">
-            <button class="lang">Jouer l'expérience</button>
+            <button class="lang" on:click={start}>Jouer l'expérience</button>
         </p>
     </article>
     <article id="illustrations">
