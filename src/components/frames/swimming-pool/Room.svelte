@@ -96,12 +96,12 @@
                 TweenMax.to(frame, 0.2, {autoAlpha: 1});
                 TweenMax.to(image, 1, {left: 0, top: 0, delay: 2});
 
-                TweenMax.to(document.querySelector('#mini-bulle-1'), 0.5, {autoAlpha: 1, scale: 1, delay: 3});
-                TweenMax.to(document.querySelector('#mini-bulle-2'), 0.5, {autoAlpha: 1, scale: 1, delay: 3.5});
-                TweenMax.to(document.querySelector('#mini-bulle-3'), 0.5, {autoAlpha: 1, scale: 1, delay: 4});
-                TweenMax.to(document.querySelector('#bubble'), 1, {autoAlpha: 1, scale: 1, delay: 4.5});
-                TweenMax.to(document.querySelector('#left-cross'), 0.2, {height: '55%', delay: 5.5});
-                TweenMax.to(document.querySelector('#right-cross'), 0.2, {height: '55%', delay: 5.7});
+                TweenMax.to('#mini-bulle-1', 0.5, {autoAlpha: 1, scale: 1, delay: 3});
+                TweenMax.to('#mini-bulle-2', 0.5, {autoAlpha: 1, scale: 1, delay: 3.5});
+                TweenMax.to('#mini-bulle-3', 0.5, {autoAlpha: 1, scale: 1, delay: 4});
+                TweenMax.to('#bubble', 1, {autoAlpha: 1, scale: 1, delay: 4.5});
+                TweenMax.to('#left-cross', 0.2, {height: '55%', delay: 5.5});
+                TweenMax.to('#right-cross', 0.2, {height: '55%', delay: 5.7});
             });
         });
     });

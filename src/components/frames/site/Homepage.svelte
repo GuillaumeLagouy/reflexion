@@ -3,6 +3,7 @@
     import lottie from 'lottie-web';
     import {onMount} from 'svelte';
     import {activeSceneNb} from '../../../stores/scenesStore';
+    import {frameNumberHomePage} from '../../../stores/frameStore';
 
     let soundSrc = './assets/png/homepage/sound_on.png';
 
@@ -50,8 +51,11 @@
     }
 
     function sound() {
-        if(soundSrc === './assets/png/homepage/sound_on.png') soundSrc = './assets/png/homepage/sound_off.png';
-        else soundSrc = './assets/png/homepage/sound_on.png';
+        soundSrc = soundSrc === './assets/png/homepage/sound_on.png'?'./assets/png/homepage/sound_off.png':soundSrc = './assets/png/homepage/sound_on.png';
+    }
+
+    function about() {
+        frameNumberHomePage.update(value => value = 1);
     }
 
 </script>
@@ -170,7 +174,7 @@
 <header id="header">
     <nav>
         <a id="sound" on:click={sound}><img src={soundSrc} alt="Activer le son"/></a>
-        <a href="about.html">À propos</a>
+        <a on:click={about}>À propos</a>
     </nav>
     <div id="trace"></div>
     <div id="animation"></div>

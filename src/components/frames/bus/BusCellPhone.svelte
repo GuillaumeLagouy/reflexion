@@ -115,6 +115,7 @@
 
     #social-media-feed .feed {
         width: 90%;
+        height: auto;
         margin-left: 5%;
         display: flex;
         flex-direction: column;
@@ -125,6 +126,7 @@
     .publication {
         border: 3px solid black;
         width: 100%;
+        height: auto;
     }
 
     #social-media-feed img:first-of-type:not(.like) {
