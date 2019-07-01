@@ -12,6 +12,7 @@ export const frameNumberClass = writable(0);
 export const frameNumberHome = writable(0);
 export const frameNumberReplayPlaytime = writable(0);
 export const frameNumberReplayPool = writable(0);
+export const frameNumberReplayClass = writable(0);
 export const frameNumberEnd = writable(0);
 
 export const gender = writable("male");

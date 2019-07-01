@@ -82,6 +82,7 @@ export default [
             frameNumberBus.subscribe(value => value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1}) : null);
         }
     },
+
     {
         id: 'scene2-frame5',
         x: 100,
