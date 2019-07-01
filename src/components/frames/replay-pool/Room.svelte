@@ -3,30 +3,46 @@
     import {gender, frameNumberReplayPool} from '../../../stores/frameStore';
 
     const shapeSrc = {
-        c1: './assets/png/Swimming-pool/S3_m0.png',
-        c2: './assets/png/Swimming-pool/S3_m1.png',
-        c3: './assets/png/Swimming-pool/S3_m2.png',
-        c4: './assets/png/Swimming-pool/S3_m3.png',
-        c5: './assets/png/Swimming-pool/S3_m4.png'
+        c1: '/assets/png/Swimming-pool/S3_m0.png',
+        c2: '/assets/png/Swimming-pool/S3_m1.png',
+        c3: '/assets/png/Swimming-pool/S3_m2.png',
+        c4: '/assets/png/Swimming-pool/S3_m3.png',
+        c5: '/assets/png/Swimming-pool/S3_m4.png'
     };
-    const characterSrc = ['./assets/png/Swimming-pool/S3_Male0.png', './assets/png/Swimming-pool/S3_Male1.png', './assets/png/Swimming-pool/S3_Male2.png', './assets/png/Swimming-pool/S3_Male3.png', './assets/png/Swimming-pool/S3_Male4.png'];
+    const mainShapeSrc = {
+        c1: '/assets/png/Swimming-pool/S3_Male0s.png',
+        c2: '/assets/png/Swimming-pool/S3_Male1s.png',
+        c3: '/assets/png/Swimming-pool/S3_Male2s.png',
+        c4: '/assets/png/Swimming-pool/S3_Male3s.png',
+        c5: '/assets/png/Swimming-pool/S3_Male4s.png'
+    };
+    const characterSrc = ['/assets/png/Swimming-pool/S3_Male0.png', '/assets/png/Swimming-pool/S3_Male1.png', '/assets/png/Swimming-pool/S3_Male2.png', '/assets/png/Swimming-pool/S3_Male3.png', '/assets/png/Swimming-pool/S3_Male4.png'];
     let slide = 0;
+    let miniBubble1Src = "/assets/png/swimming-pool/S3_MiniBubble1.png";
+    let miniBubble2Src = "/assets/png/swimming-pool/S3_MiniBubble2.png";
+    let miniBubble3Src = "/assets/png/swimming-pool/S3_MiniBubble3.png";
+
 
     function slideHandler() {
-        if (this.id === 'right-arrow' && slide < 3) slide += 1;
-        else if (this.id === 'left-arrow' && slide > 0) slide -= 1;
-        if (slide === 0) document.querySelector('#left-arrow').removeEventListener('touchstart', slideHandler);
-        else document.querySelector('#left-arrow').addEventListener('touchstart', slideHandler);
-        if (slide === 3) document.querySelector('#right-arrow').removeEventListener("touchstart", slideHandler);
-        else document.querySelector('#right-arrow').addEventListener('touchstart', slideHandler);
+        const rightArrow = document.querySelectorAll('.right-arrow');
+        const leftArrow = document.querySelectorAll('.left-arrow');
+        if (this.classList.contains('right-arrow') && slide < 3) slide += 1;
+        else if (this.classList.contains('left-arrow') && slide > 0) slide -= 1;
+        if (slide === 0) leftArrow.forEach((arrow) => arrow.removeEventListener('touchstart', slideHandler));
+        else leftArrow.forEach((arrow) => arrow.addEventListener('touchstart', slideHandler));
+        if (slide === 3) {
+            rightArrow.forEach( (arrow) => arrow.removeEventListener("touchstart", slideHandler));
+            frameNumberReplayPool.update(n => n = 2);
+        }
+        else rightArrow.forEach( (arrow) => arrow.addEventListener('touchstart', slideHandler));
         slideTo();
     }
 
     function slideTo() {
-        TweenMax.to('#left-cross, #right-cross', 0, {height: 0});
-        TweenMax.to('ul', 0.5, {xPercent: -20 * slide});
-        TweenMax.to('#left-cross', 0.2, {height: '55%', delay: 0.5});
-        TweenMax.to('#right-cross', 0.2, {height: '55%', delay: 0.7});
+        TweenMax.to('.left-cross, .right-cross', 0, {height: 0});
+        TweenMax.to('ul', 0.5, {xPercent: -25 * slide});
+        TweenMax.to('.left-cross', 0.2, {height: '55%', delay: 0.5});
+        TweenMax.to('.right-cross', 0.2, {height: '55%', delay: 0.7});
     }
 
     onMount(() => {
@@ -34,26 +50,31 @@
             if (genderValue === 'male') document.querySelector('#female').remove();
             else {
                 document.querySelector('#male').remove();
-                shapeSrc.c1 = './assets/png/Swimming-pool/S3_f0.png';
-                shapeSrc.c2 = './assets/png/Swimming-pool/S3_f1.png';
-                shapeSrc.c3 = './assets/png/Swimming-pool/S3_f2.png';
-                shapeSrc.c4 = './assets/png/Swimming-pool/S3_f3.png';
-                shapeSrc.c5 = './assets/png/Swimming-pool/S3_f4.png';
-                characterSrc[0] = './assets/png/Swimming-pool/S3_Female0.png';
-                characterSrc[1] = './assets/png/Swimming-pool/S3_Female1.png';
-                characterSrc[2] = './assets/png/Swimming-pool/S3_Female2.png';
-                characterSrc[3] = './assets/png/Swimming-pool/S3_Female3.png';
-                characterSrc[4] = './assets/png/Swimming-pool/S3_Female4.png';
+                shapeSrc.c1 = '/assets/png/Swimming-pool/S3_f0.png';
+                shapeSrc.c2 = '/assets/png/Swimming-pool/S3_f1.png';
+                shapeSrc.c3 = '/assets/png/Swimming-pool/S3_f2.png';
+                shapeSrc.c4 = '/assets/png/Swimming-pool/S3_f3.png';
+                shapeSrc.c5 = '/assets/png/Swimming-pool/S3_f4.png';
+                mainShapeSrc.c1 = '/assets/png/Swimming-pool/S3_Female0s.png';
+                mainShapeSrc.c2 = '/assets/png/Swimming-pool/S3_Female1s.png';
+                mainShapeSrc.c3 = '/assets/png/Swimming-pool/S3_Female2s.png';
+                mainShapeSrc.c4 = '/assets/png/Swimming-pool/S3_Female3s.png';
+                mainShapeSrc.c5 = '/assets/png/Swimming-pool/S3_Female4s.png';
+                characterSrc[0] = '/assets/png/Swimming-pool/S3_Female0.png';
+                characterSrc[1] = '/assets/png/Swimming-pool/S3_Female1.png';
+                characterSrc[2] = '/assets/png/Swimming-pool/S3_Female2.png';
+                characterSrc[3] = '/assets/png/Swimming-pool/S3_Female3.png';
+                characterSrc[4] = '/assets/png/Swimming-pool/S3_Female4.png';
             }
 
-            // document.querySelector('#right-arrow').addEventListener('touchstart', slideHandler);
+            document.querySelectorAll('.right-arrow').forEach( (arrow) => arrow.addEventListener('touchstart', slideHandler));
 
-            TweenMax.to('#mini-bulle-1', 0.5, {autoAlpha: 1, scale: 1, delay: 3});
-            TweenMax.to('#mini-bulle-2', 0.5, {autoAlpha: 1, scale: 1, delay: 3.5});
-            TweenMax.to('#mini-bulle-3', 0.5, {autoAlpha: 1, scale: 1, delay: 4});
-            TweenMax.to('#bubble', 1, {autoAlpha: 1, scale: 1, delay: 4.5});
-            TweenMax.to('#left-cross', 0.2, {height: '55%', delay: 5.5});
-            TweenMax.to('#right-cross', 0.2, {height: '55%', delay: 5.7});
+            TweenMax.to('.mini-bubble-1', 0.5, {autoAlpha: 1, scale: 1, delay: 2});
+            TweenMax.to('.mini-bubble-2', 0.5, {autoAlpha: 1, scale: 1, delay: 2.5});
+            TweenMax.to('.mini-bubble-3', 0.5, {autoAlpha: 1, scale: 1, delay: 3});
+            TweenMax.to('.bubble', 1, {autoAlpha: 1, scale: 1, delay: 3.5});
+            TweenMax.to('.left-cross', 0.2, {height: '55%', delay: 4.5});
+            TweenMax.to('.right-cross', 0.2, {height: '55%', delay: 4.7});
         });
     });
 </script>
@@ -64,7 +85,7 @@
     }
 
     #changing-room {
-        background-image: url("./assets/png/Swimming-pool/S3_BoysRoom.png");
+        background-image: url("/assets/png/Swimming-pool/S3_BoysRoom.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -73,60 +94,105 @@
         height: 100%;
     }
 
-    #mini-bulle-1, #mini-bulle-2, #mini-bulle-3 {
+    .container, #mini-bubble div {
         position: absolute;
-    }
-
-    #mini-bulle-1 {
-        width: 14px;
-        top: 48%;
-        left: 60%;
-        transform-origin: bottom left;
-        transform: scale(0);
-        opacity: 0;
-    }
-    #mini-bulle-2 {
-        width: 17px;
-        top: 44%;
-        left: 62.5%;
-        transform-origin: bottom left;
-        transform: scale(0);
-        opacity: 0;
-
-    }
-    #mini-bulle-3 {
-        width: 20px;
-        left: 65%;
-        top: 40%;
-        transform-origin: bottom left;
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    #bubble-container {
         width: 100%;
         height: 100%;
+    }
+
+    #mini-bubble img {
         position: absolute;
+        transform-origin: bottom left;
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    #mini-bubble .bubble-1 {
+        top: 5%;
+        left: -12%;
+        transform: rotate(275deg);
+    }
+
+    #mini-bubble .bubble-2 {
+        top: 14%;
+        left: 1%;
+        transform: rotate(273deg);
+    }
+
+    #mini-bubble .bubble-3 {
+        top: -6%;
+        left: -4%;
+    }
+
+    #mini-bubble .bubble-4 {
+        top: -4%;
+        left: 10%;
+    }
+
+    #mini-bubble .bubble-5 {
+        top: 14%;
+        left: 13%;
+    }
+
+    .mini-bubble-1 {
+        width: 5px;
+        top: 44%;
+        left: 62%;
+    }
+
+    .mini-bubble-2 {
+        width: 8px;
+        top: 42%;
+        left: 63.5%;
+
+    }
+    .mini-bubble-3 {
+        width: 11px;
+        left: 65%;
+        top: 40%;
     }
 
     .bubble {
-        background-image: url("./assets/png/Swimming-pool/S3_Bubble.png");
-        width: 30%;
-        height: 30%;
+        background-image: url("/assets/png/Swimming-pool/S3_Bubble.png");
+        width: 20%;
+        height: 20%;
         background-size: contain;
         background-repeat: no-repeat;
         position: absolute;
-        left: 67.5%;
-        top: 19%;
         transform-origin: bottom left;
         transform: scale(0);
         opacity: 0;
         visibility: hidden;
         overflow: hidden;
+        z-index: 1;
     }
 
-    .carousel-container {
-         position: absolute;
+    .bubble.bubble-1 {
+        left: 22.5%;
+        top: 9%;
+    }
+
+    .bubble.bubble-2 {
+        left: 38%;
+        top: 19%;
+    }
+
+    .bubble.bubble-3 {
+        left: 54%;
+        top: 13%;
+    }
+
+    .bubble.bubble-4 {
+        left: 73.5%;
+        top: 16%;
+    }
+
+    .bubble.bubble-5 {
+        left: 77%;
+        top: 35%;
+    }
+
+    .carousel.container {
          top: 3%;
          width: 79%;
          overflow: hidden;
@@ -152,8 +218,8 @@
     }
 
     li img {
-        width: 25%;
-        margin-left: 40%;
+        width: 24%;
+        margin-left: 30%;
     }
 
     .content {
@@ -161,7 +227,7 @@
         height: 80%;
         position: absolute;
         top: 10%;
-        left: calc(20% - 30px);
+        left: calc(20% - 15px);
     }
 
     .left-arrow, .right-arrow {
@@ -176,11 +242,11 @@
     }
 
     .model {
-        height: 80%;
+        height: 90%;
         width: auto;
         position: absolute;
-        left: 25%;
-        top: 10%;
+        left: 40%;
+        top: 5%;
         z-index: -1;
     }
 
@@ -195,12 +261,12 @@
 
     .left-cross {
          top: 25%;
-         background-image: url("./assets/png/Swimming-pool/S3_FirstCross.png");
+         background-image: url("/assets/png/Swimming-pool/S3_FirstCross.png");
     }
 
     .right-cross {
         bottom: 20%;
-        background-image: url("./assets/png/Swimming-pool/S3_SecondCross.png");
+        background-image: url("/assets/png/Swimming-pool/S3_SecondCross.png");
     }
 
     #face {
@@ -286,18 +352,15 @@
         <img id="female-3" src={characterSrc[3]} alt=""/>
         <img id="female-4" src={characterSrc[4]} alt=""/>
     </div>
-    <img id="s3-monster" src="./assets/png/swimming-pool/S3_Monster.png" alt=""/>
-    <img id="mini-bulle-1" src="./assets/png/swimming-pool/S3_MiniBubble1.png" alt=""/>
-    <img id="mini-bulle-2" src="./assets/png/swimming-pool/S3_MiniBubble2.png" alt=""/>
-    <img id="mini-bulle-3" src="./assets/png/swimming-pool/S3_MiniBubble3.png" alt=""/>
-    <img id="face" src='./assets/png/Swimming-pool/S3_Expression0.png' alt="">
-    <div id="bubble-container">
-        <div id="bubble-1" class="bubble">
+    <img id="s3-monster" src="/assets/png/swimming-pool/S3_Monster.png" alt=""/>
+    <img id="face" src='/assets/png/Swimming-pool/S3_Expression0.png' alt="">
+    <div class="container">
+        <div class="bubble bubble-1">
             <div class="content">
                 <div class="left-cross"></div>
                 <div class="right-cross"></div>
-                <img class="left-arrow" src="./assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
-                <div class="carousel-container">
+                <img class="left-arrow" src="/assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
+                <div class="carousel container">
                     <ul>
                         <li><img src={shapeSrc.c2} alt=""/></li>
                         <li><img src={shapeSrc.c3} alt=""/></li>
@@ -305,16 +368,16 @@
                         <li><img src={shapeSrc.c5} alt=""/></li>
                     </ul>
                 </div>
-                <img class="model" src="./assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
-                <img class="right-arrow" src="./assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
+                <img class="model" src={mainShapeSrc.c1} alt=""/>
+                <img class="right-arrow" src="/assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
             </div>
         </div>
-        <div id="bubble-2" class="bubble">
+        <div class="bubble bubble-2">
             <div class="content">
                 <div class="left-cross"></div>
                 <div class="right-cross"></div>
-                <img class="left-arrow" src="./assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
-                <div class="carousel-container">
+                <img class="left-arrow" src="/assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
+                <div class="carousel container">
                     <ul>
                         <li><img src={shapeSrc.c1} alt=""/></li>
                         <li><img src={shapeSrc.c3} alt=""/></li>
@@ -322,16 +385,16 @@
                         <li><img src={shapeSrc.c5} alt=""/></li>
                     </ul>
                 </div>
-                <img class="model" src="./assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
-                <img class="right-arrow" src="./assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
+                <img class="model" src={mainShapeSrc.c2} alt=""/>
+                <img class="right-arrow" src="/assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
             </div>
         </div>
-        <div id="bubble-3" class="bubble">
+        <div class="bubble bubble-3">
             <div class="content">
                 <div class="left-cross"></div>
                 <div class="right-cross"></div>
                 <img class="left-arrow" src="./assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
-                <div class="carousel-container">
+                <div class="carousel container">
                     <ul>
                         <li><img src={shapeSrc.c1} alt=""/></li>
                         <li><img src={shapeSrc.c2} alt=""/></li>
@@ -339,16 +402,16 @@
                         <li><img src={shapeSrc.c5} alt=""/></li>
                     </ul>
                 </div>
-                <img class="model" src="./assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
-                <img class="right-arrow" src="./assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
+                <img class="model" src={mainShapeSrc.c3} alt=""/>
+                <img class="right-arrow" src="/assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
             </div>
         </div>
-        <div id="bubble-4" class="bubble">
+        <div class="bubble bubble-4">
             <div class="content">
                 <div class="left-cross"></div>
                 <div class="right-cross"></div>
-                <img class="left-arrow" src="./assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
-                <div class="carousel-container">
+                <img class="left-arrow" src="/assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
+                <div class="carousel container">
                     <ul>
                         <li><img src={shapeSrc.c1} alt=""/></li>
                         <li><img src={shapeSrc.c2} alt=""/></li>
@@ -356,16 +419,16 @@
                         <li><img src={shapeSrc.c5} alt=""/></li>
                     </ul>
                 </div>
-                <img class="model" src="./assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
-                <img class="right-arrow" src="./assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
+                <img class="model" src={mainShapeSrc.c4} alt=""/>
+                <img class="right-arrow" src="/assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
             </div>
         </div>
-        <div id="bubble-5" class="bubble">
+        <div class="bubble bubble-5">
             <div class="content">
                 <div class="left-cross"></div>
                 <div class="right-cross"></div>
-                <img class="left-arrow" src="./assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
-                <div class="carousel-container">
+                <img class="left-arrow" src="/assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
+                <div class="carousel container">
                     <ul>
                         <li><img src={shapeSrc.c1} alt=""/></li>
                         <li><img src={shapeSrc.c2} alt=""/></li>
@@ -373,9 +436,36 @@
                         <li><img src={shapeSrc.c4} alt=""/></li>
                     </ul>
                 </div>
-                <img class="model" src="./assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
-                <img class="right-arrow" src="./assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
+                <img class="model" src={mainShapeSrc.c5} alt=""/>
+                <img class="right-arrow" src="/assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
             </div>
+        </div>
+    </div>
+    <div id="mini-bubble" class="container">
+        <div class="bubble-1">
+            <img class="mini-bubble-1" src={miniBubble1Src} alt=""/>
+            <img class="mini-bubble-2" src={miniBubble2Src} alt=""/>
+            <img class="mini-bubble-3" src={miniBubble3Src} alt=""/>
+        </div>
+        <div class="bubble-2">
+            <img class="mini-bubble-1" src={miniBubble1Src} alt=""/>
+            <img class="mini-bubble-2" src={miniBubble2Src} alt=""/>
+            <img class="mini-bubble-3" src={miniBubble3Src} alt=""/>
+        </div>
+        <div class="bubble-3">
+            <img class="mini-bubble-1" src={miniBubble1Src} alt=""/>
+            <img class="mini-bubble-2" src={miniBubble2Src} alt=""/>
+            <img class="mini-bubble-3" src={miniBubble3Src} alt=""/>
+        </div>
+        <div class="bubble-4">
+            <img class="mini-bubble-1" src={miniBubble1Src} alt=""/>
+            <img class="mini-bubble-2" src={miniBubble2Src} alt=""/>
+            <img class="mini-bubble-3" src={miniBubble3Src} alt=""/>
+        </div>
+        <div class="bubble-5">
+            <img class="mini-bubble-1" src={miniBubble1Src} alt=""/>
+            <img class="mini-bubble-2" src={miniBubble2Src} alt=""/>
+            <img class="mini-bubble-3" src={miniBubble3Src} alt=""/>
         </div>
     </div>
 </div>

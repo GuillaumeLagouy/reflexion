@@ -1,12 +1,14 @@
 import anchor from '../../constants/anchor';
+
 import BusCellPhone from '../../components/frames/bus/BusCellPhone.svelte';
 import BusInterior from '../../components/frames/bus/BusInterior.svelte';
 import BusMonster from '../../components/frames/bus/BusMonster.svelte';
 import BusStop from '../../components/frames/bus/BusStop.svelte';
 import Clock from '../../components/frames/bus/Clock.svelte';
+
 import TweenMax from 'gsap';
+
 import {frameNumberBus} from '../../stores/frameStore';
-import {activeSceneNb} from "../../stores/scenesStore";
 
 export default [
     {
@@ -24,8 +26,9 @@ export default [
                 opacity: '0',
                 visibility: 'hidden'
             });
-            TweenMax.from(el, 1, {yPercent: 100});
             TweenMax.to(el, 1, {autoAlpha: 1});
+            TweenMax.from(el, 1, {yPercent: 100});
+            frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {autoAlpha: 0}) : null);
         }
     },
     {
@@ -42,9 +45,7 @@ export default [
                 opacity: '0',
                 visibility: "hidden"
             });
-            frameNumberBus.subscribe(value => {
-                value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 6.2}) : null;
-            });
+            frameNumberBus.subscribe(value => value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1}) : null);
         }
     },
     {
@@ -59,12 +60,9 @@ export default [
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
                 opacity: '0',
-                visibility: 'hidden',
-                background: 'white',
+                visibility: 'hidden'
             });
-            frameNumberBus.subscribe(value => {
-                value === 2 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 14}) : null;
-            });
+            frameNumberBus.subscribe(value => value === 2 ? TweenMax.to(el, 1, {autoAlpha: 1}) : null);
         }
     },
     {
@@ -79,16 +77,9 @@ export default [
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
                 opacity: '0',
-                visibility: 'hidden',
-                background: 'white',
+                visibility: 'hidden'
             });
-            frameNumberBus.subscribe(value => {
-                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 21, onComplete: () => {
-                    setTimeout(() => {
-                        frameNumberBus.update(n => n + 1);
-                    }, 4000)
-                }}) : null;
-            });
+            frameNumberBus.subscribe(value => value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1}) : null);
         }
     },
 
@@ -108,6 +99,13 @@ export default [
                 borderWidth: '0',
                 position: 'fixed',
                 zIndex: '1'
+            });
+            frameNumberBus.subscribe(value => {
+                if (value === 4) {
+                    TweenMax.to(el, 0, {autoAlpha: 1});
+                    TweenMax.from(el, 0.5, {yPercent: 50, rotation: -45});
+                    TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 0.5, {autoAlpha: 0.4});
+                } else TweenMax.to(el, 0, {autoAlpha: 0});
             });
         }
     },

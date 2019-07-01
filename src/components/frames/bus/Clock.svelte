@@ -13,14 +13,15 @@
         TweenMax.from('#second-hand', 1, {rotation: -5400, delay: 3});
         TweenMax.to('#scene2-frame1', 1, {top: 0, autoAlpha: 0, delay: 5});
         TweenMax.to('#hour-hand', 1, {rotation: 25, delay: 3});
-        TweenMax.to('#minute-hand', 0.5, {rotation: -80, delay: 3});
-        frameNumberBus.update(n => n = 1);
+        TweenMax.to('#minute-hand', 0.5, {rotation: -80, delay: 3, onComplete: () => {
+            frameNumberBus.update(n => n = 1);
+        }});
     });
 </script>
 
 <style>
     #clock {
-        background-image: url("./assets/png/bus/S2_Clock.png");
+        background-image: url("/assets/png/bus/S2_Clock.png");
         background-size: 80%;
         background-position: calc(50% + 12px) center;
         width: 100%;

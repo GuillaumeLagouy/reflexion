@@ -14,6 +14,7 @@
     function select(){
         const calendarSelectElm = document.getElementById('calendarSelect');
         calendarSelectElm.style.zIndex = '2';
+        nextScene();
     }
 
     function nextScene() {
@@ -41,7 +42,7 @@
 
 <div class="frame-container">
     <img id="calendar" src={calendarSrc} on:click={select} alt="">
-    <img id="calendarSelect" src={calendarSelectSrc} on:click={nextScene} alt="">
+    <img id="calendarSelect" src={calendarSelectSrc} alt="">
     <img src={homeSrc} alt="" on:click={goToCalendar}>
     <img id="phone" src={phoneSrc} alt="">
 </div>
