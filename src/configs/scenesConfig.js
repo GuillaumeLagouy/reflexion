@@ -25,7 +25,7 @@ import replayClassroomSceneConfig from './scenes/replayClassroomSceneConfig';
 import endSCeneConfig from './scenes/endSceneConfig';
 
 export default [
-/*
+
     {
         id: 'homepage-scene',
         config: homePageConfig,
@@ -53,9 +53,9 @@ export default [
     {
         id: 'bus-scene',
         config: busSceneConfig,
-        sequence: 0,
+        sequence: 4,
     },
-/*
+
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
@@ -141,7 +141,7 @@ export default [
     {
         id: 'class-scene-part1',
         config: class1SceneConfig,
-        sequence: 0,
+        sequence: 8,
         callback: id => {
             const el = document.getElementById(id);
             jump(el, {
@@ -161,7 +161,7 @@ export default [
     {
         id: 'class-scene-part2',
         config: class2SceneConfig,
-        sequence: 0,
+        sequence: 8,
         callback: id => {
             const el = document.getElementById(id);
 
@@ -187,17 +187,16 @@ export default [
         config: replayPlaytimeSceneConfig,
         sequence: 10,
     },
-*/
+
     {
         id: 'replay-classroom',
         config: replayClassroomSceneConfig,
-        sequence: 0,
+        sequence: 11,
     },
-/*
+
     {
         id: 'end-scene',
         config: endSCeneConfig,
-        sequence: 11,
+        sequence: 12,
     }
-*/
 ]
