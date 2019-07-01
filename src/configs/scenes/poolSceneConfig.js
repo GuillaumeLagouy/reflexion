@@ -85,7 +85,7 @@ export default [
                 visibility: "hidden",
             });
             frameNumberPool.subscribe(value => {
-                value === 3? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):null;
+                value === 3? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):TweenMax.to(el, 1, {autoAlpha: 0, delay: 1.1});
             });
         }
     },

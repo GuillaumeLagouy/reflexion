@@ -3,6 +3,7 @@
 
     function nextFrame(){
         frameNumberPool.update(n => n = 3);
+        TweenMax.to('#scene3-frame2, #scene3-frame3', 1, {autoAlpha: 0});
     }
 
 </script>

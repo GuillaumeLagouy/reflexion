@@ -12,11 +12,12 @@
         c5: './assets/png/Swimming-pool/S3_m4.png'
     };
     const characterSrc = ['./assets/png/Swimming-pool/S3_Male0.png', './assets/png/Swimming-pool/S3_Male1.png', './assets/png/Swimming-pool/S3_Male2.png', './assets/png/Swimming-pool/S3_Male3.png', './assets/png/Swimming-pool/S3_Male4.png'];
+    const characterSrcB = ['./assets/png/Swimming-pool/S3_Male0b.png', './assets/png/Swimming-pool/S3_Male1b.png', './assets/png/Swimming-pool/S3_Male2b.png', './assets/png/Swimming-pool/S3_Male3b.png', './assets/png/Swimming-pool/S3_Male4b.png'];
     let slide = 0;
     let sadnessLevel = 0;
 
     function charClickHandler() {
-        const slideNumber = this.id.substr(this.id.length - 1, this.id.length);
+        const slideNumber = this.classList[0].substr(this.classList[0].length - 1, this.classList[0].length);
         if(slide !== slideNumber) {
             slide = parseInt(slideNumber);
             slideTo();
@@ -39,8 +40,10 @@
         document.querySelector('#face').src = `./assets/png/swimming-pool/S3_Expression${sadnessLevel}.png`;
 
         document.querySelectorAll('.character img').forEach( (item, index) => {
-            if(index === slide) item.src = item.src.substr(0, item.src.length - 4) + 'b.png';
-            else item.src = characterSrc[index];
+            if(Math.floor(index / 2) === slide && item.classList.contains('brilliance'))
+                TweenMax.to(item, 0, {autoAlpha: 1});
+            else if(Math.floor(index / 2) !== slide && item.classList.contains('brilliance'))
+                TweenMax.to(item, 0, {autoAlpha: 0});
         });
 
         TweenMax.to('#left-cross, #right-cross', 0, {height: 0});
@@ -73,6 +76,11 @@
                      characterSrc[2] = './assets/png/Swimming-pool/S3_Female2.png';
                      characterSrc[3] = './assets/png/Swimming-pool/S3_Female3.png';
                      characterSrc[4] = './assets/png/Swimming-pool/S3_Female4.png';
+                     characterSrcB[0] = './assets/png/Swimming-pool/S3_Female0b.png';
+                     characterSrcB[1] = './assets/png/Swimming-pool/S3_Female1b.png';
+                     characterSrcB[2] = './assets/png/Swimming-pool/S3_Female2b.png';
+                     characterSrcB[3] = './assets/png/Swimming-pool/S3_Female3b.png';
+                     characterSrcB[4] = './assets/png/Swimming-pool/S3_Female4b.png';
                 }
                 Object.assign(image.style, {
                     width: `${frame.offsetWidth}px`,
@@ -102,6 +110,7 @@
                 TweenMax.to('#bubble', 1, {autoAlpha: 1, scale: 1, delay: 4.5});
                 TweenMax.to('#left-cross', 0.2, {height: '55%', delay: 5.5});
                 TweenMax.to('#right-cross', 0.2, {height: '55%', delay: 5.7});
+                TweenMax.to('.brilliance', 0.2, {y: -2, x: -2, repeat: -1, yoyo: true, yoyoEase: true});
             });
         });
     });
@@ -256,56 +265,56 @@
         width: 8.5%;
     }
 
-    #male-0 {
+    .male-0 {
         top: 36.5%;
         left: 35%;
     }
 
-    #male-1 {
+    .male-1 {
         left: 43.5%;
         top: 41.5%;
     }
 
-    #male-2 {
+    .male-2 {
         left: 51.25%;
         top: 38%;
     }
 
-    #male-3 {
+    .male-3 {
         left: 65%;
         top: 39%;
     }
 
-    #male-4 {
-        width: 9.5%;
+    .male-4 {
+        width: 9.5% !important;
         left: 68%;
         top: 57%;
     }
 
-    #female-0 {
+    .female-0 {
         left: 35%;
         top: 36.5%;
     }
 
-    #female-1 {
+    .female-1 {
         left: 43.5%;
         top: 42%;
     }
 
-    #female-2 {
+    .female-2 {
         left: 51.5%;
          top: 37%;
     }
 
-    #female-3 {
+    .female-3 {
         left: 65.5%;
         top: 40%;
     }
 
-    #female-4 {
+    .female-4 {
         left: 68%;
         top: 57%;
-        width: 10%;
+        width: 10% !important;
     }
 
     #s3-monster {
@@ -315,22 +324,42 @@
         top: 47%;
     }
 
+    .character .brilliance {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .character .brilliance:first-of-type {
+        opacity: 1;
+        visibility: visible;
+    }
+
 </style>
 
 <div id="changing-room">
     <div class="character" id="male">
-        <img id="male-0" src="./assets/png/Swimming-pool/S3_Male0b.png" alt=""/>
-        <img id="male-1" src={characterSrc[1]} alt=""/>
-        <img id="male-2" src={characterSrc[2]} alt=""/>
-        <img id="male-3" src={characterSrc[3]} alt=""/>
-        <img id="male-4" src={characterSrc[4]} alt=""/>
+        <img class="male-0 brilliance" src={characterSrcB[0]} alt=""/>
+        <img class="male-0" src={characterSrc[0]} alt=""/>
+        <img class="male-1 brilliance" src={characterSrcB[1]} alt=""/>
+        <img class="male-1" src={characterSrc[1]} alt=""/>
+        <img class="male-2 brilliance" src={characterSrcB[2]} alt=""/>
+        <img class="male-2" src={characterSrc[2]} alt=""/>
+        <img class="male-3 brilliance" src={characterSrcB[3]} alt=""/>
+        <img class="male-3" src={characterSrc[3]} alt=""/>
+        <img class="male-4 brilliance" src={characterSrcB[4]} alt=""/>
+        <img class="male-4" src={characterSrc[4]} alt=""/>
     </div>
     <div class="character" id="female">
-        <img id="female-0" src="./assets/png/Swimming-pool/S3_Female0b.png" alt=""/>
-        <img id="female-1" src={characterSrc[1]} alt=""/>
-        <img id="female-2" src={characterSrc[2]} alt=""/>
-        <img id="female-3" src={characterSrc[3]} alt=""/>
-        <img id="female-4" src={characterSrc[4]} alt=""/>
+        <img class="female-0 brilliance" src={characterSrcB[0]} alt=""/>
+        <img class="female-0" src={characterSrc[0]} alt=""/>
+        <img class="female-1 brilliance" src={characterSrcB[1]} alt=""/>
+        <img class="female-1" src={characterSrc[1]} alt=""/>
+        <img class="female-2 brilliance" src={characterSrcB[2]} alt=""/>
+        <img class="female-2" src={characterSrc[2]} alt=""/>
+        <img class="female-3 brilliance" src={characterSrcB[3]} alt=""/>
+        <img class="female-3" src={characterSrc[3]} alt=""/>
+        <img class="female-4 brilliance" src={characterSrcB[4]} alt=""/>
+        <img class="female-4" src={characterSrc[4]} alt=""/>
     </div>
     <img id="s3-monster" src="./assets/png/swimming-pool/S3_Monster.png" alt=""/>
     <img id="mini-bulle-1" src="./assets/png/swimming-pool/S3_MiniBubble1.png" alt=""/>
