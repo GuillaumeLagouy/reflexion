@@ -5,11 +5,11 @@
     onMount(() => {
         frameNumberBus.subscribe(value => {
             if(value !== 1) return;
-            TweenMax.to('#waiting_monster', 0, {autoAlpha: 0, delay: 3});
+            TweenMax.to('#waiting_monster', 0, {autoAlpha: 0, delay: 4});
             TweenMax.to('#clouds', 1, {y: -5, repeat: -1, yoyo: true, yoyoEase: true});
-            TweenMax.from('#bus-container', 2, {left: '100%'});
-            TweenMax.to('#bus-container', 2, {left: '-110%', delay: 4, onComplete: () => {
-                // frameNumberBus.update(n => n = 2);
+            TweenMax.from('#bus-container', 2, {left: '100%', delay: 1});
+            TweenMax.to('#bus-container', 2, {left: '-110%', delay: 5, onComplete: () => {
+                frameNumberBus.update(n => n = 2);
             }});
             TweenMax.to('#bus-container', 0.2, {y: -3, repeat: -1, yoyo: true, yoyoEase: true});
             TweenMax.staggerTo('#s2-front-wheel, #s2-rear-wheel', 0.5, {rotation: 720, repeat: -1});
