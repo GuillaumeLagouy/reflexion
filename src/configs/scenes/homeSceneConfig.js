@@ -13,7 +13,7 @@ import Mother from '../../components/frames/home/Mother.svelte';
 import BtnRemember from '../../components/BtnRemember.svelte';
 
 export default [
-    {
+    /*{
         id: 's7-stain',
         x: 50,
         y: 50,
@@ -79,7 +79,7 @@ export default [
             });
             frameNumberHome.subscribe(value => {
                 if(value !== 3) return;
-                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 1, onComplete: () => {
+                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 2, onComplete: () => {
                         frameNumberHome.update(n => n + 1);
                 }});
             });
@@ -104,14 +104,12 @@ export default [
             });
             frameNumberHome.subscribe(value => {
                 if(value !== 5) return;
-                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 1, onComplete: () => {
-                        frameNumberHome.update(n => n + 1);
-                        // ⚠️ L'update est récupéré dans le composant Bathroom puis réenvoyé dans le config,
-                        // Pour le dev' je récupère directement cette update.
+                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 1.5, onComplete: () => {
+                    frameNumberHome.update(n => n + 1);
                 }});
             })
         },
-    },
+    },*/
 
     {
         id: 's7-mirror',
@@ -130,16 +128,16 @@ export default [
                 zIndex: 4,
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 6) return;
+                if(value !== 0) return;
                 const school = document.getElementById('s7-school');
                 const house = document.getElementById('s7-house');
                 const bathroom = document.getElementById('s7-bathroom');
                 const stain = document.getElementById('s7-stain');
 
-                TweenMax.from(el, 1, {scale: 1.1});
-                TweenMax.to(el, 1, {autoAlpha: 1});
+                TweenMax.from(el, 1, {scale: 1.1, delay: 1});
+                TweenMax.to(el, 1, {autoAlpha: 1, delay: 1});
 
-                const tl = new TimelineMax({delay: 0.5, onComplete: () => {
+                const tl = new TimelineMax({delay: 1, onComplete: () => {
                     frameNumberHome.update(n => n + 1);
                 }});
                 tl.to(school, 0.5, {x: '-= 500px', autoAlpha: 0}, 0)
@@ -168,8 +166,8 @@ export default [
                 zIndex: 5,
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 7) return;
-                const tl = new TimelineMax({delay: 2, onComplete: () => {
+                if(value !== 1) return;
+                const tl = new TimelineMax({delay: 3, onComplete: () => {
                     frameNumberHome.update(n => n + 1);
                 }});
                 tl.from(el, 1, {x: '-=200px'}, 0)
@@ -197,7 +195,7 @@ export default [
                 zIndex: 6,
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 8) return;
+                if(value !== 2) return;
                 TweenMax.from(el, 0.5, {y: '+=100px'});
                 TweenMax.to(el, 0.5, {autoAlpha: 1});
             });

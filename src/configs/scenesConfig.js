@@ -174,30 +174,29 @@ export default [
                 disableScroll();
             });
         }
-    },
+    },*/
 
     {
         id: 'home-scene',
         config: homeSceneConfig,
-        sequence: 9,
-    },
+        sequence: 0,
+    },/*
 
     {
         id: 'replay-playtime',
         config: replayPlaytimeSceneConfig,
         sequence: 10,
     },
-*/
+
     {
         id: 'replay-classroom',
         config: replayClassroomSceneConfig,
         sequence: 0,
     },
-/*
+*/
     {
         id: 'end-scene',
         config: endSCeneConfig,
-        sequence: 11,
+        sequence: 1,
     }
-*/
 ]
