@@ -115,6 +115,7 @@
 
     #social-media-feed .feed {
         width: 90%;
+        height: auto;
         margin-left: 5%;
         display: flex;
         flex-direction: column;

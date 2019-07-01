@@ -21,6 +21,7 @@ import class2SceneConfig from './scenes/class2SceneConfig';
 import homeSceneConfig from './scenes/homeSceneConfig';
 import homePageConfig from './scenes/homePageConfig'
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
+import replayPoolSceneConfig from './scenes/replayPoolSceneConfig';
 import replayClassroomSceneConfig from './scenes/replayClassroomSceneConfig';
 import endSCeneConfig from './scenes/endSceneConfig';
 
@@ -183,20 +184,26 @@ export default [
     },
 
     {
+        id: 'replay-pool',
+        config: replayPoolSceneConfig,
+        sequence: 10,
+    },
+
+    {
         id: 'replay-playtime',
         config: replayPlaytimeSceneConfig,
-        sequence: 10,
+        sequence: 11,
     },
 
     {
         id: 'replay-classroom',
         config: replayClassroomSceneConfig,
-        sequence: 11,
+        sequence: 12,
     },
 
     {
         id: 'end-scene',
         config: endSCeneConfig,
-        sequence: 12,
+        sequence: 13,
     }
 ]

@@ -3,7 +3,7 @@ import TweenMax from 'gsap';
 import {frameNumberPool} from '../../stores/frameStore';
 import ChangingRooms from '../../components/frames/swimming-pool/ChangingRooms.svelte';
 import Room from '../../components/frames/swimming-pool/Room.svelte';
-import Next from '../../components/Next.svelte';
+import Next from '../../components/frames/swimming-pool/Next.svelte';
 import Bus from '../../components/frames/swimming-pool/Bus.svelte';
 import SwimmingMonster from '../../components/frames/swimming-pool/SwimmingMonster.svelte';
 
@@ -63,16 +63,10 @@ export default [
             Object.assign(el.style, {
                 opacity: "0",
                 visibility: "hidden",
-                backgroundColor: "white",
                 zIndex: "1"
             });
             frameNumberPool.subscribe(value => {
                value === 2? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):null;
-            });
-            el.addEventListener('touchstart', function () {
-                frameNumberPool.update(n => n = 3);
-                TweenMax.to('#scene3-frame2', 1, {autoAlpha: 0, delay: 1});
-                TweenMax.to(el, 1, {autoAlpha: 0, delay: 1.1});
             });
         }
     },
