@@ -5,12 +5,18 @@ Final Gobelins project.
 
 🏭 framework : [Svelte](https://svelte.dev/)
 
+</br>
+</br>
+
 ### Start project
 `git clone https://github.com/GuillaumeLagouy/reflexion.git`
 
 `npm install`
 
 `npm run dev`
+
+</br>
+</br>
 
 ### 🎭 Create a scene
 
@@ -26,6 +32,9 @@ import YourSceneConfig from '../configs/scenes/(nameOfYourScene)Config.js'
     config: YourSceneConfig,
 }
 ```
+
+</br>
+</br>
 
 ### 🖼️ Create frames in your scene
 
