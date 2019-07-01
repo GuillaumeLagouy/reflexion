@@ -11,13 +11,28 @@ Final Gobelins project.
 </br>
 </br>
 
-### Start project
+### 🏁 Start project
 `git clone https://github.com/GuillaumeLagouy/reflexion.git`
 
 `npm install`
 
 `npm run dev`
 
+</br>
+</br>
+
+### 🏛️ Architecture
+
+> disclaimer : only important files and folders are listed.
+
+|Folder|Purpose|
+|------|-------|
+|📁src/components|All Svelte components. One folder by scene, one folder for instructions indications components and generics components are at the root.|
+|📁src/configs|One config file per scene and one config file for scenes sequence at the root (`scenesConfig.js`).|
+|📁src/constants|
+|📁src/entities|
+|📁src/helpers|
+|📁src/stores|One file for all scenes stores `frameStore.js`, and one file for scenes sequence `scenesStore.js`.
 </br>
 </br>
 
