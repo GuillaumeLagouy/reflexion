@@ -50,9 +50,9 @@
                 TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 1, {autoAlpha: 0, delay: 1});
                 TweenMax.to('#phone, #phone-hitbox, #hand, #navbar, #social-media-feed', 0, {autoAlpha: 0, delay: 1});
                 TweenMax.to('.scene-container', 4, {height: "100vh", delay: 1});
-                TweenMax.to(frame, 0, {backgroundImage: 'url("./assets/png/bus/S2_Feed5.png")', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
+                TweenMax.to(frame, 0, {backgroundImage: 'url(./assets/png/bus/S2_Feed5.png)', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
                 TweenMax.to(frame, 1, {position: 'absolute', left: `calc(50% - ${width / 2}px)`, top: `calc(50% - ${height / 2}px)`, delay: 3});
-                TweenMax.to(frame, 1, {backgroundImage: 'url("./assets/png/bus/S2_Pool.png")', delay: 4});
+                TweenMax.to(frame, 1, {backgroundImage: 'url(./assets/png/bus/S2_Pool.png)', delay: 4});
                 TweenMax.to(frame, 1, {transformOrigin: 'center', scale: 2,  delay: 5});
             }
         }
@@ -120,11 +120,13 @@
         flex-direction: column;
         justify-content: space-between;
         transform: translate(0);
+        height: auto;
     }
 
     .publication {
         border: 3px solid black;
         width: 100%;
+        height: auto;
     }
 
     #social-media-feed img:first-of-type:not(.like) {

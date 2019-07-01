@@ -2,12 +2,18 @@
     import {onMount} from 'svelte';
     import TweenMax from 'gsap';
 
+
+    import {frameNumberReplayClass} from '../../../stores/frameStore';
+
     onMount(() => {
         const stomach = document.getElementById('stomach');
         const src = './assets/gif/replay-classroom/stomach2.gif';
-        TweenMax.to(stomach, .2, {backgroundImage: 'url('+src+')', delay: 2.5, onComplete: () => {
 
-        }});
+        TweenMax.to(stomach, .2, {backgroundImage: 'url('+src+')', delay: 2.5,
+            onComplete: () => {
+                frameNumberReplayClass.update(n => n + 1);
+            },
+        });
 
     })
 </script>
