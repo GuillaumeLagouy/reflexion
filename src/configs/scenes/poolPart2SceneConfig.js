@@ -22,10 +22,9 @@ export default [
                 opacity: "0",
                 visibility: "hidden"
             });
-            TweenMax.from(el, 1, {top: "100%"});
-            TweenMax.to(el, 1, {autoAlpha: 1});
             frameNumberPool.subscribe(value => {
-                if (value !== 0) TweenMax.to(el, 0, {autoAlpha: 0, delay: 1});
+                console.log(value);
+                value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1}) : TweenMax.to(el, 0, {autoAlpha: 0, delay: 1});
             });
         }
     },
@@ -46,7 +45,7 @@ export default [
                 backgroundColor: "white",
             });
             frameNumberPool.subscribe(value => {
-                if(value === 1) TweenMax.to(el, 0.2, {autoAlpha: 1});
+                if (value === 2) TweenMax.to(el, 0.2, {autoAlpha: 1});
             });
         }
     },
@@ -66,7 +65,7 @@ export default [
                 zIndex: "1"
             });
             frameNumberPool.subscribe(value => {
-               value === 2? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):null;
+                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}) : null;
             });
         }
     },
@@ -85,7 +84,10 @@ export default [
                 visibility: "hidden",
             });
             frameNumberPool.subscribe(value => {
-                value === 3? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):TweenMax.to(el, 1, {autoAlpha: 0, delay: 1.1});
+                value === 4 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}) : TweenMax.to(el, 1, {
+                    autoAlpha: 0,
+                    delay: 1.1
+                });
             });
         }
     },
@@ -106,9 +108,9 @@ export default [
                 zIndex: "1"
             });
             frameNumberPool.subscribe(value => {
-                if (value !== 4) return;
+                if (value !== 5) return;
                 TweenMax.to(el, 0, {autoAlpha: 1});
             });
         }
-    }
+    },
 ];

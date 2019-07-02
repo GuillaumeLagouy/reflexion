@@ -7,7 +7,6 @@
             if(value !== 2) return;
             TweenMax.to('#bus-interior', 4, { yPercent: 45, onComplete: () => frameNumberBus.update(n => n = 3) });
         });
-
     });
 </script>
 
@@ -25,9 +24,8 @@
     }
 
     #bus-floor {
-        bottom: 28%;
-        height: 104%;
-        width: auto;
+        bottom: 24%;
+        width: 18%;
         left: 41%;
     }
 

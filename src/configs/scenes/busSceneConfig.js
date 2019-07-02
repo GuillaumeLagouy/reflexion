@@ -9,6 +9,8 @@ import Clock from '../../components/frames/bus/Clock.svelte';
 import TweenMax from 'gsap';
 
 import {frameNumberBus} from '../../stores/frameStore';
+import {activeSceneNb} from '../../stores/scenesStore';
+import Title from "../../components/Title.svelte";
 
 export default [
     {
@@ -29,6 +31,26 @@ export default [
             TweenMax.to(el, 1, {autoAlpha: 1});
             TweenMax.from(el, 1, {yPercent: 100});
             frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {autoAlpha: 0}) : null);
+        }
+    },
+    {
+        id: 's2-title',
+        x: 50,
+        y: 70,
+        anchor: anchor.center,
+        width: 30,
+        height: 10,
+        content: Title,
+        title: 'LE CAR SCOLAIRE',
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                webkitBorderImage: 'none',
+                zIndex: 1
+            });
+            TweenMax.from(el, 1, {yPercent: 100, autoAlpha: 0});
+            frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {yPercent: -100, autoAlpha: 0}) : null);
         }
     },
     {
@@ -107,6 +129,29 @@ export default [
                     TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 0.5, {autoAlpha: 0.4});
                 } else TweenMax.to(el, 0, {autoAlpha: 0});
             });
+        }
+    },
+    {
+        id: 's3-pool',
+        x: 51,
+        y: 27,
+        anchor: anchor.center,
+        width: 22,
+        height: 33,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                backgroundImage: 'url("./assets/png/bus/S2_Pool.png")',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                transform: 'scale(1.5)',
+                visibility: 'hidden',
+                opacity: '0'
+            });
+            frameNumberBus.subscribe(value => value === 5 ? TweenMax.to(el, 0.5, {autoAlpha: 1, onComplete: () => {
+                activeSceneNb.update(n => n += 1);
+            }}) : null );
         }
     },
 ];

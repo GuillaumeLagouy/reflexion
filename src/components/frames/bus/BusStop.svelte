@@ -49,12 +49,12 @@
 
     #s2-front-wheel {
         left: 5%;
-        top: 110.5%;
+        top: calc(110.5% + 20px);
     }
 
     #s2-rear-wheel {
         left: 74%;
-        top: 112%;
+        top: calc(112% + 20px);
     }
 
     #bus-container {
