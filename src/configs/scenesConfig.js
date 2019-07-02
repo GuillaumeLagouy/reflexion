@@ -26,7 +26,7 @@ import endSceneConfig from './scenes/endSceneConfig';
 
 export default [
 
-    /*{
+    {
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
@@ -53,7 +53,7 @@ export default [
     {
         id: 'bus-scene',
         config: busSceneConfig,
-        sequence: 0,
+        sequence: 4,
     },
 
     {
@@ -78,7 +78,6 @@ export default [
     {
         id: 'swimming-pool-scene-part2',
         config: poolSceneConfig,
-<<<<<<< HEAD
         sequence: 5,
         callback: id => {
             const el = document.getElementById(id);
@@ -92,9 +91,6 @@ export default [
                 disableScroll();
             });
         }
-=======
-        sequence: 0,
->>>>>>> e469a5c2be9e7e3089fabfc7601dbe903b832a8c
     },
 
     {
@@ -220,7 +216,7 @@ export default [
     {
         id: 'replay-pool',
         config: replayPoolSceneConfig,
-        sequence: 1,
+        sequence: 10,
     },
 
     {
@@ -234,7 +230,6 @@ export default [
         config: replayClassroomSceneConfig,
         sequence: 12,
     },
-    */
 
     {
         id: 'end-scene',
