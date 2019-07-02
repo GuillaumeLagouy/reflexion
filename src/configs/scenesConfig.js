@@ -3,15 +3,14 @@ import jump from 'jump.js';
 
 import {disableScroll} from '../helpers/ScrollHelper';
 
-import {frameNumberClass} from '../stores/frameStore';
-import {frameNumberPlaytime} from '../stores/frameStore';
-import {frameNumberLunch} from '../stores/frameStore';
+import {frameNumberClass, frameNumberPlaytime, frameNumberLunch, frameNumberPool} from '../stores/frameStore';
 
 import introSceneConfig from '../configs/scenes/introSceneConfig';
 import bathroomSceneConfig from '../configs/scenes/bathroomSceneConfig';
 import breakfastSceneConfig from '../configs/scenes/breakfastSceneConfig';
 import busSceneConfig from './scenes/busSceneConfig';
-import poolSceneConfig from './scenes/poolSceneConfig';
+import pool1SceneConfig from './scenes/poolPart1SceneConfig';
+import poolSceneConfig from './scenes/poolPart2SceneConfig';
 import playtimeScenePart1Config from './scenes/playtime/playtimeScenePart1Config';
 import playtimeScenePart2Config from './scenes/playtime/playtimeScenePart2Config';
 import lunchScenePart1Config from './scenes/lunch/lunchScenePart1Config';
@@ -27,7 +26,7 @@ import endSceneConfig from './scenes/endSceneConfig';
 
 export default [
 
-    {
+    /*{
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
@@ -54,13 +53,48 @@ export default [
     {
         id: 'bus-scene',
         config: busSceneConfig,
-        sequence: 4,
+        sequence: 0,
     },
 
     {
-        id: 'swimming-pool-scene',
-        config: poolSceneConfig,
+        id: 'swimming-pool-scene-part1',
+        config: pool1SceneConfig,
         sequence: 5,
+        callback: id => {
+            const el = document.getElementById(id);
+            jump(el, {
+                duration: 0,
+            });
+            //Swipe bottom
+            const hammer = new Hammer(el);
+            hammer.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL});
+            hammer.on('swipeup', () => {
+                const scenePart2 = document.getElementById('swimming-pool-scene-part2');
+                jump(scenePart2, {callback: () => frameNumberPool.update(n => n = 1)});
+                disableScroll();
+            });
+        }
+    },
+    {
+        id: 'swimming-pool-scene-part2',
+        config: poolSceneConfig,
+<<<<<<< HEAD
+        sequence: 5,
+        callback: id => {
+            const el = document.getElementById(id);
+
+            //Swipe bottom
+            const hammer = new Hammer(el);
+            hammer.get('swipe').set({direction: Hammer.DIRECTION_VERTICAL});
+            hammer.on('swipedown', () => {
+                const scenePart1 = document.getElementById('swimming-pool-scene-part1');
+                jump(scenePart1);
+                disableScroll();
+            });
+        }
+=======
+        sequence: 0,
+>>>>>>> e469a5c2be9e7e3089fabfc7601dbe903b832a8c
     },
 
     {
@@ -186,7 +220,7 @@ export default [
     {
         id: 'replay-pool',
         config: replayPoolSceneConfig,
-        sequence: 10,
+        sequence: 1,
     },
 
     {
@@ -200,10 +234,12 @@ export default [
         config: replayClassroomSceneConfig,
         sequence: 12,
     },
+    */
 
     {
         id: 'end-scene',
         config: endSceneConfig,
         sequence: 13,
+
     }
 ]

@@ -1,5 +1,6 @@
 <script>
     import {onMount} from 'svelte';
+    import {frameNumberBus} from '../../../stores/frameStore';
 
     let titleSrc = '/assets/png/bus/S2_FeedTitle.png';
     let likeSrc = '/assets/png/bus/S2_NoLike.png';
@@ -49,7 +50,10 @@
                 TweenMax.to(frame, 0, {backgroundImage: "url(" + feed5 + ")", backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
                 TweenMax.to(frame, 1, {position: 'absolute', x: -width, y: -width, delay: 3});
                 TweenMax.to(frame, 1, {backgroundImage: "url(" + pool + ")", delay: 4});
-                TweenMax.to(frame, 1, {transformOrigin: 'center', scale: 1.5,  delay: 5});
+                TweenMax.to(frame, 1, {transformOrigin: 'center', scale: 1.5,  delay: 5, onComplete: () =>{
+                    frameNumberBus.update(n => n = 5);
+                    TweenMax.to(frame, 0.5, {autoAlpha: 0});
+                }});
             }
         }
     });
@@ -79,8 +83,8 @@
     #phone-hitbox {
         position: absolute;
         width: 47%;
-        height: 56%;
-        top: 26%;
+        height: 63%;
+        top: 17%;
         left: 21%;
     }
 
@@ -90,10 +94,10 @@
         background-repeat : no-repeat;
         background-size: 100%;
         position: absolute;
-        width: 46%;
+        width: 46.5%;
         height: 10%;
-        top: 26.2%;
-        left: 21.5%;
+        top: 17.2%;
+        left: 21.2%;
     }
 
     #social-media-feed {
@@ -101,8 +105,8 @@
         background-color: white;
         position: absolute;
         width: calc(46% + 2px);
-        height: calc(50% + 11px);
-        top: calc(26% + 4px);
+        height: 57%;
+        top: calc(17% + 4px);
         left: calc(21% + 2px);
         display: flex;
         overflow: hidden;

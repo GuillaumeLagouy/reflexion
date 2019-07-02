@@ -63,7 +63,7 @@ export default [
     {
         id: 's12-maxim-1',
         x: 3,
-        y: 10,
+        y: 5,
         anchor: anchor.topLeft,
         width: 35,
         height: 30,

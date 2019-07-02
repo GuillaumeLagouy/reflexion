@@ -2,7 +2,7 @@
     import {frameNumberPool} from '../../../stores/frameStore';
 
     function nextFrame(){
-        frameNumberPool.update(n => n = 3);
+        frameNumberPool.update(n => n = 4);
         TweenMax.to('#scene3-frame2, #scene3-frame3', 1, {autoAlpha: 0});
     }
 

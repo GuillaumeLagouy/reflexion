@@ -66,7 +66,6 @@ export default [
             });
             frameNumberReplayPool.subscribe(value => {
                 if (value !== 2) return;
-                console.log('oui');
                 TweenMax.to(el, 1, {
                     autoAlpha: 1, delay: 1, onComplete: () => {
                         frameNumberReplayPool.update(n => n = 3);

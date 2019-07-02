@@ -17,33 +17,79 @@
         c5: '/assets/png/Swimming-pool/S3_Male4s.png'
     };
     const characterSrc = ['/assets/png/Swimming-pool/S3_Male0.png', '/assets/png/Swimming-pool/S3_Male1.png', '/assets/png/Swimming-pool/S3_Male2.png', '/assets/png/Swimming-pool/S3_Male3.png', '/assets/png/Swimming-pool/S3_Male4.png'];
-    let slide = 0;
-    let miniBubble1Src = "/assets/png/swimming-pool/S3_MiniBubble1.png";
-    let miniBubble2Src = "/assets/png/swimming-pool/S3_MiniBubble2.png";
-    let miniBubble3Src = "/assets/png/swimming-pool/S3_MiniBubble3.png";
+    let slideDisplay = 0, slideMonster = 0, slide = 0;
+    let miniBubble1Src = '/assets/png/swimming-pool/S3_MiniBubble1.png';
+    let miniBubble2Src = '/assets/png/swimming-pool/S3_MiniBubble2.png';
+    let miniBubble3Src = '/assets/png/swimming-pool/S3_MiniBubble3.png';
 
 
-    function slideHandler() {
+    function charSlideHandler() {
         const rightArrow = document.querySelectorAll('.right-arrow');
         const leftArrow = document.querySelectorAll('.left-arrow');
         if (this.classList.contains('right-arrow') && slide < 3) slide += 1;
         else if (this.classList.contains('left-arrow') && slide > 0) slide -= 1;
-        if (slide === 0) leftArrow.forEach((arrow) => arrow.removeEventListener('touchstart', slideHandler));
-        else leftArrow.forEach((arrow) => arrow.addEventListener('touchstart', slideHandler));
+        if (slide === 0) leftArrow.forEach((arrow, index) => {
+            if(index > 0) arrow.removeEventListener('touchstart', charSlideHandler)
+        });
+        else leftArrow.forEach((arrow, index) => {
+            if(index > 0) arrow.addEventListener('touchstart', charSlideHandler)
+        });
         if (slide === 3) {
-            rightArrow.forEach( (arrow) => arrow.removeEventListener("touchstart", slideHandler));
-            frameNumberReplayPool.update(n => n = 2);
+            rightArrow.forEach( (arrow, index) => {
+                if(index > 0) arrow.removeEventListener('touchstart', charSlideHandler)
+            });
         }
-        else rightArrow.forEach( (arrow) => arrow.addEventListener('touchstart', slideHandler));
-        slideTo();
+        else rightArrow.forEach( (arrow, index) => {
+            if(index > 0) arrow.addEventListener('touchstart', charSlideHandler)
+        });
+        slideTo('char');
     }
 
-    function slideTo() {
-        TweenMax.to('.left-cross, .right-cross', 0, {height: 0});
-        TweenMax.to('ul', 0.5, {xPercent: -25 * slide});
-        TweenMax.to('.left-cross', 0.2, {height: '55%', delay: 0.5});
-        TweenMax.to('.right-cross', 0.2, {height: '55%', delay: 0.7});
+    function monsterSlideHandler() {
+        if (this.classList.contains('right-arrow') && slideMonster < 4) {
+            slideMonster += 1;
+            if(slideDisplay < slideMonster) slideDisplay = slideMonster;
+        }
+        else if (this.classList.contains('left-arrow') && slideMonster > 0) slideMonster -= 1;
+        if (slide === 0) document.querySelector('.bubble-0 .left-arrow').removeEventListener('touchstart', monsterSlideHandler);
+        else document.querySelector('.bubble-0 .left-arrow').addEventListener('touchstart', monsterSlideHandler);
+        if (slide === 4) document.querySelector('.bubble-0 .right-arrow').removeEventListener('touchstart', monsterSlideHandler);
+        document.querySelector('.bubble-0 .right-arrow').addEventListener('touchstart', monsterSlideHandler);
+        slideTo('monster');
     }
+
+    function slideTo(type) {
+        if(type === 'char') {
+            const bubbles = document.querySelectorAll('#mini-bubble > div');
+            bubbles.forEach((item, index) => {
+                if(index > 0) {
+                    const selector = document.querySelector('.' + item.classList[0]);
+                    TweenMax.to(selector.querySelectorAll('.left-cross, .right-cross'), 0, {height: 0});
+                    TweenMax.to(selector.querySelector('ul'), 0.5, {xPercent: -25 * slide});
+                    TweenMax.to(selector.querySelector('.left-cross'), 0.2, {height: '55%', delay: 0.5});
+                    TweenMax.to(selector.querySelector('.right-cross'), 0.2, {height: '55%', delay: 0.7});
+                }
+            });
+        } else {
+            TweenMax.to('.bubble-0 .left-cross, .bubble-0 .right-cross', 0, {height: 0});
+            TweenMax.to('.bubble-0 ul', 0.5, {xPercent: -20 * slideMonster});
+            TweenMax.to('.bubble-0 .left-cross', 0.2, {height: '55%', delay: 0.5});
+            TweenMax.to('.bubble-0 .right-cross', 0.2, {height: '55%', delay: 0.7});
+        }
+        TweenMax.to(`.bubble-${slideDisplay} .mini-bubble-1`, 0.5, {autoAlpha: 1, scale: 1});
+        TweenMax.to(`.bubble-${slideDisplay} .mini-bubble-2`, 0.5, {autoAlpha: 1, scale: 1, delay: 0.5});
+        TweenMax.to(`.bubble-${slideDisplay} .mini-bubble-3`, 0.5, {autoAlpha: 1, scale: 1, delay: 1});
+        TweenMax.to(`.bubble-${slideDisplay}`, 1, {autoAlpha: 1, scale: 1, delay: 1.5, onComplete: () => {
+            if(slideDisplay === 5) frameNumberReplayPool.update(n => n = 2);
+            if(slideDisplay === 4) slideDisplay += 1;
+        }});
+    }
+
+    setInterval(() => {
+        if(slide < 3) slide += 1;
+        else slide = 0;
+        slideTo('char');
+    }, 3000);
 
     onMount(() => {
         gender.subscribe(genderValue => {
@@ -67,12 +113,16 @@
                 characterSrc[4] = '/assets/png/Swimming-pool/S3_Female4.png';
             }
 
-            document.querySelectorAll('.right-arrow').forEach( (arrow) => arrow.addEventListener('touchstart', slideHandler));
+            document.querySelectorAll('.right-arrow').forEach( (arrow, index) => {
+                if(index > 0) arrow.addEventListener('touchstart', charSlideHandler);
+                else arrow.addEventListener('touchstart', monsterSlideHandler);
+            });
 
-            TweenMax.to('.mini-bubble-1', 0.5, {autoAlpha: 1, scale: 1, delay: 2});
-            TweenMax.to('.mini-bubble-2', 0.5, {autoAlpha: 1, scale: 1, delay: 2.5});
-            TweenMax.to('.mini-bubble-3', 0.5, {autoAlpha: 1, scale: 1, delay: 3});
-            TweenMax.to('.bubble', 1, {autoAlpha: 1, scale: 1, delay: 3.5});
+
+            TweenMax.to('.bubble-0 .mini-bubble-1', 0.5, {autoAlpha: 1, scale: 1, delay: 2});
+            TweenMax.to('.bubble-0 .mini-bubble-2', 0.5, {autoAlpha: 1, scale: 1, delay: 2.5});
+            TweenMax.to('.bubble-0 .mini-bubble-3', 0.5, {autoAlpha: 1, scale: 1, delay: 3});
+            TweenMax.to('.bubble-0', 1, {autoAlpha: 1, scale: 1, delay: 3.5});
             TweenMax.to('.left-cross', 0.2, {height: '55%', delay: 4.5});
             TweenMax.to('.right-cross', 0.2, {height: '55%', delay: 4.7});
         });
@@ -105,6 +155,10 @@
         transform-origin: bottom left;
         transform: scale(0);
         opacity: 0;
+    }
+
+    #mini-bubble .bubble-0 {
+        top: 6%;
     }
 
     #mini-bubble .bubble-1 {
@@ -167,6 +221,12 @@
         z-index: 1;
     }
 
+    .bubble.bubble-0 {
+        top: 26%;
+        left: 64%;
+        z-index: 2;
+    }
+
     .bubble.bubble-1 {
         left: 22.5%;
         top: 9%;
@@ -192,6 +252,13 @@
         top: 35%;
     }
 
+    .bubble-0 .model {
+        left: 20%;
+    }
+
+    .bubble-0 li img {
+    }
+
     .carousel.container {
          top: 3%;
          width: 79%;
@@ -212,22 +279,19 @@
     li {
         width: 100%;
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        align-self: flex-end;
     }
 
     li img {
         width: 24%;
-        margin-left: 30%;
     }
 
     .content {
         width: 60%;
-        height: 80%;
+        height: 90%;
         position: absolute;
-        top: 10%;
-        left: calc(20% - 15px);
+        top: 5%;
+        left: 10%;
     }
 
     .left-arrow, .right-arrow {
@@ -283,7 +347,7 @@
 
     #male-0, #female-0 {
         top: 36.5%;
-        left: 35%;
+        left: 36.5%;
     }
 
     #male-1 {
@@ -297,14 +361,14 @@
     }
 
     #male-3 {
-        left: 65%;
+        left: 63%;
         top: 39%;
     }
 
     #male-4 {
         width: 9.5%;
-        left: 68%;
-        top: 57%;
+        left: 65.5%;
+        top: 55%;
     }
 
     #female-1 {
@@ -355,6 +419,24 @@
     <img id="s3-monster" src="/assets/png/swimming-pool/S3_Monster.png" alt=""/>
     <img id="face" src='/assets/png/Swimming-pool/S3_Expression0.png' alt="">
     <div class="container">
+        <div class="bubble bubble-0">
+            <div class="content">
+                <div class="left-cross"></div>
+                <div class="right-cross"></div>
+                <img class="left-arrow" src="/assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
+                <div class="carousel container">
+                    <ul>
+                        <li><img src={shapeSrc.c1} alt=""/></li>
+                        <li><img src={shapeSrc.c2} alt=""/></li>
+                        <li><img src={shapeSrc.c3} alt=""/></li>
+                        <li><img src={shapeSrc.c4} alt=""/></li>
+                        <li><img src={shapeSrc.c5} alt=""/></li>
+                    </ul>
+                </div>
+                <img class="model" src="/assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
+                <img class="right-arrow" src="/assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
+            </div>
+        </div>
         <div class="bubble bubble-1">
             <div class="content">
                 <div class="left-cross"></div>
@@ -442,6 +524,11 @@
         </div>
     </div>
     <div id="mini-bubble" class="container">
+        <div class="bubble-0">
+            <img class="mini-bubble-1" src={miniBubble1Src} alt=""/>
+            <img class="mini-bubble-2" src={miniBubble2Src} alt=""/>
+            <img class="mini-bubble-3" src={miniBubble3Src} alt=""/>
+        </div>
         <div class="bubble-1">
             <img class="mini-bubble-1" src={miniBubble1Src} alt=""/>
             <img class="mini-bubble-2" src={miniBubble2Src} alt=""/>

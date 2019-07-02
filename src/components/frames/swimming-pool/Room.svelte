@@ -3,16 +3,16 @@
     import {frameNumberPool, gender} from '../../../stores/frameStore';
     import TweenMax from 'gsap';
 
-    let faceSrc = './assets/png/Swimming-pool/S3_Expression0.png';
+    let faceSrc = '/assets/png/Swimming-pool/S3_Expression0.png';
     const shapeSrc = {
-        c1: './assets/png/Swimming-pool/S3_m0.png',
-        c2: './assets/png/Swimming-pool/S3_m1.png',
-        c3: './assets/png/Swimming-pool/S3_m2.png',
-        c4: './assets/png/Swimming-pool/S3_m3.png',
-        c5: './assets/png/Swimming-pool/S3_m4.png'
+        c1: '/assets/png/Swimming-pool/S3_m0.png',
+        c2: '/assets/png/Swimming-pool/S3_m1.png',
+        c3: '/assets/png/Swimming-pool/S3_m2.png',
+        c4: '/assets/png/Swimming-pool/S3_m3.png',
+        c5: '/assets/png/Swimming-pool/S3_m4.png'
     };
-    const characterSrc = ['./assets/png/Swimming-pool/S3_Male0.png', './assets/png/Swimming-pool/S3_Male1.png', './assets/png/Swimming-pool/S3_Male2.png', './assets/png/Swimming-pool/S3_Male3.png', './assets/png/Swimming-pool/S3_Male4.png'];
-    const characterSrcB = ['./assets/png/Swimming-pool/S3_Male0b.png', './assets/png/Swimming-pool/S3_Male1b.png', './assets/png/Swimming-pool/S3_Male2b.png', './assets/png/Swimming-pool/S3_Male3b.png', './assets/png/Swimming-pool/S3_Male4b.png'];
+    const characterSrc = ['/assets/png/Swimming-pool/S3_Male0.png', '/assets/png/Swimming-pool/S3_Male1.png', '/assets/png/Swimming-pool/S3_Male2.png', '/assets/png/Swimming-pool/S3_Male3.png', '/assets/png/Swimming-pool/S3_Male4.png'];
+    const characterSrcB = ['/assets/png/Swimming-pool/S3_Male0b.png', '/assets/png/Swimming-pool/S3_Male1b.png', '/assets/png/Swimming-pool/S3_Male2b.png', '/assets/png/Swimming-pool/S3_Male3b.png', '/assets/png/Swimming-pool/S3_Male4b.png'];
     let slide = 0;
     let sadnessLevel = 0;
 
@@ -36,7 +36,7 @@
 
     function slideTo() {
         if(sadnessLevel < 4) sadnessLevel += 1;
-        if(sadnessLevel === 4) frameNumberPool.update(n => n = 2);
+        if(sadnessLevel === 4) frameNumberPool.update(n => n = 3);
         document.querySelector('#face').src = `./assets/png/swimming-pool/S3_Expression${sadnessLevel}.png`;
 
         document.querySelectorAll('.character img').forEach( (item, index) => {
@@ -57,7 +57,7 @@
         const image = document.querySelector('#changing-room');
 
         frameNumberPool.subscribe(value => {
-            if (value !== 1) return;
+            if (value !== 2) return;
             let previousDoor;
             gender.subscribe(genderValue => {
                 if (genderValue === 'male') {
@@ -66,21 +66,21 @@
                 } else {
                      previousDoor = document.querySelector('#girls-room');
                      document.querySelector('#male').remove();
-                     shapeSrc.c1 = './assets/png/Swimming-pool/S3_f0.png';
-                     shapeSrc.c2 = './assets/png/Swimming-pool/S3_f1.png';
-                     shapeSrc.c3 = './assets/png/Swimming-pool/S3_f2.png';
-                     shapeSrc.c4 = './assets/png/Swimming-pool/S3_f3.png';
-                     shapeSrc.c5 = './assets/png/Swimming-pool/S3_f4.png';
-                     characterSrc[0] = './assets/png/Swimming-pool/S3_Female0.png';
-                     characterSrc[1] = './assets/png/Swimming-pool/S3_Female1.png';
-                     characterSrc[2] = './assets/png/Swimming-pool/S3_Female2.png';
-                     characterSrc[3] = './assets/png/Swimming-pool/S3_Female3.png';
-                     characterSrc[4] = './assets/png/Swimming-pool/S3_Female4.png';
-                     characterSrcB[0] = './assets/png/Swimming-pool/S3_Female0b.png';
-                     characterSrcB[1] = './assets/png/Swimming-pool/S3_Female1b.png';
-                     characterSrcB[2] = './assets/png/Swimming-pool/S3_Female2b.png';
-                     characterSrcB[3] = './assets/png/Swimming-pool/S3_Female3b.png';
-                     characterSrcB[4] = './assets/png/Swimming-pool/S3_Female4b.png';
+                     shapeSrc.c1 = '/assets/png/Swimming-pool/S3_f0.png';
+                     shapeSrc.c2 = '/assets/png/Swimming-pool/S3_f1.png';
+                     shapeSrc.c3 = '/assets/png/Swimming-pool/S3_f2.png';
+                     shapeSrc.c4 = '/assets/png/Swimming-pool/S3_f3.png';
+                     shapeSrc.c5 = '/assets/png/Swimming-pool/S3_f4.png';
+                     characterSrc[0] = '/assets/png/Swimming-pool/S3_Female0.png';
+                     characterSrc[1] = '/assets/png/Swimming-pool/S3_Female1.png';
+                     characterSrc[2] = '/assets/png/Swimming-pool/S3_Female2.png';
+                     characterSrc[3] = '/assets/png/Swimming-pool/S3_Female3.png';
+                     characterSrc[4] = '/assets/png/Swimming-pool/S3_Female4.png';
+                     characterSrcB[0] = '/assets/png/Swimming-pool/S3_Female0b.png';
+                     characterSrcB[1] = '/assets/png/Swimming-pool/S3_Female1b.png';
+                     characterSrcB[2] = '/assets/png/Swimming-pool/S3_Female2b.png';
+                     characterSrcB[3] = '/assets/png/Swimming-pool/S3_Female3b.png';
+                     characterSrcB[4] = '/assets/png/Swimming-pool/S3_Female4b.png';
                 }
                 Object.assign(image.style, {
                     width: `${frame.offsetWidth}px`,
@@ -122,7 +122,7 @@
     }
 
     #changing-room {
-        background-image: url("./assets/png/Swimming-pool/S3_BoysRoom.png");
+        background-image: url("/assets/png/Swimming-pool/S3_BoysRoom.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -160,7 +160,7 @@
     }
 
     #bubble {
-        background-image: url("./assets/png/Swimming-pool/S3_Bubble.png");
+        background-image: url("/assets/png/Swimming-pool/S3_Bubble.png");
         width: 30%;
         height: 30%;
         background-size: contain;
@@ -196,14 +196,12 @@
     li {
         width: 100%;
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
+        align-self: flex-end;
     }
 
     li img {
         width: 25%;
-        margin-left: 40%;
+        margin-right: 14px;
     }
 
     .content {
@@ -245,12 +243,12 @@
 
     #left-cross {
          top: 25%;
-         background-image: url("./assets/png/Swimming-pool/S3_FirstCross.png");
+         background-image: url("/assets/png/Swimming-pool/S3_FirstCross.png");
     }
 
     #right-cross {
         bottom: 20%;
-        background-image: url("./assets/png/Swimming-pool/S3_SecondCross.png");
+        background-image: url("/assets/png/Swimming-pool/S3_SecondCross.png");
     }
 
     #face {
@@ -267,12 +265,12 @@
 
     .male-0 {
         top: 36.5%;
-        left: 35%;
+        left: 36%;
     }
 
     .male-1 {
         left: 43.5%;
-        top: 41.5%;
+        top: 41%;
     }
 
     .male-2 {
@@ -281,38 +279,38 @@
     }
 
     .male-3 {
-        left: 65%;
+        left: 63%;
         top: 39%;
     }
 
     .male-4 {
         width: 9.5% !important;
-        left: 68%;
+        left: 66%;
         top: 57%;
     }
 
     .female-0 {
-        left: 35%;
+        left: 36%;
         top: 36.5%;
     }
 
     .female-1 {
         left: 43.5%;
-        top: 42%;
+        top: 41%;
     }
 
     .female-2 {
-        left: 51.5%;
-         top: 37%;
+        left: 51%;
+        top: 37%;
     }
 
     .female-3 {
-        left: 65.5%;
-        top: 40%;
+        left: 63%;
+        top: 39%;
     }
 
     .female-4 {
-        left: 68%;
+        left: 66%;
         top: 57%;
         width: 10% !important;
     }
@@ -361,16 +359,16 @@
         <img class="female-4 brilliance" src={characterSrcB[4]} alt=""/>
         <img class="female-4" src={characterSrc[4]} alt=""/>
     </div>
-    <img id="s3-monster" src="./assets/png/swimming-pool/S3_Monster.png" alt=""/>
-    <img id="mini-bulle-1" src="./assets/png/swimming-pool/S3_MiniBubble1.png" alt=""/>
-    <img id="mini-bulle-2" src="./assets/png/swimming-pool/S3_MiniBubble2.png" alt=""/>
-    <img id="mini-bulle-3" src="./assets/png/swimming-pool/S3_MiniBubble3.png" alt=""/>
+    <img id="s3-monster" src="/assets/png/swimming-pool/S3_Monster.png" alt=""/>
+    <img id="mini-bulle-1" src="/assets/png/swimming-pool/S3_MiniBubble1.png" alt=""/>
+    <img id="mini-bulle-2" src="/assets/png/swimming-pool/S3_MiniBubble2.png" alt=""/>
+    <img id="mini-bulle-3" src="/assets/png/swimming-pool/S3_MiniBubble3.png" alt=""/>
     <img id="face" src={faceSrc} alt="">
     <div id="bubble">
         <div class="content">
             <div id="left-cross" class="cross"></div>
             <div id="right-cross" class="cross"></div>
-            <img id="left-arrow" class="arrow" src="./assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
+            <img id="left-arrow" class="arrow" src="/assets/png/swimming-pool/S3_LeftArrow.png" alt=""/>
             <div class="carousel-container">
                 <ul>
                     <li><img src={shapeSrc.c1} alt=""/></li>
@@ -380,8 +378,8 @@
                     <li><img src={shapeSrc.c5} alt=""/></li>
                 </ul>
             </div>
-            <img id="monster-model" src="./assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
-            <img id="right-arrow" class="arrow" src="./assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
+            <img id="monster-model" src="/assets/png/swimming-pool/S3_MonsterShape.png" alt=""/>
+            <img id="right-arrow" class="arrow" src="/assets/png/swimming-pool/S3_RightArrow.png" alt=""/>
         </div>
     </div>
 </div>
