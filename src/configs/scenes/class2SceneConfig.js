@@ -127,10 +127,12 @@ export default [
             frameNumberClass.subscribe(value => {
                if(value !== 4) return;
 
-               const tl = new TimelineMax({onComplete: () => {
-                   frameNumberClass.update(n => n + 1);
-               }});
+               const tl = new TimelineMax();
                tl.to(el, 1, {visibility: 'visible', delay: 1});
+               tl.to('#s6-alone', 1, {display: 'none'});
+               setTimeout(() => {
+                   frameNumberClass.update(n => n + 1);
+               }, 4000);
                //tl.to('#class-scene-part2', 1, {opacity: 0, delay: 3});
             });
 
@@ -155,8 +157,12 @@ export default [
                 webkitBorderImage: 'none',
             });
             frameNumberClass.subscribe(value => {
-                if(value !== 4) return;
+                if(value !== 5) return;
                 TweenMax.to(el, 1, {display: 'block', delay: 3});
+                TweenMax.to('#s6-360', .2, {visibility: 'hidden', delay: 3.6});
+                setTimeout(() => {
+                    activeSceneNb.update(n => n + 1);
+                }, 5000);
             });
         }
     },
