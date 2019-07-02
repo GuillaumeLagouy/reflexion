@@ -3,33 +3,38 @@
     import Draggable from 'gsap/Draggable';
     import { frameNumberBathroom } from '../../../stores/frameStore';
 
-    let tapSrc = '/assets/png/bathroom/S1_Tap.png';
-    let tapShadowSrc = '/assets/png/bathroom/S1_TapShadow.png';
+    let tapBlueSrc = '/assets/png/bathroom/S1_TapBlue.png';
+    let tapYellowSrc = '/assets/png/bathroom/S1_TapYellow.png';
 
     onMount(() => {
-        Draggable.create("#tapHandle", {
-            type:"rotation",
-            bounds:{
-                minRotation: 300,
-                maxRotation: 0
-            },
-            throwProps: true,
-            onDrag: function(){
-                const water = document.getElementById("water");
-                const fog = document.getElementById("fog");
-                let rotationAgl = Math.round(Draggable.get("#tapHandle").rotation);
-                const percentage = 1 - (rotationAgl / 300);
+        const dragTap = (id) => {
+            Draggable.create(id, {
+                type:"rotation",
+                bounds:{
+                    minRotation: 300,
+                    maxRotation: 0
+                },
+                throwProps: true,
+                onDrag: function(){
+                    const water = document.getElementById("water");
+                    const fog = document.getElementById("fog");
+                    let rotationAgl = Math.round(Draggable.get(id).rotation);
+                    const percentage = 1 - (rotationAgl / 300);
 
-                water.style.opacity = percentage.toFixed(2);
-                fog.style.opacity = percentage.toFixed(2);
+                    water.style.opacity = percentage.toFixed(2);
+                    fog.style.opacity = percentage.toFixed(2);
 
-                if(rotationAgl >= 300){
-                    Draggable.get("#tapHandle").disable();
+                    if(rotationAgl >= 300){
+                        Draggable.get(id).disable();
 
-                    frameNumberBathroom.update(n => n + 1)
+                        frameNumberBathroom.update(n => n + 1)
+                    }
                 }
-            }
-        });
+            });
+        };
+
+        dragTap('#tap-blue');
+        dragTap('#tap-yellow');
     });
 </script>
 
@@ -38,14 +43,27 @@
         width: 100%;
         height: 100%;
         position: relative;
+        background-image: url("./assets/png/bathroom/S1_TapBase.png");
+        background-position: center center;
+        background-size: 100%;
+        background-repeat: no-repeat;
     }
-    .tap-element{
-        height: 100%;
+    img{
         position: absolute;
+        height: 80%;
+        width: auto;
+        top: 10%;
     }
+    #tap-blue{
+        left: 5%;
+    }
+    #tap-yellow{
+        right: 5%;
+    }
+
 </style>
 
 <div class="frame-container">
-    <img class="tap-element" src={tapShadowSrc} alt="">
-    <img id="tapHandle" class="tap-element" src={tapSrc} alt="">
+    <img id="tap-blue" class="tap" src={tapBlueSrc} alt="">
+    <img id="tap-yellow" class="tap" src={tapYellowSrc} alt="">
 </div>

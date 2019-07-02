@@ -30,11 +30,10 @@ export default [
 
     {
         id: 'tap',
-        x: 75,
+        x: 85,
         y: 90,
-        square: true,
-        width: 15,
-        height: 15,
+        width: 30,
+        height: 20,
         anchor: anchor.bottomRight,
         content: Tap,
         callback: (id) => {
