@@ -12,10 +12,10 @@ export default [
     {
         id: 'meal-frame',
         x: 50,
-        y: 25,
+        y: 26,
         anchor: anchor.center,
         width: 45,
-        height: 30,
+        height: 40,
         content: Meal,
         callback: id => {
             const el = document.querySelector(`#${id}`);
@@ -34,7 +34,7 @@ export default [
     {
         id: 'table-frame',
         x: 50,
-        y: 65,
+        y: 73,
         anchor: anchor.center,
         width: 45,
         height: 40,
@@ -80,8 +80,8 @@ export default [
 
             frameNumberBreakfast.subscribe(value => {
                if(value !== 2) return;
-
-               TweenMax.to(el, 1, {rotation: "+=90", ease: Power2.easeOut});
+               TweenMax.to(el, 1, {rotation: "+=90", ease:Power2.easeOut });
+               TweenMax.to(el, 3, {rotation: '-=1', repeat: -1, delay: 1, yoyo: true, yoyoEase: true})
             });
         }
     },
