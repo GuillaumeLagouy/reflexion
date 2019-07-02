@@ -1,11 +1,11 @@
-import anchor from '../../constants/anchor';
+import anchor from '../../../constants/anchor';
 import TweenMax from 'gsap';
-import {frameNumberPool} from '../../stores/frameStore';
-import ChangingRooms from '../../components/frames/swimming-pool/ChangingRooms.svelte';
-import Room from '../../components/frames/swimming-pool/Room.svelte';
-import Next from '../../components/frames/swimming-pool/Next.svelte';
-import Bus from '../../components/frames/swimming-pool/Bus.svelte';
-import SwimmingMonster from '../../components/frames/swimming-pool/SwimmingMonster.svelte';
+import {frameNumberPool} from '../../../stores/frameStore';
+import ChangingRooms from '../../../components/frames/swimming-pool/ChangingRooms.svelte';
+import Room from '../../../components/frames/swimming-pool/Room.svelte';
+import Next from '../../../components/frames/swimming-pool/Next.svelte';
+import Bus from '../../../components/frames/swimming-pool/Bus.svelte';
+import SwimmingMonster from '../../../components/frames/swimming-pool/SwimmingMonster.svelte';
 
 export default [
     {
@@ -22,10 +22,7 @@ export default [
                 opacity: "0",
                 visibility: "hidden"
             });
-            frameNumberPool.subscribe(value => {
-                console.log(value);
-                value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1}) : TweenMax.to(el, 0, {autoAlpha: 0, delay: 1});
-            });
+            frameNumberPool.subscribe(value => value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1}) : TweenMax.to(el, 0, {autoAlpha: 0, delay: 1}));
         }
     },
 
@@ -104,7 +101,8 @@ export default [
             Object.assign(el.style, {
                 opacity: "0",
                 visibility: "hidden",
-                border: "transparent",
+                border: 0,
+                webkitBorderImage: 'none',
                 zIndex: "1"
             });
             frameNumberPool.subscribe(value => {
