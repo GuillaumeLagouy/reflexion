@@ -26,7 +26,9 @@
 
         setTimeout(function(){ trace.play(); }, 1700);
 
-        TweenMax.from('#start', 1, { autoAlpha: 0, y: 20, delay: 3});
+        TweenMax.from('#start', 1, { autoAlpha: 0, y: 20, delay: 3, onComplete: () => {
+            TweenMax.to('#sleep', 1, {display: 'block', opacity: 1, delay: .5});
+        }});
         TweenMax.to('#header', 1, { backgroundColor: "#FFF084", delay: 2.3 });
     });
 
@@ -122,6 +124,8 @@
         color: black;
         text-decoration: none;
         position: relative;
+        font-family: MikadoRegular, sans-serif;
+        font-size: 30px;
     }
 
     nav a:last-of-type:after {
@@ -144,8 +148,13 @@
 
     #sleep {
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 10%;
+        right: 10%;
+        display: none;
+        opacity: 0;
+    }
+    #sleep-img{
+        width: 400px;
     }
 </style>
 
@@ -157,5 +166,5 @@
     <div id="trace"></div>
     <div id="animation"></div>
     <div id="start"><button on:click={start}>Commencer</button></div>
-    <!-- <div id="sleep"><img src="./assets/animation/zzz.gif" alt="sleeping"/></div> -->
+    <div id="sleep"><img id="sleep-img" src="./assets/gif/Home_Zzz.gif" alt="sleeping"/></div>
 </header>
