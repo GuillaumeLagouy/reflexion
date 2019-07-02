@@ -13,7 +13,7 @@ import ClassroomDezoom from '../../components/frames/replay-classroom/ClassroomD
 // import {Howl} from "howler";
 
 export default [
-    /*{
+    {
         id: 'classroom',
         x: 50,
         y: 40,
@@ -56,7 +56,7 @@ export default [
                 TweenMax.to(el, 1, {autoAlpha: 1, delay: 1});
             })
         }
-    },*/
+    },
 
     {
         id: 'alone',
@@ -79,14 +79,8 @@ export default [
                 webkitBorderImage: 'none',
             });
             frameNumberReplayClass.subscribe(value => {
-                if(value !== 0) return;
-                //const classroom = document.getElementById('classroom');
-                //const stomach = document.getElementById('stomach-sound');
-
-                const tl = new TimelineMax();
-                //tl.to(classroom, .1, {autoAlpha: 0}, 2);
-                //tl.to(stomach, .1, {autoAlpha: 0}, 2);
-                tl.to(el, 1, {autoAlpha: 1});
+                if(value !== 2) return;
+                TweenMax.to(el, .1, {autoAlpha: 1, delay: 2.5});
             });
         }
     },
@@ -110,7 +104,7 @@ export default [
                 webkitBorderImage: 'none',
             });
             frameNumberReplayClass.subscribe(value => {
-               if(value !== 1) return;
+               if(value !== 3) return;
                TweenMax.to(el, 1, {autoAlpha: 1, onComplete: () => {
                    frameNumberReplayClass.update(n => n + 1);
                }});

@@ -12,14 +12,14 @@
 
         // Pinchout indication
         const tl = new TimelineMax({repeat: -1, repeatDelay: 1});
-        tl.from('#circle1', 1, {y: '-=150px', opacity: .5}, 0);
-        tl.from('#circle2', 1, {y: '+=150px', opacity: .5}, 0);
+        tl.from('#circle1', 1, {y: '-=150px', opacity: .4}, 0);
+        tl.from('#circle2', 1, {y: '+=150px', opacity: .4}, 0);
 
         hammer.get('pinch').set({ enable: true });
         hammer.on('pinchend', e => {
             if(e.additionalEvent === 'pinchout') return;
+            TweenMax.to('#stomach-sound', .1, {opacity: 0});
             TweenMax.to(alone, .5, {scale: .7});
-            console.log('test');
             frameNumberReplayClass.update(n => n + 1);
         });
     });
