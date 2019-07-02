@@ -10,7 +10,7 @@ import Classroom from '../../components/frames/replay-classroom/Classroom.svelte
 import StomachSound from '../../components/frames/replay-classroom/StomachSound.svelte';
 import Alone from '../../components/frames/replay-classroom/Alone.svelte';
 import ClassroomDezoom from '../../components/frames/replay-classroom/ClassroomDezoom.svelte';
-import {Howl} from "howler";
+// import {Howl} from "howler";
 
 export default [
     /*{

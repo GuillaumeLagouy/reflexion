@@ -3,9 +3,10 @@
     import {onMount} from 'svelte';
 
     onMount(() => {
-        TweenMax.to('#bus-interior', 4, { yPercent: 45, onComplete: () => {
-            frameNumberBus.update(n => n = 3);
-        }});
+        frameNumberBus.subscribe( value => {
+            if(value !== 2) return;
+            TweenMax.to('#bus-interior', 4, { yPercent: 45, onComplete: () => frameNumberBus.update(n => n = 3) });
+        });
 
     });
 </script>

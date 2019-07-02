@@ -33,6 +33,8 @@
 
         function move(e) {
             e.preventDefault();
+            let feed5 = document.querySelectorAll('.publication')[4].src;
+            let pool = "/assets/png/bus/S2_Pool.png";
             if(yStart < e.touches[0].clientY && translate < 0) translate += 8;
             else if(yStart > e.touches[0].clientY && translate > - maximumSize - 100) translate -= 8;
             document.querySelectorAll('#social-media-feed .feed').forEach((item) => { item.style.transform = `translateY(${translate}px)`; });
@@ -44,11 +46,10 @@
                 TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 1, {autoAlpha: 0, delay: 1});
                 TweenMax.to('#phone, #phone-hitbox, #hand, #navbar, #social-media-feed', 0, {autoAlpha: 0, delay: 1});
                 TweenMax.to('.scene-container', 4, {height: "100vh", delay: 1});
-                TweenMax.to(frame, 0, {backgroundImage: "url('/assets/png/bus/S2_Feed5.png')", backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
-                TweenMax.to(frame, 1, {position: 'absolute', left: `calc(50% - ${width / 2}px)`, top: `calc(50% - ${height / 2}px)`, delay: 3});
-                TweenMax.to(frame, 1, {backgroundImage: "url('/assets/png/bus/S2_Pool.png')", delay: 4});
+                TweenMax.to(frame, 0, {backgroundImage: "url(" + feed5 + ")", backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
+                TweenMax.to(frame, 1, {position: 'absolute', x: -width, y: -width, delay: 3});
+                TweenMax.to(frame, 1, {backgroundImage: "url(" + pool + ")", delay: 4});
                 TweenMax.to(frame, 1, {transformOrigin: 'center', scale: 1.5,  delay: 5});
-                TweenMax.to(frame, 1, {y: -100, delay: 6});
             }
         }
     });
@@ -101,7 +102,7 @@
         position: absolute;
         width: calc(46% + 2px);
         height: calc(50% + 11px);
-        top: 26%;
+        top: calc(26% + 4px);
         left: calc(21% + 2px);
         display: flex;
         overflow: hidden;
@@ -110,13 +111,14 @@
 
     #social-media-feed .feed {
         width: 90%;
-        height: auto;
+        min-height: max-content;
+        height: 100%;
         margin-left: 5%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: baseline;
         transform: translate(0);
-        height: auto;
     }
 
     .publication {

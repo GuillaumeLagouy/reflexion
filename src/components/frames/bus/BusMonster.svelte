@@ -8,9 +8,12 @@
           backgroundPosition: '2683px 0px',
           ease: Linear.easeNone
         });
-        TweenMax.to('.scene-container', 4, { height: '150vh', onComplete: () =>{
-            frameNumberBus.update(n => n = 4);
-        }});
+        frameNumberBus.subscribe( (value) => {
+            if(value !== 3) return;
+            TweenMax.to('.scene-container', 4, { height: '150vh', onComplete: () => {
+                frameNumberBus.update(n => n = 4);
+            }});
+        });
     });
 </script>
 

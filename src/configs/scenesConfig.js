@@ -23,7 +23,7 @@ import homePageConfig from './scenes/homePageConfig'
 import replayPlaytimeSceneConfig from './scenes/replayPlaytimeSceneConfig';
 import replayPoolSceneConfig from './scenes/replayPoolSceneConfig';
 import replayClassroomSceneConfig from './scenes/replayClassroomSceneConfig';
-import endSCeneConfig from './scenes/endSceneConfig';
+import endSceneConfig from './scenes/endSceneConfig';
 
 export default [
 
@@ -204,7 +204,8 @@ export default [
 
     {
         id: 'end-scene',
-        config: endSCeneConfig,
-        sequence: 0,
+        config: endSceneConfig,
+        sequence: 13,
+
     }
 ]
