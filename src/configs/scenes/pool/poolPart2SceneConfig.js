@@ -5,10 +5,35 @@ import ChangingRooms from '../../../components/frames/swimming-pool/ChangingRoom
 import Room from '../../../components/frames/swimming-pool/Room.svelte';
 import Next from '../../../components/frames/swimming-pool/Next.svelte';
 import Bus from '../../../components/frames/swimming-pool/Bus.svelte';
+import Question from '../../../components/frames/swimming-pool/Question.svelte';
 import SwimmingMonster from '../../../components/frames/swimming-pool/SwimmingMonster.svelte';
 import TimelineMax from "gsap/TimelineMax";
 
 export default [
+    {
+        id: 'scene3-question',
+        x: 50,
+        y: 20,
+        anchor: anchor.center,
+        content: Question,
+        width: 50,
+        height: 8,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                opacity: 0,
+                visibility: 'hidden',
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
+            });
+            frameNumberPool.subscribe(value => {
+                if(value !== 1) return;
+                TweenMax.to(el, 1, {autoAlpha: 1});
+            })
+        }
+    },
+
     {
         id: 'scene3-frame1',
         x: 50,
@@ -21,7 +46,7 @@ export default [
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
                 opacity: "0",
-                visibility: "hidden"
+                visibility: "hidden",
             });
             frameNumberPool.subscribe(value => value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1}) : TweenMax.to(el, 0, {autoAlpha: 0, delay: 1}));
         }
@@ -49,7 +74,7 @@ export default [
     },
     {
         id: 'scene3-frame3',
-        x: 90,
+        x: 85,
         y: 90,
         width: 15,
         height: 8,

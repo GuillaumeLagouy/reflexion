@@ -53,7 +53,7 @@
         position: absolute;
         width: 4%;
         left: calc(50% - 6px);
-        top: calc(45% - 84px);
+        top: calc(45% - 62px);
     }
 </style>
 

@@ -24,6 +24,9 @@
         h = this.offsetHeight;
         changingRooms.style.backgroundPosition = `${-x}px ${-y}px`;
         TweenMax.to(frame, 1, {left: x + frame.offsetLeft, top: y + frame.offsetTop, width: w, height: h});
+
+        TweenMax.to('#scene3-question', 1, {autoAlpha: 0});
+
         frameNumberPool.update(n => n + 1);
     }
 </script>

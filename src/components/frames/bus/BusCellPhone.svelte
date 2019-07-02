@@ -1,6 +1,7 @@
 <script>
     import {onMount} from 'svelte';
     import {activeSceneNb} from '../../../stores/scenesStore';
+    import TweenMax from 'gsap';
 
     let titleSrc = '/assets/png/bus/S2_FeedTitle.png';
     let likeSrc = '/assets/png/bus/S2_NoLike.png';
@@ -35,20 +36,18 @@
         function move(e) {
             e.preventDefault();
             let feed5 = document.querySelectorAll('.publication')[4].src;
-            if(yStart < e.touches[0].clientY && translate < 0) translate += 8;
-            else if(yStart > e.touches[0].clientY && translate > - maximumSize - 100) translate -= 8;
-            document.querySelectorAll('#social-media-feed .feed').forEach((item) => { item.style.transform = `translateY(${translate}px)`; });
-            if(translate < - maximumSize - 99) {
+            if (yStart < e.touches[0].clientY && translate < 0) translate += 8;
+            else if (yStart > e.touches[0].clientY && translate > -maximumSize - 100) translate -= 8;
+            document.querySelectorAll('#social-media-feed .feed').forEach((item) => {
+                item.style.transform = `translateY(${translate}px)`;
+            });
+            if (translate < -maximumSize - 99) {
+                console.log('test');
                 const width = lastPhoto.querySelector('.publication').offsetWidth;
                 const height = lastPhoto.querySelector('.publication').offsetHeight;
                 phone.removeEventListener('touchmove', move);
-                TweenMax.to(frame, 1, {border: "4px solid black", webkitBorderImage: '/assets/png/FrameBorder.png', width: width, height: height, left: lastPhoto.offsetLeft + frame.offsetLeft + feed.offsetLeft, top: lastPhoto.offsetTop + feed.offsetTop + translate + 100, delay: 1});
-                TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 1, {autoAlpha: 0, delay: 1});
-                TweenMax.to('#phone, #phone-hitbox, #hand, #navbar, #social-media-feed', 0, {autoAlpha: 0, delay: 1});
-                TweenMax.to('.scene-container', 4, {height: "100vh", delay: 1});
-                TweenMax.to(frame, 0, {backgroundImage: "url(" + feed5 + ")", backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
-                TweenMax.to(frame, 1, {yPercent: -25, autoAlpha: 0, delay: 4, onComplete: () => {
-                    activeSceneNb.update(n => n += 1);
+                TweenMax.to('#bus-scene', .5, {opacity: 0, onComplete: () => {
+                        activeSceneNb.update(n => n = 5);
                 }});
             }
         }

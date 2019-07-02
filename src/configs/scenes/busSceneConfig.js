@@ -17,8 +17,8 @@ export default [
         id: 'scene2-frame1',
         x: 50,
         y: 35,
-        width: 35,
-        height: 35,
+        width: 20,
+        height: 20,
         square: true,
         content: Clock,
         anchor: anchor.center,
@@ -36,7 +36,7 @@ export default [
     {
         id: 's2-title',
         x: 50,
-        y: 70,
+        y: 65,
         anchor: anchor.center,
         width: 30,
         height: 10,
@@ -53,6 +53,28 @@ export default [
             frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {yPercent: -100, autoAlpha: 0}) : null);
         }
     },
+
+    {
+        id:'s2-time',
+        x: 50,
+        y: 70,
+        anchor: anchor.center,
+        width: 30,
+        height: 10,
+        content: Title,
+        title: "7 : 00",
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                webkitBorderImage: 'none',
+                zIndex: 1
+            });
+            TweenMax.from(el, 1, {yPercent: 100, autoAlpha: 0});
+            frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {yPercent: -100, autoAlpha: 0}) : null);
+        }
+    },
+
     {
         id: 'scene2-frame2',
         x: 50,
