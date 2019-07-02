@@ -24,7 +24,7 @@
         height: 100%;
         background-image: url("./assets/svg/S7_Stain.svg");
         background-repeat: no-repeat;
-        background-size: 85%;
+        background-size: 75%;
         background-position: center center;
     }
 </style>

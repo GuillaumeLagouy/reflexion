@@ -6,7 +6,7 @@ import {activeSceneNb} from "../../stores/scenesStore";
 
 import Title from '../../components/Title.svelte';
 import MainScene from '../../components/frames/replay-playtime/MainScene.svelte';
-import Maxim from '../../components/Maxim.svelte';
+import Maxim from '../../components/frames/replay-playtime/Maxim.svelte';
 import BtnNext from '../../components/frames/wakeup/BtnNext.svelte';
 import TimelineMax from "gsap/TimelineMax";
 
@@ -51,7 +51,7 @@ export default [
                 TweenMax.to(el, 1, {autoAlpha: 1, delay: 1, onComplete: () => {
                     setTimeout(() => {
                         frameNumberReplayPlaytime.update(n => n + 1);
-                    }, 10000);
+                    }, 5000);
                 }});
             });
         }
@@ -59,20 +59,21 @@ export default [
 
     {
         id: 's9-maxim',
-        x: 5,
-        y: 90,
+        x: -3,
+        y: 103,
         anchor: anchor.bottomLeft,
         width: 55,
-        height: 15,
+        height: 40,
         content: Maxim,
-        maxim: "Ceux qui te jugent comptent-ils pour toi ? Pose-toi cette question et tu sauras quelle importance accorder à leurs remarques.",
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                backgroundColor: 'white',
                 zIndex: 5,
                 opacity: 0,
                 visibility: 'hidden',
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
             });
             frameNumberReplayPlaytime.subscribe(value => {
                 if(value !== 2) return;

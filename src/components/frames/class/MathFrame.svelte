@@ -85,26 +85,31 @@
         border-image: url('./assets/png/FrameBorder.png') 50 stretch;
         -webkit-border-image: url('./assets/png/FrameBorder.png') 50 stretch;
     }
+    .dashed-border{
+        border: 5px solid white;
+        border-image: url('./assets/png/FrameBorderDashed.png') 50 stretch;
+        -webkit-border-image: url('./assets/png/FrameBorderDashed.png') 50 stretch;
+    }
 </style>
 
 <div id="mathFrame" class="frame-container">
     <section  class="exercice">
         <div class="exercice_question">
             <p class="exercice_question_instruction">7 x 5 =</p>
-            <p id="target" class="exercice_question_response sketchy-border" data-response="1"></p>
+            <p id="target" class="exercice_question_response dashed-border" data-response="1"></p>
         </div>
         <div class="exercice_question">
             <p class="exercice_question_instruction">6 x 4 =</p>
-            <p class="exercice_question_response sketchy-border" data-response="2"></p>
+            <p class="exercice_question_response dashed-border" data-response="2"></p>
         </div>
         <div class="exercice_question">
             <p class="exercice_question_instruction">8 x 7 =</p>
-            <p class="exercice_question_response sketchy-border" data-response="3"></p>
+            <p class="exercice_question_response dashed-border" data-response="3"></p>
         </div>
         <ul>
             <li class="exercice_response_item sketchy-border draggable" data-response="1">35</li>
-            <li class="exercice_response_item sketchy-border draggable" data-response="2">24</li>
             <li class="exercice_response_item sketchy-border draggable" data-response="3">56</li>
+            <li class="exercice_response_item sketchy-border draggable" data-response="2">24</li>
         </ul>
     </section>
 

@@ -3,7 +3,7 @@ import TweenMax from 'gsap';
 import Room from '../../components/frames/replay-pool/Room.svelte';
 import BtnNext from "../../components/frames/wakeup/BtnNext.svelte";
 import {frameNumberReplayPool} from "../../stores/frameStore";
-import Maxim from "../../components/Maxim.svelte";
+import Maxim from "../../components/frames/replay-pool/Maxim.svelte";
 import Title from "../../components/Title.svelte";
 import TimelineMax from "gsap/TimelineMax";
 
@@ -50,20 +50,22 @@ export default [
 
     {
         id: 's10-maxim',
-        x: 5,
-        y: 95,
+        x: 0,
+        y: 100,
         anchor: anchor.bottomLeft,
-        width: 55,
-        height: 15,
+        width: 50,
+        height: 30,
         content: Maxim,
-        maxim: "Tu te compares aux autres, tout comme les autres se comparent à toi. Nous sommes beaux dans nos différences.",
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                backgroundColor: 'white',
-                zIndex: 1,
+                zIndex: 3,
                 opacity: 0,
                 visibility: 'hidden',
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
+                overflow: 'visible',
             });
             frameNumberReplayPool.subscribe(value => {
                 if (value !== 2) return;
@@ -77,7 +79,7 @@ export default [
     },
     {
         id: 'scene3-frame7',
-        x: 90,
+        x: 85,
         y: 90,
         width: 15,
         height: 8,

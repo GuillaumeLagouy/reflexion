@@ -30,7 +30,8 @@ export default [
                 backgroundImage: 'none',
                 webkitBorderImage: 'none',
             });
-            TweenMax.to(el, 2, {autoAlpha: 1, onComplete: () => {
+            TweenMax.from(el, 3, {scale: .4});
+            TweenMax.to(el, 3, {autoAlpha: 1, delay: 1, onComplete: () => {
                 frameNumberHome.update(n => n + 1);
             }});
         },
