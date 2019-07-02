@@ -197,7 +197,7 @@ export default [
         y: 95,
         anchor: anchor.bottomLeft,
         width: 15,
-        height: 10,
+        height: 8,
         content: BtnLink,
         link: 'EN PARLER',
         callback: id => {
@@ -220,7 +220,7 @@ export default [
         y: 95,
         anchor: anchor.bottomRight,
         width: 15,
-        height: 10,
+        height: 8,
         content: BtnLink,
         link: 'PARTAGER',
         callback: id => {

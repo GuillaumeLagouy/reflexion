@@ -5,6 +5,7 @@ import BtnNext from "../../components/frames/wakeup/BtnNext.svelte";
 import {frameNumberReplayPool} from "../../stores/frameStore";
 import Maxim from "../../components/Maxim.svelte";
 import Title from "../../components/Title.svelte";
+import TimelineMax from "gsap/TimelineMax";
 
 export default [
     {
@@ -79,18 +80,21 @@ export default [
         x: 90,
         y: 90,
         width: 15,
-        height: 10,
+        height: 8,
         anchor: anchor.center,
         content: BtnNext,
         callback: (id) => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                opacity: "0",
-                visibility: "hidden",
-                zIndex: "1"
+                display: 'none',
+                opacity: 0,
+                zIndex: 1
             });
             frameNumberReplayPool.subscribe(value => {
-                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}) : null;
+                if(value !== 3) return;
+                const tl = new TimelineMax();
+                tl.to(el, 1, {display: 'block', opacity: 1, delay: 2});
+                tl.to(el, 1, {x: 10, repeat: -1, yoyo:true});
             });
         }
     },

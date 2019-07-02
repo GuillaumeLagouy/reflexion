@@ -134,18 +134,20 @@ export default [
         y: 95,
         anchor: anchor.bottomRight,
         width: 15,
-        height: 10,
+        height: 8,
         content: BtnNext,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
+                display: 'none',
                 opacity: 0,
-                visibility: 'hidden',
                 zIndex: 4,
             });
             frameNumberReplayClass.subscribe(value => {
                 if(value !== 4) return;
-                TweenMax.to(el, 1, {autoAlpha: 1});
+                const tl = new TimelineMax();
+                tl.to(el, 1, {display: 'block', opacity: 1, delay: 2});
+                tl.to(el, 1, {x: 10, repeat: -1, yoyo:true});
             })
         }
     },

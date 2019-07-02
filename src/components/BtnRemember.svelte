@@ -8,10 +8,6 @@
         activeSceneNb.update(n => n + 1);
     }
 
-    function handleTouchstart(e) {
-        console.log(e);
-    }
-
 </script>
 
 <style>
@@ -25,6 +21,7 @@
         font-family: MikadoBold, sans-serif;
         font-size: 30px;
         user-select: none;
+
     }
     #circle{
         background-color: blue;
@@ -41,5 +38,5 @@
     }
 </style>
 
-<div id="s7-remember" on:click={handleClick} on:touchstart={handleTouchstart}>SE SOUVENIR</div>
+<button id="s7-remember" on:click={handleClick}>SE SOUVENIR</button>
 <!--<div id="circle"></div>-->

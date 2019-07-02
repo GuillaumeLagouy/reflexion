@@ -6,6 +6,7 @@ import Room from '../../../components/frames/swimming-pool/Room.svelte';
 import Next from '../../../components/frames/swimming-pool/Next.svelte';
 import Bus from '../../../components/frames/swimming-pool/Bus.svelte';
 import SwimmingMonster from '../../../components/frames/swimming-pool/SwimmingMonster.svelte';
+import TimelineMax from "gsap/TimelineMax";
 
 export default [
     {
@@ -51,18 +52,21 @@ export default [
         x: 90,
         y: 90,
         width: 15,
-        height: 10,
+        height: 8,
         anchor: anchor.center,
         content: Next,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
-                opacity: "0",
-                visibility: "hidden",
+                backgroundColor: 'white',
+                display: 'none',
                 zIndex: "1"
             });
             frameNumberPool.subscribe(value => {
-                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}) : null;
+                if(value !== 3) return;
+                const tl = new TimelineMax();
+                tl.to(el, 1, {display: 'block', opacity: 1, delay: 2});
+                tl.to(el, 1, {x: 10, repeat: -1, yoyo:true});
             });
         }
     },

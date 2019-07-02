@@ -8,6 +8,7 @@ import Title from '../../components/Title.svelte';
 import MainScene from '../../components/frames/replay-playtime/MainScene.svelte';
 import Maxim from '../../components/Maxim.svelte';
 import BtnNext from '../../components/frames/wakeup/BtnNext.svelte';
+import TimelineMax from "gsap/TimelineMax";
 
 export default [
     {
@@ -87,18 +88,20 @@ export default [
         x: 95,
         y: 95,
         anchor: anchor.bottomRight,
-        width: 20,
-        height: 10,
+        width: 15,
+        height: 8,
         content: BtnNext,
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 opacity: 0,
-                visibility: 'hidden',
+                display: 'none',
             });
             frameNumberReplayPlaytime.subscribe(value => {
                 if(value !== 3) return;
-                TweenMax.to(el, 1, {autoAlpha: 1, delay: 2});
+                const tl = new TimelineMax();
+                tl.to(el, 1, {display: 'block', opacity: 1, delay: 2});
+                tl.to(el, 1, {x: 10, repeat: -1, yoyo:true});
             });
         }
     }

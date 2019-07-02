@@ -185,7 +185,7 @@ export default [
         y: 92,
         anchor: anchor.center,
         width: 25,
-        height: 10,
+        height: 8,
         content: BtnRemember,
         callback: id => {
             const el = document.getElementById(id);

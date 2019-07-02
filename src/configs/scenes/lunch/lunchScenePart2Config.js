@@ -5,6 +5,7 @@ import {frameNumberLunch} from "../../../stores/frameStore";
 import TweenMax from "gsap";
 import Eat from "../../../components/frames/lunch/Eat.svelte";
 import BtnNext from "../../../components/frames/wakeup/BtnNext.svelte";
+import TimelineMax from "gsap/TimelineMax";
 
 export default [
     {
@@ -81,7 +82,9 @@ export default [
                 if(value !== 3) return;
                 TweenMax.to(el, 1, {delay: 1, display: 'block', opacity: 1, onComplete: () => {
                         const btnNext = document.getElementById('s5-next');
-                        TweenMax.to(btnNext, 1, {display: 'block', opacity: 1, delay: .5});
+                        const tl = new TimelineMax();
+                        tl.to(btnNext, 1, {display: 'block', opacity: 1, delay: 1});
+                        tl.to(btnNext, 1, {x: 10, repeat: -1, yoyo:true});
                     }})
             });
         }
@@ -92,8 +95,8 @@ export default [
         x: 90,
         y: 90,
         anchor: anchor.bottomRight,
-        width: 20,
-        height: 10,
+        width: 15,
+        height: 8,
         content: BtnNext,
         callback: id => {
             const el = document.getElementById(id);
