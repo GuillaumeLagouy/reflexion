@@ -9,7 +9,7 @@
         const stomach = document.getElementById('stomach');
         const src = './assets/gif/replay-classroom/stomach2.gif';
 
-        TweenMax.to(stomach, .2, {backgroundImage: 'url('+src+')', delay: 2.5,
+        TweenMax.to(stomach, .2, {backgroundImage: 'url('+src+')', delay: 4.3,
             onComplete: () => {
                 frameNumberReplayClass.update(n => n + 1);
             },
