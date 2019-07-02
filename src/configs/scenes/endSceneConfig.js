@@ -42,7 +42,7 @@ export default [
             const testimonial2 = document.getElementById('s12-testimonial-2');
             const testimonial3 = document.getElementById('s12-testimonial-3');
 
-            const tl = new TimelineMax({delay: 1, repeat: -1});
+            const tl = new TimelineMax({delay: 1, repeat: -1, repeatDelay: 2});
 
             tl.to(maxim1, 1, {autoAlpha: 1});
             tl.to(maxim2, 1, {autoAlpha: 1}, '+=1');

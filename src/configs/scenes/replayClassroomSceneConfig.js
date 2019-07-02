@@ -10,7 +10,7 @@ import Classroom from '../../components/frames/replay-classroom/Classroom.svelte
 import StomachSound from '../../components/frames/replay-classroom/StomachSound.svelte';
 import Alone from '../../components/frames/replay-classroom/Alone.svelte';
 import ClassroomDezoom from '../../components/frames/replay-classroom/ClassroomDezoom.svelte';
-// import {Howl} from "howler";
+import BtnNext from '../../components/frames/wakeup/BtnNext.svelte';
 
 export default [
     {
@@ -130,5 +130,23 @@ export default [
 
     {
         id: 'next',
+        x: 95,
+        y: 95,
+        anchor: anchor.bottomRight,
+        width: 15,
+        height: 10,
+        content: BtnNext,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                opacity: 0,
+                visibility: 'hidden',
+                zIndex: 4,
+            });
+            frameNumberReplayClass.subscribe(value => {
+                if(value !== 4) return;
+                TweenMax.to(el, 1, {autoAlpha: 1});
+            })
+        }
     },
 ]
