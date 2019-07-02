@@ -1,3 +1,3 @@
 import {writable} from "svelte/store";
 
-export const activeSceneNb = writable(13);
+export const activeSceneNb = writable(0);

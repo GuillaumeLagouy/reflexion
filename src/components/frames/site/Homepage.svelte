@@ -91,39 +91,17 @@
 
     #start button {
         font-family: "MikadoBold", sans-serif;
-        font-size: 20px;
+        font-size: 30px;
         text-transform: uppercase;
         background: none;
-        border: 2px solid black;
+        border: 7px solid white;
+        border-image: url('/assets/png/FrameBorder.png') 50 stretch;
+        -webkit-border-image: url('/assets/png/FrameBorder.png') 50 stretch;
         height: auto;
         padding: 15px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        transition: all 0.5s ease-in-out;
-    }
-
-    #start button:hover {
-        color: white;
-    }
-
-    #start button:after {
-        content: "";
-        width: 200%;
-        height: 200%;
-        transform: scale(0) translateX(-75%) translateY(-75%);
-        background: black;
-        position: absolute;
-        top: 100%;
-        left: 100%;
-        border-radius: 100%;
-        transform-origin: center;
-        transition: all 0.5s ease-in;
-        z-index: -1;
-    }
-
-    #start button:hover:after {
-        transform: scaleY(1) translateX(-75%) translateY(-75%);
     }
 
     nav {

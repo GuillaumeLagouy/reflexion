@@ -87,6 +87,7 @@ export default [
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 display: 'none',
+                backgroundColor: 'white',
                 opacity: 0,
                 zIndex: 1
             });
