@@ -93,13 +93,14 @@ export default [
 
             Object.assign(el.style, {
                 display: 'none',
-                opacity: 1,
+                opacity: 0,
                 zIndex: 4,
                 backgroundColor: 'white',
             });
 
             frameNumberBathroom.subscribe(value => {
                 if(value === 2) {
+                    TweenMax.from(el, 1, {scale: .5});
                     TweenMax.to(el, 1, {display: 'block', opacity: 1});
                     frameNumberBathroom.update(n => n + 1);
                 }
