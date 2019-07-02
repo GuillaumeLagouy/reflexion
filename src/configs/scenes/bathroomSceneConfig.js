@@ -67,7 +67,11 @@ export default [
 
             frameNumberBathroom.subscribe(value => {
                 if(value === 1) {
-                    TweenMax.to(el, 1, {opacity: 1});
+                    TweenMax.from(el, .5, {scale: 1.4});
+                    TweenMax.to(el, .5, {opacity: 1, onComplete: () => {
+                        TweenMax.to('#shower', .5, {y: '-=300px', rotation: '5deg', opacity: 0});
+                        TweenMax.to('#tap', .5, {x: '+=300px', rotation: '-2deg', opacity: 0});
+                    }});
                     setTimeout(() => {
                         frameNumberBathroom.update(n => n + 1);
                     }, 10000);
