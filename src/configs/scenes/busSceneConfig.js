@@ -122,7 +122,8 @@ export default [
                 webkitBorderImage: 'none',
                 position: 'fixed',
                 zIndex: '1',
-                bottom: '0'
+                bottom: '0',
+                top: 'auto'
             });
             frameNumberBus.subscribe(value => {
                 if (value === 4) {
