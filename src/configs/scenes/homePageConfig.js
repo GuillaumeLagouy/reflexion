@@ -18,7 +18,8 @@ export default [
             Object.assign(el.style, {
                 visibility: 'hidden',
                 opacity: 0,
-                borderWidth : 0
+                border: 0,
+                webkitBorderImage: 'none',
             });
             frameNumberHomePage.subscribe(value => {
                 value === 0?TweenMax.to(el, 1, {autoAlpha: 1}):TweenMax.to(el, 1, {autoAlpha: 0});
@@ -38,7 +39,8 @@ export default [
             Object.assign(el.style, {
                 visibility: 'hidden',
                 opacity: 0,
-                borderWidth : 0,
+                border: 0,
+                webkitBorderImage: 'none',
                 overflowY: 'auto'
             });
             frameNumberHomePage.subscribe(value => {

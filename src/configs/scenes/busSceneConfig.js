@@ -118,9 +118,11 @@ export default [
             Object.assign(el.style, {
                 opacity: '0',
                 visibility: 'hidden',
-                borderWidth: '0',
+                border: 0,
+                webkitBorderImage: 'none',
                 position: 'fixed',
-                zIndex: '1'
+                zIndex: '1',
+                bottom: '0'
             });
             frameNumberBus.subscribe(value => {
                 if (value === 4) {
@@ -129,29 +131,6 @@ export default [
                     TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 0.5, {autoAlpha: 0.4});
                 } else TweenMax.to(el, 0, {autoAlpha: 0});
             });
-        }
-    },
-    {
-        id: 's3-pool',
-        x: 51,
-        y: 27,
-        anchor: anchor.center,
-        width: 22,
-        height: 33,
-        callback: id => {
-            const el = document.getElementById(id);
-            Object.assign(el.style, {
-                backgroundImage: 'url("./assets/png/bus/S2_Pool.png")',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                transform: 'scale(1.5)',
-                visibility: 'hidden',
-                opacity: '0'
-            });
-            frameNumberBus.subscribe(value => value === 5 ? TweenMax.to(el, 0.5, {autoAlpha: 1, onComplete: () => {
-                activeSceneNb.update(n => n += 1);
-            }}) : null );
         }
     },
 ];

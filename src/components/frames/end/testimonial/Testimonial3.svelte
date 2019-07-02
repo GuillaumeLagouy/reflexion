@@ -20,7 +20,7 @@
 
 <div class="frame-container">
     <p>
-        "Ne laisse pas tomber, ne te soumet pas à cette puissance factice. <br>
+        "Ne laisse pas tomber, ne te soumets pas à cette puissance factice. <br>
         Sois cette paire de bras qui te permettra de te sentir aimé et important."
     </p>
 </div>
