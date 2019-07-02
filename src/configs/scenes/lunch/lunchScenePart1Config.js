@@ -45,6 +45,25 @@ export default [
     },
 
     {
+        id: 's5-time',
+        x: 50,
+        y: 60,
+        anchor: anchor.center,
+        width: 30,
+        height: 10,
+        content: Title,
+        title: '12 : 00',
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
+            });
+        }
+    },
+
+    {
         id: 's6-instruction-scroll-down',
         x: 98,
         y: 95,

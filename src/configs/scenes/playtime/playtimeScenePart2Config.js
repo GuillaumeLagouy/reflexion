@@ -38,11 +38,11 @@ export default [
 
     {
         id:'s4-find',
-        x: 10,
-        y: 98,
-        anchor: anchor.bottomLeft,
-        width: 50,
-        height: 10,
+        x: 7,
+        y: 7,
+        anchor: anchor.topLeft,
+        width: 60,
+        height: 50,
         content: Find,
         callback: id => {
             const el = document.getElementById(id);
@@ -53,6 +53,7 @@ export default [
                 opacity: 0,
                 visibility: 'hidden',
                 zIndex: 3,
+                overflow: 'visible',
             });
             frameNumberPlaytime.subscribe(value => {
                 if(value !== 2) return;
