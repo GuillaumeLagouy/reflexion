@@ -99,7 +99,7 @@ export default [
                 const mathframe = document.getElementById('S6-math');
                 const noise = document.getElementById('s6-noise');
 
-                TweenMax.staggerTo([classFrame, noise, mathframe], .2, {display: 'none', opacity: 0, onComplete: () => {
+                TweenMax.staggerTo([classFrame, noise, mathframe], .2, {display: 'none', opacity: 0, delay: 1, onComplete: () => {
                     TweenMax.to(el, 1, {display: 'block'});
                 }});
             })
@@ -132,7 +132,7 @@ export default [
                tl.to('#s6-alone', 1, {display: 'none'});
                setTimeout(() => {
                    frameNumberClass.update(n => n + 1);
-               }, 4000);
+               }, 5000);
                //tl.to('#class-scene-part2', 1, {opacity: 0, delay: 3});
             });
 
