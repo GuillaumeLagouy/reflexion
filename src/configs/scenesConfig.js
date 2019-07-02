@@ -200,10 +200,11 @@ export default [
         config: replayClassroomSceneConfig,
         sequence: 12,
     },
+    */
 
     {
         id: 'end-scene',
         config: endSCeneConfig,
-        sequence: 13,
-    }*/
+        sequence: 0,
+    }
 ]
