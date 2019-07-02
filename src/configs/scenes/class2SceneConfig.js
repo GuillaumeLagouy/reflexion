@@ -131,12 +131,12 @@ export default [
                    frameNumberClass.update(n => n + 1);
                }});
                tl.to(el, 1, {visibility: 'visible', delay: 1});
-               tl.to('#class-scene-part2', 1, {opacity: 0, delay: 2});
+               //tl.to('#class-scene-part2', 1, {opacity: 0, delay: 3});
             });
 
         }
     },
-    /*
+
     {
         id: 's6-ink',
         x: 50,
@@ -148,13 +148,16 @@ export default [
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                opacity: 0,
-                visibility: 'hidden',
+                display: 'none',
+                zIndex: 6,
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
             });
             frameNumberClass.subscribe(value => {
-                if(value !== 0) return;
-                TweenMax.to(el, 1, {autoAlpha: 1});
+                if(value !== 4) return;
+                TweenMax.to(el, 1, {display: 'block', delay: 3});
             });
         }
-    },*/
+    },
 ]
