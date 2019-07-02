@@ -20,7 +20,7 @@
 
 <div class="frame-container">
     <p>
-        "Respire un bon coup, ces personnes sont stupides,elles ne valent rien par rapport à l'avis que tu as sur toi même.<br>
+        "Respire un bon coup, ces personnes sont stupides, elles ne valent rien par rapport à l'avis que tu as sur toi même.<br>
         Et surtout, la roue va tourner."
     </p>
 </div>

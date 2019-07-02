@@ -42,35 +42,21 @@ export default [
             const testimonial2 = document.getElementById('s12-testimonial-2');
             const testimonial3 = document.getElementById('s12-testimonial-3');
 
-            const tl = new TimelineMax({});
-            const delay = 5;
+            const tl = new TimelineMax({delay: 1, repeat: -1});
 
             tl.to(maxim1, 1, {autoAlpha: 1});
-            tl.to(maxim2, 1, {autoAlpha: 1});
+            tl.to(maxim2, 1, {autoAlpha: 1}, '+=1');
             tl.to(maxim3, 1, {autoAlpha: 1, onComplete: () => {
                    frameNumberEnd.update(n => n + 1);
-            }});
-            tl.to(testimonial1, 1, {autoAlpha: 1}, 4);
-            tl.to(maxim1, 1, {autoAlpha: 0}, 4);
-            tl.to(testimonial2, 1, {autoAlpha: 1}, 5);
-            tl.to(maxim2, 1, {autoAlpha: 0}, 5);
-            tl.to(testimonial3, 1, {autoAlpha: 1}, 6);
-            tl.to(maxim3, 1, {autoAlpha: 0}, 6);
+            }}, '+=1');
+            tl.to(maxim1, 1, {autoAlpha: 0}, '+=7');
+            tl.to(testimonial1, 1, {autoAlpha: 1}, '+=0');
 
+            tl.to(maxim2, 1, {autoAlpha: 0}, '+=3');
+            tl.to(testimonial2, 1, {autoAlpha: 1}, '+=0');
 
-
-            /*const elements = [maxim1, maxim2, maxim3, testimonial1, testimonial2, testimonial3];
-            elements.forEach((element, index) => {
-                setTimeout(() => {
-                    let value = index - 3;
-                    TweenMax.to(element, 1, {autoAlpha: 1});
-                    if(value >= 0){
-                        TweenMax.to(elements[value], 1, {autoAlpha: 0});
-                    }
-                    console.log(value);
-                }, index * 1000);
-            })*/
-
+            tl.to(maxim3, 1, {autoAlpha: 0}, '+=3');
+            tl.to(testimonial3, 1, {autoAlpha: 1}, '+=0');
         }
     },
 
@@ -99,7 +85,7 @@ export default [
     {
         id: 's12-maxim-2',
         x: 2,
-        y: 50,
+        y: 45,
         anchor: anchor.topLeft,
         width: 35,
         height: 30,
@@ -121,7 +107,7 @@ export default [
     {
         id: 's12-maxim-3',
         x: 98,
-        y: 10,
+        y: 25,
         anchor: anchor.topRight,
         width: 35,
         height: 30,
@@ -145,7 +131,7 @@ export default [
     {
         id: 's12-testimonial-1',
         x: 3,
-        y: 5,
+        y: 10,
         anchor: anchor.topLeft,
         width: 35,
         height: 30,
@@ -166,7 +152,7 @@ export default [
     {
         id: 's12-testimonial-2',
         x: 2,
-        y: 50,
+        y: 45,
         anchor: anchor.topLeft,
         width: 35,
         height: 30,
@@ -187,7 +173,7 @@ export default [
     {
         id: 's12-testimonial-3',
         x: 98,
-        y: 10,
+        y: 25,
         anchor: anchor.topRight,
         width: 35,
         height: 30,
@@ -207,7 +193,7 @@ export default [
 
     {
         id: 's12-fsj',
-        x: 30,
+        x: 33,
         y: 95,
         anchor: anchor.bottomLeft,
         width: 15,
@@ -230,7 +216,7 @@ export default [
 
     {
         id: 's12-share',
-        x: 70,
+        x: 66,
         y: 95,
         anchor: anchor.bottomRight,
         width: 15,

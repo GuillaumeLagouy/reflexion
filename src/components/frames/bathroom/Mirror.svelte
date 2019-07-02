@@ -9,9 +9,7 @@
        const revealSpike = () => {
            const spikesArray = ["Droite", "Milieu", "Gauche_haut", "Gauche"];
            const randomSpike = spikesArray[Math.floor(Math.random()*spikesArray.length)];
-           console.log(randomSpike, spikesArray.indexOf(randomSpike));
            spikesArray.splice(spikesArray.indexOf(randomSpike));
-           console.log(spikesArray);
            svg.getElementById(randomSpike).classList.remove("d-none");
        };
 

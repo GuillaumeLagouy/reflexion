@@ -2,16 +2,18 @@ import anchor from '../../constants/anchor';
 
 import Title from '../../components/Title.svelte';
 import ScrollDown from '../../components/instructions/ScrollDown.svelte';
+import Ruler from '../../components/frames/class/Ruler.svelte';
 
 
 export default [
     {
-        id: 's6-bell',
+        id: 's6-ruler',
         x: 50,
         y: 26,
         anchor: anchor.center,
         width: 30,
         height: 30,
+        content: Ruler,
     },
 
     {

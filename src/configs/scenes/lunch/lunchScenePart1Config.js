@@ -3,6 +3,7 @@ import anchor from "../../../constants/anchor";
 
 import Title from "../../../components/Title.svelte";
 import ScrollDown from "../../../components/instructions/ScrollDown.svelte";
+import Bell from "../../../components/frames/lunch/Bell.svelte";
 
 export default [
     {
@@ -12,6 +13,7 @@ export default [
         anchor: anchor.center,
         width: 30,
         height: 30,
+        content: Bell,
     },
 
     {
