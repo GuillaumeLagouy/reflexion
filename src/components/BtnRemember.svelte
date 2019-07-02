@@ -5,10 +5,7 @@
     import {activeSceneNb} from '../stores/scenesStore';
 
     function handleClick(e){
-        console.log(e);
-
-        //activeSceneNb.update(n => n + 1);
-
+        activeSceneNb.update(n => n + 1);
     }
 
     function handleTouchstart(e) {
