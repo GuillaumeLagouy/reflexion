@@ -205,6 +205,5 @@ export default [
         id: 'end-scene',
         config: endSceneConfig,
         sequence: 13,
-
     }
 ]
