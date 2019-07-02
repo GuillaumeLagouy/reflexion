@@ -27,7 +27,7 @@ import endSceneConfig from './scenes/endSceneConfig';
 
 export default [
 
-    /*{
+    {
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
@@ -54,13 +54,13 @@ export default [
     {
         id: 'bus-scene',
         config: busSceneConfig,
-        sequence: 0,
+        sequence: 4,
     },
 
     {
         id: 'swimming-pool-scene',
         config: poolSceneConfig,
-        sequence: 0,
+        sequence: 5,
     },
 
     {
@@ -186,7 +186,7 @@ export default [
     {
         id: 'replay-pool',
         config: replayPoolSceneConfig,
-        sequence: 1,
+        sequence: 10,
     },
 
     {
@@ -200,7 +200,6 @@ export default [
         config: replayClassroomSceneConfig,
         sequence: 12,
     },
-    */
 
     {
         id: 'end-scene',
