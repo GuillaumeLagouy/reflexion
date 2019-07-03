@@ -1,6 +1,7 @@
 import TimelineMax from 'gsap/TimelineMax';
 import TweenMax from 'gsap';
 import { get } from 'svelte/store'
+import {Howl, Howler} from 'howler';
 
 import anchor from '../../constants/anchor';
 import {frameNumber} from '../../stores/frameStore';
@@ -28,7 +29,16 @@ export default [
             el.style.backgroundColor = 'white';
             const a = TweenMax.to(el, .05, {rotation: '2deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
 
+            const sound = new Howl({
+                src: ['./assets/mp3/AlarmClockRings.mp3'],
+                loop: true,
+                volume: 0.5,
+            });
+
+            sound.play();
+
             el.addEventListener('click', ()=>{
+                sound.stop();
                 TweenMax.to(el, .6, {opacity:0, display: 'none'});
                 a.kill();
                 frameNumber.update(n => n = 1);
@@ -56,9 +66,17 @@ export default [
                 if(value !== 1) return;
 
                 const tl = new TimelineMax();
-                tl.to(el, 1, {opacity: 1, display: 'block'});
-                tl.to(el, 1, {display: 'none', delay: 1.5, onComplete: () => {
-                    frameNumber.update(n => n = 2);
+                const sound = new Howl({
+                    src: ['./assets/mp3/Snoring.mp3'],
+                    loop: true,
+                    volume: 1,
+                });
+                tl.to(el, 1, {opacity: 1, display: 'block', onStart: () => {
+                    sound.play();
+                }});
+                tl.to(el, 1, {display: 'none', delay: 3, onComplete: () => {
+                    sound.stop();
+                    frameNumber.update(n => n + 1);
                 }});
             });
         }
@@ -82,11 +100,21 @@ export default [
 
             frameNumber.subscribe(value => {
                 if(value !== 2) return;
-                TweenMax.to(el, .1, {display: 'block', opacity: 1});
+
+                const sound = new Howl({
+                    src: ['./assets/mp3/AlarmClockRings.mp3'],
+                    loop: true,
+                    volume: 1,
+                });
+
+                TweenMax.to(el, .1, {display: 'block', opacity: 1, onStart: () => {
+                        sound.play();
+                }});
                 const a = TweenMax.to(el, .05, {rotation: '1deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
                 el.addEventListener('click', () => {
                     a.kill();
                     TweenMax.to(el, .3, {y: -150, rotation: 0});
+                    sound.stop();
                     frameNumber.update(n => n = 3);
                 })
             });
