@@ -70,7 +70,7 @@ export default [
             frameNumberClass.subscribe(value => {
                 if(value !== 2) return;
                 TweenMax.to(el, 1, {display: 'block', opacity: 1, onComplete: () => {
-                    frameNumberClass.update(n => n + 1);
+                    frameNumberClass.update(n => n = 3);
                 }});
             });
         }
@@ -131,7 +131,7 @@ export default [
                tl.to(el, 1, {visibility: 'visible', delay: 1});
                tl.to('#s6-alone', 1, {display: 'none'});
                setTimeout(() => {
-                   frameNumberClass.update(n => n + 1);
+                   frameNumberClass.update(n => n = 5);
                }, 2000);
                //tl.to('#class-scene-part2', 1, {opacity: 0, delay: 3});
             });
@@ -160,7 +160,7 @@ export default [
                 if(value !== 5) return;
                 TweenMax.to(el, 1, {display: 'block', delay: 9.5, onComplete: () => {
                     setTimeout(() => {
-                        activeSceneNb.update(n => n + 1);
+                        activeSceneNb.update(n => n = 9);
                     }, 1000)
                 }});
                 TweenMax.to('#s6-360', .2, {visibility: 'hidden', delay: 10});

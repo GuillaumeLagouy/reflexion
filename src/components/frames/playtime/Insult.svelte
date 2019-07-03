@@ -50,7 +50,7 @@
         const revealBubble = () => {
             const bubbleContainer = document.getElementById('small-bubble-container');
             addBubble(100, bubbleContainer, 300, 120, 50, () => {
-                frameNumberPlaytime.update(n => n + 1);
+                frameNumberPlaytime.update(n => n = 5);
             });
         };
     });

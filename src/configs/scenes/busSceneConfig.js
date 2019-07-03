@@ -90,7 +90,16 @@ export default [
                 opacity: '0',
                 visibility: "hidden"
             });
-            frameNumberBus.subscribe(value => value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1}) : null);
+            frameNumberBus.subscribe(value => value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1, onStart: () => {
+                /*
+                const sound = new Howl({
+                    src: ['./assets/mp3/BusStop.mp3']
+                });
+
+                sound.play();
+
+                */
+            }}) : null);
         }
     },
     {

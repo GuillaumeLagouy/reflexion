@@ -3,9 +3,39 @@ import Title from "../../../components/Title.svelte";
 import Time from "../../../components/Time.svelte";
 import TweenMax from "gsap";
 import {frameNumberPlaytime} from "../../../stores/frameStore";
+import {Howl, Howler} from 'howler';
 import ScrollDown from "../../../components/instructions/ScrollDown.svelte";
 
 export default [
+    {
+        id: 's4-sound',
+        x: 0,
+        y: 0,
+        anchor: anchor.topLeft,
+        width: 0,
+        height: 0,
+        callback: id =>{
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                backgroundImage: 'none',
+                webkitBorderImage: 'none',
+            });
+            const sound = new Howl({
+                src: ['./assets/mp3/Playtime.mp3'],
+                loop: true,
+                volume: 0.2,
+                fade: 0,
+            });
+            sound.play();
+
+            frameNumberPlaytime.subscribe(value => {
+                if(value !== 4) return;
+                sound.stop();
+            })
+        }
+    },
+
     {
         id: 's4-bell',
         x: 50,

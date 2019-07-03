@@ -15,9 +15,10 @@
             "Our goal is that the user sees themself through the monster, in order to bring them some reflection to help them take a step back about their complexes and accept themself.",
             "Finally, we wish to bring help to teenagers by leading them without judgement to an associative plateform in which they'll be able to express their thoughts.",
             "Start the experience",
-            "Developper",
-            "Developper",
-            "Website created for a student project"
+            "Team",
+            "Developer",
+            "Developer",
+            "This website was created to showcase a student project"
         ];
         textArray = document.querySelectorAll('.lang');
         textArray.forEach((text) => { textArrayFr.push(text.innerHTML); });
@@ -278,10 +279,10 @@
 </header>
 <section>
     <article id="about">
-        <p class="lang">La <strong>puberté</strong> est une période difficile dans la vie d’un jeune adolescent. Durant cette période, le jeune peut facilement tomber dans un mal être à cause de son rapport avec lui même et son apparence physique. </p>
-        <p class="lang"><strong>Réflexion</strong> est une histoire interactive contant la journée de collégien d’un jeune monstre dont sa <strong>différence</strong> avec les autres va l’affecter. </p>
-        <p class="lang">Notre objectif est ainsi de projeter l’utilisateur au travers du monstre, afin de lui apporter des pistes de reflexion pouvant l’aider à prendre du recul sur ses complexes et s’accepter pour tout ce qu’il est. </p>
-        <p class="lang"> Enfin, nous souhaitons apporter une aide aux adolescents en les guidant sans jugement vers une plateforme associative vers laquelle ils pourront s’exprimer. </p>
+        <p class="lang">La <strong>puberté</strong> est une période difficile dans la vie d’un jeune adolescent. Durant cette période, le jeune peut facilement tomber dans un mal être à cause de son rapport avec lui-même et son apparence physique.</p>
+        <p class="lang"><strong>Réflexion</strong> est une histoire interactive contant la journée de collégien d’un jeune monstre dont sa <strong>différence</strong> avec les autres va l’affecter.</p>
+        <p class="lang">Notre objectif est ainsi de projeter l’utilisateur au travers du monstre, afin de lui apporter des pistes de reflexion pouvant l’aider à prendre du recul sur ses complexes et s’accepter pour tout ce qu’il est.</p>
+        <p class="lang">Enfin, nous souhaitons apporter une aide aux adolescents en les guidant sans jugement vers une plateforme associative vers laquelle ils pourront s’exprimer.</p>
         <p id="start2">
             <button class="lang" on:click={start}>Jouer l'expérience</button>
         </p>
@@ -292,7 +293,7 @@
         <img src="./assets/png/about-page/illustration.png" id="illustration-tache" alt="Tache bleue"/>
     </article>
     <article id="team-presentation">
-        <h2>Équipe</h2>
+        <h2 class="lang">Équipe</h2>
         <div id="team">
             <div class="team-container">
                 <div class="illustration-container">

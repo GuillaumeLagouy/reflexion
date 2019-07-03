@@ -30,7 +30,7 @@ export default [
             frameNumberPlaytime.subscribe(value => {
                 if(value !== 1) return;
                 TweenMax.to(el, 1, {autoAlpha: 1, onComplete: () => {
-                    frameNumberPlaytime.update(n => n + 1);
+                    frameNumberPlaytime.update(n => n = 2);
                 }});
             })
         }
@@ -58,7 +58,7 @@ export default [
             frameNumberPlaytime.subscribe(value => {
                 if(value !== 2) return;
                 TweenMax.to(el, 1, {autoAlpha: 1, onComplete: () => {
-                    frameNumberPlaytime.update(n => n + 1);
+                    frameNumberPlaytime.update(n => n = 3);
                 }});
             })
         }
@@ -95,7 +95,7 @@ export default [
                           left: '-=300',
                           backgroundColor: 'white',
                           onComplete: () => {
-                              frameNumberPlaytime.update(n => n + 1);
+                              frameNumberPlaytime.update(n => n = 4);
                           }
                     }, 2)
                 });
