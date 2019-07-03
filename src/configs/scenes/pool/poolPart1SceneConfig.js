@@ -30,7 +30,7 @@ export default [
         width: 40,
         height: 10,
         content: Title,
-        title: 'COUR DE NATATION',
+        title: 'COURS DE NATATION',
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {

@@ -257,6 +257,7 @@
     }
 
     .bubble-0 li img {
+        width: 24%;
     }
 
     .carousel.container {
@@ -276,15 +277,21 @@
         top: 10%;
     }
 
+    .bubble:not(.bubble-0) ul {
+        width: 400%;
+    }
+
+    .bubble:not(.bubble-0) li img {
+        width: 29%;
+    }
+
     li {
         width: 100%;
         text-align: center;
         align-self: flex-end;
     }
 
-    li img {
-        width: 24%;
-    }
+
 
     .content {
         width: 60%;
@@ -306,7 +313,7 @@
     }
 
     .model {
-        height: 90%;
+        height: 80%;
         width: auto;
         position: absolute;
         left: 40%;

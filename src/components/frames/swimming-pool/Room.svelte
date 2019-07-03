@@ -127,6 +127,7 @@
         background-repeat: no-repeat;
         background-position: center;
         position: absolute;
+        background-color: white;
     }
 
     #mini-bulle-1, #mini-bulle-2, #mini-bulle-3 {
@@ -201,7 +202,7 @@
 
     li img {
         width: 25%;
-        margin-right: 14px;
+        margin-right: 10px;
     }
 
     .content {

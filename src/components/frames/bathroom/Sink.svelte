@@ -50,6 +50,7 @@
         z-index: 2;
         background: transparent;
         pointer-events: none;
+        left: 25px;
     }
     #mist {
         z-index: 3;

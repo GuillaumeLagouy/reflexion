@@ -70,6 +70,7 @@
 
     #about p {
         margin-top: 25px;
+        line-height: 25px;
     }
 
     #illustrations {
@@ -95,7 +96,7 @@
     h1 {
         width: 100%;
         background-image: url("./assets/png/about-page/header_tache.png");
-        background-size: 100%;
+        background-size: contain;
         background-position: left top;
         background-repeat: no-repeat;
         position: absolute;
@@ -234,7 +235,7 @@
 
     footer div:first-of-type {
         background-image: url("./assets/png/about-page/footer_tache.png");
-        background-size: 100%;
+        background-size: contain;
         background-repeat: no-repeat;
         width: 80%;
         background-position: bottom left;
