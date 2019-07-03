@@ -3,6 +3,7 @@
     import lottie from 'lottie-web';
     import {onMount} from 'svelte';
     import {activeSceneNb} from '../../../stores/scenesStore';
+    import {frameNumberHomePage} from '../../../stores/frameStore';
 
     let soundSrc = './assets/png/homepage/sound_on.png';
 
@@ -25,7 +26,9 @@
 
         setTimeout(function(){ trace.play(); }, 1700);
 
-        TweenMax.from('#start', 1, { autoAlpha: 0, y: 20, delay: 3});
+        TweenMax.from('#start', 1, { autoAlpha: 0, y: 20, delay: 3, onComplete: () => {
+            TweenMax.to('#sleep', 1, {display: 'block', opacity: 1, delay: .5});
+        }});
         TweenMax.to('#header', 1, { backgroundColor: "#FFF084", delay: 2.3 });
     });
 
@@ -50,8 +53,11 @@
     }
 
     function sound() {
-        if(soundSrc === './assets/png/homepage/sound_on.png') soundSrc = './assets/png/homepage/sound_off.png';
-        else soundSrc = './assets/png/homepage/sound_on.png';
+        soundSrc = soundSrc === './assets/png/homepage/sound_on.png'?'./assets/png/homepage/sound_off.png':soundSrc = './assets/png/homepage/sound_on.png';
+    }
+
+    function about() {
+        frameNumberHomePage.update(value => value = 1);
     }
 
 </script>
@@ -87,39 +93,17 @@
 
     #start button {
         font-family: "MikadoBold", sans-serif;
-        font-size: 20px;
+        font-size: 30px;
         text-transform: uppercase;
         background: none;
-        border: 2px solid black;
+        border: 7px solid white;
+        border-image: url('/assets/png/FrameBorder.png') 50 stretch;
+        -webkit-border-image: url('/assets/png/FrameBorder.png') 50 stretch;
         height: auto;
         padding: 15px;
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        transition: all 0.5s ease-in-out;
-    }
-
-    #start button:hover {
-        color: white;
-    }
-
-    #start button:after {
-        content: "";
-        width: 200%;
-        height: 200%;
-        transform: scale(0) translateX(-75%) translateY(-75%);
-        background: black;
-        position: absolute;
-        top: 100%;
-        left: 100%;
-        border-radius: 100%;
-        transform-origin: center;
-        transition: all 0.5s ease-in;
-        z-index: -1;
-    }
-
-    #start button:hover:after {
-        transform: scaleY(1) translateX(-75%) translateY(-75%);
     }
 
     nav {
@@ -140,6 +124,8 @@
         color: black;
         text-decoration: none;
         position: relative;
+        font-family: MikadoRegular, sans-serif;
+        font-size: 30px;
     }
 
     nav a:last-of-type:after {
@@ -162,18 +148,23 @@
 
     #sleep {
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 10%;
+        right: 10%;
+        display: none;
+        opacity: 0;
+    }
+    #sleep-img{
+        width: 400px;
     }
 </style>
 
 <header id="header">
     <nav>
         <a id="sound" on:click={sound}><img src={soundSrc} alt="Activer le son"/></a>
-        <a href="about.html">À propos</a>
+        <a on:click={about}>À propos</a>
     </nav>
     <div id="trace"></div>
     <div id="animation"></div>
     <div id="start"><button on:click={start}>Commencer</button></div>
-    <!-- <div id="sleep"><img src="./assets/animation/zzz.gif" alt="sleeping"/></div> -->
+    <div id="sleep"><img id="sleep-img" src="./assets/gif/Home_Zzz.gif" alt="sleeping"/></div>
 </header>

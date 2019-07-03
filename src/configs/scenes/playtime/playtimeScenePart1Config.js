@@ -1,5 +1,6 @@
 import anchor from "../../../constants/anchor";
 import Title from "../../../components/Title.svelte";
+import Time from "../../../components/Time.svelte";
 import TweenMax from "gsap";
 import {frameNumberPlaytime} from "../../../stores/frameStore";
 import ScrollDown from "../../../components/instructions/ScrollDown.svelte";
@@ -36,6 +37,25 @@ export default [
             const el = document.getElementById(id);
             Object.assign(el.style, {
                 border: 0,
+                webkitBorderImage: 'none',
+            });
+        }
+    },
+
+    {
+        id: 's4-time',
+        x: 50,
+        y: 60,
+        anchor: anchor.center,
+        width: 30,
+        height: 10,
+        content: Time,
+        time: '11 : 30',
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                borderImage: 'none',
                 webkitBorderImage: 'none',
             });
         }

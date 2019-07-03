@@ -5,6 +5,7 @@
     import Title from '../components/Title.svelte';
     import Maxim from '../components/Maxim.svelte';
     import BtnLink from '../components/BtnLink.svelte';
+    import Time from '../components/Time.svelte';
 
     export let config;
 
@@ -50,6 +51,10 @@
         <BtnLink>
             {config.link}
         </BtnLink>
+    {:else if config.time}
+        <Time>
+            {config.time}
+        </Time>
     {:else}
         <slot/>
     {/if}

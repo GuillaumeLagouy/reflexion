@@ -26,7 +26,7 @@ export default [
 
             el.style.transform = 'rotate(-2deg)';
             el.style.backgroundColor = 'white';
-            const a = TweenMax.to(el, .1, {rotation: '2deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
+            const a = TweenMax.to(el, .05, {rotation: '2deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
 
             el.addEventListener('click', ()=>{
                 TweenMax.to(el, .6, {opacity:0, display: 'none'});
@@ -56,8 +56,10 @@ export default [
                 if(value !== 1) return;
 
                 const tl = new TimelineMax();
-                tl.to(el, .5, {opacity: 1, display: 'block', delay: .5});
-                tl.to(el, .5, { display: 'none', delay: .5});
+                tl.to(el, 1, {opacity: 1, display: 'block'});
+                tl.to(el, 1, {display: 'none', delay: 1.5, onComplete: () => {
+                    frameNumber.update(n => n + 1);
+                }});
             });
         }
     },
@@ -79,12 +81,12 @@ export default [
             el.style.backgroundColor = 'white';
 
             frameNumber.subscribe(value => {
-                if(value !== 1) return;
-                TweenMax.to(el, .1, {display: 'block', delay: 2, opacity: 1});
-                const a = TweenMax.to(el, .1, {rotation: '1deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
+                if(value !== 2) return;
+                TweenMax.to(el, .1, {display: 'block', opacity: 1});
+                const a = TweenMax.to(el, .05, {rotation: '1deg', repeat: -1, delay: .3, ease: Back.easeIn, yoyo: true, yoyoEase: true});
                 el.addEventListener('click', () => {
                     a.kill();
-                    TweenMax.to(el, .3, {y: -85, rotation: 0});
+                    TweenMax.to(el, .3, {y: -150, rotation: 0});
                     frameNumber.update(n => n + 1);
                 })
             });
@@ -93,7 +95,7 @@ export default [
 
     {
         id: 'frame4',
-        x: 90,
+        x: 77,
         y: 75,
         anchor: anchor.bottomRight,
         width: 40,
@@ -107,7 +109,7 @@ export default [
             el.style.zIndex = 1;
 
             frameNumber.subscribe(value => {
-                if(value !== 2) return;
+                if(value !== 3) return;
 
                 TweenMax.to(el, 1, {display: 'block', opacity: 1, delay: .8});
             })
@@ -132,7 +134,7 @@ export default [
             el.style.backgroundColor = 'white';
 
             frameNumber.subscribe(value => {
-                if(value === 3) {
+                if(value === 4) {
                     TweenMax.to(el, 1, {display: 'block', opacity: 1, delay: 1})
                 }
             })
@@ -155,7 +157,7 @@ export default [
             el.style.zIndex = 3;
 
             frameNumber.subscribe(value => {
-                if(value === 3){
+                if(value === 4){
                     const tl = new TimelineMax();
                     tl.to(el, 1, {display: 'block', opacity: 1, delay: 2});
                     tl.to(el, 1, {x: 10, repeat: -1, yoyo:true});

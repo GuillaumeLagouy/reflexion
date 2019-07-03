@@ -1,11 +1,11 @@
 <script>
     import {onMount} from 'svelte';
+    import {activeSceneNb} from '../../../stores/scenesStore';
+    import TweenMax from 'gsap';
 
-    let titleSrc = './assets/png/bus/S2_FeedTitle.png';
-    let noLikeSrc = './assets/png/bus/S2_NoLike.png';
-    let noRetweetSrc = './assets/png/bus/S2_NoRetweet.png';
-    let likeSrc = './assets/png/bus/S2_Like.png';
-    let retweetSrc = './assets/png/bus/S2_Retweet.png';
+    let titleSrc = '/assets/png/bus/S2_FeedTitle.png';
+    let likeSrc = '/assets/png/bus/S2_NoLike.png';
+    let retweetSrc = '/assets/png/bus/S2_NoRetweet.png';
 
     onMount(() => {
         let yStart;
@@ -18,15 +18,11 @@
         const feed = document.querySelector('#social-media-feed');
         const lastPhoto = document.querySelectorAll('.feed')[4];
 
-        TweenMax.to(frame, 0, {autoAlpha: 1, delay: 25});
-        TweenMax.from(frame, 0.5, {yPercent: 50, rotation: -45, delay: 25});
-        TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 0.5, {autoAlpha: 0.4, delay: 25});
-
         function setActive(e, item) {
             const actions = item.querySelectorAll('.like, .retweet');
             actions.forEach((a) => {
                 if(e.touches[0].clientY - translate > item.offsetTop + a.offsetTop + feed.offsetTop - 50 && e.touches[0].clientY - translate < a.offsetTop + a.offsetHeight + feed.offsetTop + item.offsetTop && e.touches[0].clientX > a.offsetLeft + feed.offsetLeft + frame.offsetLeft + item.offsetLeft && e.touches[0].clientX < a.offsetWidth + a.offsetLeft + feed.offsetLeft + frame.offsetLeft + item.offsetLeft)
-                    a.src = a.classList.contains('like')?likeSrc:retweetSrc;
+                    a.src = a.classList.contains('like')?'/assets/png/bus/S2_Like.png':'/assets/png/bus/S2_Retweet.png';
             });
         }
 
@@ -39,21 +35,20 @@
 
         function move(e) {
             e.preventDefault();
-            if(yStart < e.touches[0].clientY && translate < 0) translate += 8;
-            else if(yStart > e.touches[0].clientY && translate > - maximumSize - 100) translate -= 8;
-            document.querySelectorAll('#social-media-feed .feed').forEach((item) => { item.style.transform = `translateY(${translate}px)`; });
-            if(translate < - maximumSize - 99) {
+            let feed5 = document.querySelectorAll('.publication')[4].src;
+            if (yStart < e.touches[0].clientY && translate < 0) translate += 8;
+            else if (yStart > e.touches[0].clientY && translate > -maximumSize - 100) translate -= 8;
+            document.querySelectorAll('#social-media-feed .feed').forEach((item) => {
+                item.style.transform = `translateY(${translate}px)`;
+            });
+            if (translate < -maximumSize - 99) {
+                console.log('test');
                 const width = lastPhoto.querySelector('.publication').offsetWidth;
                 const height = lastPhoto.querySelector('.publication').offsetHeight;
                 phone.removeEventListener('touchmove', move);
-                TweenMax.to(frame, 1, {borderWidth: 8, width: width, height: height, left: lastPhoto.offsetLeft + frame.offsetLeft + feed.offsetLeft, top: lastPhoto.offsetTop + feed.offsetTop + translate + 100, delay: 1});
-                TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 1, {autoAlpha: 0, delay: 1});
-                TweenMax.to('#phone, #phone-hitbox, #hand, #navbar, #social-media-feed', 0, {autoAlpha: 0, delay: 1});
-                TweenMax.to('.scene-container', 4, {height: "100vh", delay: 1});
-                TweenMax.to(frame, 0, {backgroundImage: 'url("./assets/png/bus/S2_Feed5.png")', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: '100%', delay: 1});
-                TweenMax.to(frame, 1, {position: 'absolute', left: `calc(50% - ${width / 2}px)`, top: `calc(50% - ${height / 2}px)`, delay: 3});
-                TweenMax.to(frame, 1, {backgroundImage: 'url("./assets/png/bus/S2_Pool.png")', delay: 4});
-                TweenMax.to(frame, 1, {transformOrigin: 'center', scale: 2,  delay: 5});
+                TweenMax.to('#bus-scene', .5, {opacity: 0, onComplete: () => {
+                        activeSceneNb.update(n => n = 5);
+                }});
             }
         }
     });
@@ -61,7 +56,7 @@
 
 <style>
     #phone {
-        background-image: url("./assets/png/bus/S2_CellPhone.png");
+        background-image: url("/assets/png/bus/S2_CellPhone.png");
         background-repeat: no-repeat;
         background-position: bottom;
         background-size: 100%;
@@ -70,7 +65,7 @@
     }
 
     #hand {
-        background-image: url("./assets/png/bus/S2_CellPhoneHand.png");
+        background-image: url("/assets/png/bus/S2_CellPhoneHand.png");
         background-repeat: no-repeat;
         background-position: bottom;
         background-size: 100%;
@@ -83,21 +78,21 @@
     #phone-hitbox {
         position: absolute;
         width: 47%;
-        height: 56%;
-        top: 26%;
+        height: 63%;
+        top: 17%;
         left: 21%;
     }
 
     #navbar {
-        background-image: url("./assets/png/bus/S2_FeedTop.png");
+        background-image: url("/assets/png/bus/S2_FeedTop.png");
         background-position: top;
         background-repeat : no-repeat;
         background-size: 100%;
         position: absolute;
-        width: 46%;
+        width: 46.5%;
         height: 10%;
-        top: 26.2%;
-        left: 21.5%;
+        top: 17.2%;
+        left: 21.2%;
     }
 
     #social-media-feed {
@@ -105,8 +100,8 @@
         background-color: white;
         position: absolute;
         width: calc(46% + 2px);
-        height: calc(50% + 11px);
-        top: 26%;
+        height: 57%;
+        top: calc(17% + 4px);
         left: calc(21% + 2px);
         display: flex;
         overflow: hidden;
@@ -115,16 +110,19 @@
 
     #social-media-feed .feed {
         width: 90%;
+        min-height: min-content;
         margin-left: 5%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: baseline;
         transform: translate(0);
     }
 
     .publication {
         border: 3px solid black;
         width: 100%;
+        height: auto;
     }
 
     #social-media-feed img:first-of-type:not(.like) {
@@ -146,42 +144,42 @@
 <div id="social-media-feed">
     <div class="feed">
         <img src={titleSrc} alt=""/>
-        <img class="publication" src="./assets/png/bus/S2_Feed1.png" alt=""/>
+        <img class="publication" src="/assets/png/bus/S2_Feed1.png" alt=""/>
         <div>
-            <img class="like" src={noLikeSrc} alt=""/>
-            <img class="retweet" src={noRetweetSrc} alt=""/>
+            <img class="like" src={likeSrc} alt=""/>
+            <img class="retweet" src={retweetSrc} alt=""/>
         </div>
     </div>
     <div class="feed">
         <img src={titleSrc} alt=""/>
-        <img class="publication" src="./assets/png/bus/S2_Feed2.png" alt=""/>
+        <img class="publication" src="/assets/png/bus/S2_Feed2.png" alt=""/>
         <div>
-            <img class="like" src={noLikeSrc} alt=""/>
-            <img class="retweet" src={noRetweetSrc} alt=""/>
+            <img class="like" src={likeSrc} alt=""/>
+            <img class="retweet" src={retweetSrc} alt=""/>
         </div>
     </div>
     <div class="feed">
         <img src={titleSrc} alt=""/>
-        <img class="publication" src="./assets/png/bus/S2_Feed3.png" alt=""/>
+        <img class="publication" src="/assets/png/bus/S2_Feed3.png" alt=""/>
         <div>
-            <img class="like" src={noLikeSrc} alt=""/>
-            <img class="retweet" src={noRetweetSrc} alt=""/>
+            <img class="like" src={likeSrc} alt=""/>
+            <img class="retweet" src={retweetSrc} alt=""/>
         </div>
     </div>
     <div class="feed">
         <img src={titleSrc} alt=""/>
-        <img class="publication" src="./assets/png/bus/S2_Feed4.png" alt=""/>
+        <img class="publication" src="/assets/png/bus/S2_Feed4.png" alt=""/>
         <div>
-            <img class="like" src={noLikeSrc} alt=""/>
-            <img class="retweet" src={noRetweetSrc} alt=""/>
+            <img class="like" src={likeSrc} alt=""/>
+            <img class="retweet" src={retweetSrc} alt=""/>
         </div>
     </div>
     <div class="feed">
         <img src={titleSrc} alt=""/>
-        <img class="publication" src="./assets/png/bus/S2_Feed5.png" alt=""/>
+        <img class="publication" src="/assets/png/bus/S2_Feed5.png" alt=""/>
         <div>
-            <img class="like" src={noLikeSrc} alt=""/>
-            <img class="retweet" src={noRetweetSrc} alt=""/>
+            <img class="like" src={likeSrc} alt=""/>
+            <img class="retweet" src={retweetSrc} alt=""/>
         </div>
     </div>
 </div>

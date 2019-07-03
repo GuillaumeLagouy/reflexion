@@ -8,6 +8,7 @@ import Tap from '../../components/frames/bathroom/Tap.svelte';
 import Sink from '../../components/frames/bathroom/Sink.svelte';
 import Mirror from '../../components/frames/bathroom/Mirror.svelte';
 import BtnNext from '../../components/frames/wakeup/BtnNext.svelte';
+import TimelineMax from "gsap/TimelineMax";
 
 export default [
     {
@@ -30,11 +31,10 @@ export default [
 
     {
         id: 'tap',
-        x: 75,
+        x: 85,
         y: 90,
-        square: true,
-        width: 15,
-        height: 15,
+        width: 30,
+        height: 20,
         anchor: anchor.bottomRight,
         content: Tap,
         callback: (id) => {
@@ -67,7 +67,11 @@ export default [
 
             frameNumberBathroom.subscribe(value => {
                 if(value === 1) {
-                    TweenMax.to(el, 1, {opacity: 1});
+                    TweenMax.from(el, .5, {scale: 1.4});
+                    TweenMax.to(el, .5, {opacity: 1, onComplete: () => {
+                        TweenMax.to('#shower', .5, {y: '-=300px', rotation: '5deg', opacity: 0});
+                        TweenMax.to('#tap', .5, {x: '+=300px', rotation: '-2deg', opacity: 0});
+                    }});
                     setTimeout(() => {
                         frameNumberBathroom.update(n => n + 1);
                     }, 10000);
@@ -89,13 +93,14 @@ export default [
 
             Object.assign(el.style, {
                 display: 'none',
-                opacity: 1,
+                opacity: 0,
                 zIndex: 4,
                 backgroundColor: 'white',
             });
 
             frameNumberBathroom.subscribe(value => {
                 if(value === 2) {
+                    TweenMax.from(el, 1, {scale: .5});
                     TweenMax.to(el, 1, {display: 'block', opacity: 1});
                     frameNumberBathroom.update(n => n + 1);
                 }
@@ -108,20 +113,24 @@ export default [
         x: 90,
         y: 90,
         anchor: anchor.bottomRight,
-        width: 20,
-        height: 10,
+        width: 15,
+        height: 8,
         content: BtnNext,
         callback: id => {
             const el = document.getElementById(id);
 
             Object.assign(el.style, {
+                backgroundColor: 'white',
                 display: 'none',
                 opacity: 0,
                 zIndex: 5,
             });
 
             frameNumberBathroom.subscribe(value => {
-                if(value === 3) TweenMax.to(el, 1, {display: 'block', opacity: 1});
+                if(value !== 3) return;
+                const tl = new TimelineMax();
+                tl.to(el, 1, {display: 'block', opacity: 1, delay: 2});
+                tl.to(el, 1, {x: 10, repeat: -1, yoyo:true});
             });
         },
     }

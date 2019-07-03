@@ -8,8 +8,12 @@
           backgroundPosition: '2683px 0px',
           ease: Linear.easeNone
         });
-        TweenMax.to('.scene-container', 4, { height: '150vh', delay: 21 });
-        frameNumberBus.update(n => n = 4);
+        frameNumberBus.subscribe( (value) => {
+            if(value !== 3) return;
+            TweenMax.to('.scene-container', 4, { height: '150vh', onComplete: () => {
+                frameNumberBus.update(n => n = 4);
+            }});
+        });
     });
 </script>
 
@@ -18,7 +22,7 @@
         width: 110%;
         height: 100%;
         position: absolute;
-        background-image: url("./assets/png/bus/S2_BackgroundLoop.png");
+        background-image: url("/assets/png/bus/S2_BackgroundLoop.png");
         transform: rotate(-12deg);
         top: -3%;
         left: -5%;
@@ -28,7 +32,7 @@
 
     #bus-int {
         background-size: 100%;
-        background-image: url("./assets/png/bus/S2_BusIntBg.png");
+        background-image: url("/assets/png/bus/S2_BusIntBg.png");
         width: 100%;
         height: 100%;
         position: absolute;

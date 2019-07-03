@@ -1,5 +1,5 @@
 <script>
-    let src = '/assets/gif/S1_Alarmclock_1.gif';
+    let src = '/assets/gif/S1_Alarmclock_2.gif';
 </script>
 
 <style>
@@ -13,7 +13,7 @@
     }
 
     img{
-        height: 95%;
+        height: 150%;
     }
 </style>
 

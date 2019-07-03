@@ -1,10 +1,10 @@
 <script>
     import { onMount } from 'svelte'
 
-    let src = '/assets/gif/S1_Alarmclock_2.gif';
+    let src = '/assets/gif/S1_Alarmclock_1.gif';
 
     function stopGif(){
-        src = '/assets/png/S1_Alarmclock_2.png';
+        src = '/assets/png/S1_Alarmclock_1.png';
     }
 
     onMount(() => {
@@ -27,7 +27,7 @@
     }
 
     img{
-        height: 130%;
+        height: 118%;
     }
 </style>
 

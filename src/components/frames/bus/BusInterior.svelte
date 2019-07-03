@@ -2,20 +2,11 @@
     import {frameNumberBus} from '../../../stores/frameStore';
     import {onMount} from 'svelte';
 
-    let row0Src = './assets/png/bus/S2_Row0.png';
-    let row1Src = './assets/png/bus/S2_Row1.png';
-    let row2Src = './assets/png/bus/S2_Row2.png';
-    let row3Src = './assets/png/bus/S2_Row3.png';
-    let row4Src = './assets/png/bus/S2_Row4.png';
-    let row5Src = './assets/png/bus/S2_Row5.png';
-    let row6Src = './assets/png/bus/S2_Row6.png';
-    let row7Src = './assets/png/bus/S2_Row7.png';
-    let floorSrc = './assets/png/bus/S2_Floor.png';
-    let backgroundSrc = './assets/png/bus/S2_BusBg.png';
-
     onMount(() => {
-        TweenMax.to('#bus-interior', 4, { yPercent: 45, delay: 15 });
-        frameNumberBus.update(n => n = 3);
+        frameNumberBus.subscribe( value => {
+            if(value !== 2) return;
+            TweenMax.to('#bus-interior', 4, { yPercent: 45, onComplete: () => frameNumberBus.update(n => n = 3) });
+        });
     });
 </script>
 
@@ -33,9 +24,8 @@
     }
 
     #bus-floor {
-        bottom: 28%;
-        height: 104%;
-        width: auto;
+        bottom: 24%;
+        width: 18%;
         left: 41%;
     }
 
@@ -84,14 +74,14 @@
 </style>
 
 <div id="bus-interior">
-    <img id="bus-bg" src={backgroundSrc} alt=""/>
-    <img id="bus-floor" src={floorSrc} alt=""/>
-    <img id="bus-row-7" src={row7Src} alt=""/>
-    <img id="bus-row-6" src={row6Src} alt=""/>
-    <img id="bus-row-5" src={row5Src} alt=""/>
-    <img id="bus-row-4" src={row4Src} alt=""/>
-    <img id="bus-row-3" src={row3Src} alt=""/>
-    <img id="bus-row-2" src={row2Src} alt=""/>
-    <img id="bus-row-1" src={row1Src} alt=""/>
-    <img id="bus-row-0" src={row0Src} alt=""/>
+    <img id="bus-bg" src="/assets/png/bus/S2_BusBg.png" alt=""/>
+    <img id="bus-floor" src="/assets/png/bus/S2_Floor.png" alt=""/>
+    <img id="bus-row-7" src="/assets/png/bus/S2_Row7.png" alt=""/>
+    <img id="bus-row-6" src="/assets/png/bus/S2_Row6.png" alt=""/>
+    <img id="bus-row-5" src="/assets/png/bus/S2_Row5.png" alt=""/>
+    <img id="bus-row-4" src="/assets/png/bus/S2_Row4.png" alt=""/>
+    <img id="bus-row-3" src="/assets/png/bus/S2_Row3.png" alt=""/>
+    <img id="bus-row-2" src="/assets/png/bus/S2_Row2.png" alt=""/>
+    <img id="bus-row-1" src="/assets/png/bus/S2_Row1.png" alt=""/>
+    <img id="bus-row-0" src="/assets/png/bus/S2_Row0.png" alt=""/>
 </div>

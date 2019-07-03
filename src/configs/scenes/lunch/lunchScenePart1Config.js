@@ -2,7 +2,9 @@ import TweenMax from "gsap";
 import anchor from "../../../constants/anchor";
 
 import Title from "../../../components/Title.svelte";
+import Time from "../../../components/Time.svelte";
 import ScrollDown from "../../../components/instructions/ScrollDown.svelte";
+import Bell from "../../../components/frames/lunch/Bell.svelte";
 
 export default [
     {
@@ -12,6 +14,7 @@ export default [
         anchor: anchor.center,
         width: 30,
         height: 30,
+        content: Bell,
     },
 
     {
@@ -38,6 +41,25 @@ export default [
                     TweenMax.to(lane1, 1, { opacity: 0});
                     TweenMax.to(el, 1, { opacity: 1});
                 }
+            });
+        }
+    },
+
+    {
+        id: 's5-time',
+        x: 50,
+        y: 60,
+        anchor: anchor.center,
+        width: 30,
+        height: 10,
+        content: Time,
+        time: '12 : 00',
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
             });
         }
     },

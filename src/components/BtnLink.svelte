@@ -9,8 +9,8 @@
     }
 
     p{
-        font-family: MikadoRegular, sans-serif;
-        font-size: 20px;
+        font-family: MikadoBold, sans-serif;
+        font-size: 30px;
     }
 </style>
 

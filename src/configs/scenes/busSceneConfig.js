@@ -1,20 +1,25 @@
 import anchor from '../../constants/anchor';
+
 import BusCellPhone from '../../components/frames/bus/BusCellPhone.svelte';
 import BusInterior from '../../components/frames/bus/BusInterior.svelte';
 import BusMonster from '../../components/frames/bus/BusMonster.svelte';
 import BusStop from '../../components/frames/bus/BusStop.svelte';
 import Clock from '../../components/frames/bus/Clock.svelte';
+
 import TweenMax from 'gsap';
+
 import {frameNumberBus} from '../../stores/frameStore';
-import {activeSceneNb} from "../../stores/scenesStore";
+import {activeSceneNb} from '../../stores/scenesStore';
+import Title from "../../components/Title.svelte";
+import Time from "../../components/Time.svelte";
 
 export default [
     {
         id: 'scene2-frame1',
         x: 50,
         y: 35,
-        width: 35,
-        height: 35,
+        width: 20,
+        height: 20,
         square: true,
         content: Clock,
         anchor: anchor.center,
@@ -24,10 +29,53 @@ export default [
                 opacity: '0',
                 visibility: 'hidden'
             });
-            TweenMax.from(el, 1, {yPercent: 100});
             TweenMax.to(el, 1, {autoAlpha: 1});
+            TweenMax.from(el, 1, {yPercent: 100});
+            frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {autoAlpha: 0}) : null);
         }
     },
+    {
+        id: 's2-title',
+        x: 50,
+        y: 65,
+        anchor: anchor.center,
+        width: 30,
+        height: 10,
+        content: Title,
+        title: 'LE CAR SCOLAIRE',
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                webkitBorderImage: 'none',
+                zIndex: 1
+            });
+            TweenMax.from(el, 1, {yPercent: 100, autoAlpha: 0});
+            frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {yPercent: -100, autoAlpha: 0}) : null);
+        }
+    },
+
+    {
+        id:'s2-time',
+        x: 50,
+        y: 73,
+        anchor: anchor.center,
+        width: 30,
+        height: 10,
+        content: Time,
+        time: "7 : 00",
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                border: 0,
+                webkitBorderImage: 'none',
+                zIndex: 1
+            });
+            TweenMax.from(el, 1, {yPercent: 100, autoAlpha: 0});
+            frameNumberBus.subscribe(value => value !== 0 ? TweenMax.to(el, 1, {yPercent: -100, autoAlpha: 0}) : null);
+        }
+    },
+
     {
         id: 'scene2-frame2',
         x: 50,
@@ -42,9 +90,7 @@ export default [
                 opacity: '0',
                 visibility: "hidden"
             });
-            frameNumberBus.subscribe(value => {
-                value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 6.2}) : null;
-            });
+            frameNumberBus.subscribe(value => value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1}) : null);
         }
     },
     {
@@ -59,12 +105,9 @@ export default [
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
                 opacity: '0',
-                visibility: 'hidden',
-                background: 'white',
+                visibility: 'hidden'
             });
-            frameNumberBus.subscribe(value => {
-                value === 2 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 14}) : null;
-            });
+            frameNumberBus.subscribe(value => value === 2 ? TweenMax.to(el, 1, {autoAlpha: 1}) : null);
         }
     },
     {
@@ -79,19 +122,12 @@ export default [
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
                 opacity: '0',
-                visibility: 'hidden',
-                background: 'white',
+                visibility: 'hidden'
             });
-            frameNumberBus.subscribe(value => {
-                value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 21, onComplete: () => {
-                    setTimeout(() => {
-                        activeSceneNb.update(n => n + 1);
-                    }, 4000)
-                }}) : null;
-            });
+            frameNumberBus.subscribe(value => value === 3 ? TweenMax.to(el, 1, {autoAlpha: 1}) : null);
         }
     },
-    /*
+
     {
         id: 'scene2-frame5',
         x: 100,
@@ -105,10 +141,20 @@ export default [
             Object.assign(el.style, {
                 opacity: '0',
                 visibility: 'hidden',
-                borderWidth: '0',
+                border: 0,
+                webkitBorderImage: 'none',
                 position: 'fixed',
-                zIndex: '1'
+                zIndex: '1',
+                bottom: '0',
+                top: 'auto'
+            });
+            frameNumberBus.subscribe(value => {
+                if (value === 4) {
+                    TweenMax.to(el, 0, {autoAlpha: 1});
+                    TweenMax.from(el, 0.5, {yPercent: 50, rotation: -45});
+                    TweenMax.to('#scene2-frame2, #scene2-frame3, #scene2-frame4', 0.5, {autoAlpha: 0.4});
+                } else TweenMax.to(el, 0, {autoAlpha: 0});
             });
         }
-    },*/
+    },
 ];

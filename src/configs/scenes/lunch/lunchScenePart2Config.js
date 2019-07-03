@@ -5,12 +5,13 @@ import {frameNumberLunch} from "../../../stores/frameStore";
 import TweenMax from "gsap";
 import Eat from "../../../components/frames/lunch/Eat.svelte";
 import BtnNext from "../../../components/frames/wakeup/BtnNext.svelte";
+import TimelineMax from "gsap/TimelineMax";
 
 export default [
     {
         id: 's5-lane-1',
-        x: 16,
-        y: 20,
+        x: 19,
+        y: 14,
         anchor: anchor.topLeft,
         width: 42,
         height: 35,
@@ -32,8 +33,8 @@ export default [
 
     {
         id: 's5-lane-2',
-        x: 79,
-        y: 23.5,
+        x: 82,
+        y: 17.5,
         anchor: anchor.topRight,
         width: 20,
         height: 35,
@@ -63,7 +64,7 @@ export default [
     {
         id: 's5-eat',
         x: 25,
-        y: 90,
+        y: 84,
         anchor: anchor.bottomLeft,
         width: 25,
         height: 25,
@@ -81,7 +82,9 @@ export default [
                 if(value !== 3) return;
                 TweenMax.to(el, 1, {delay: 1, display: 'block', opacity: 1, onComplete: () => {
                         const btnNext = document.getElementById('s5-next');
-                        TweenMax.to(btnNext, 1, {display: 'block', opacity: 1, delay: .5});
+                        const tl = new TimelineMax();
+                        tl.to(btnNext, 1, {display: 'block', opacity: 1, delay: 1});
+                        tl.to(btnNext, 1, {x: 10, repeat: -1, yoyo:true});
                     }})
             });
         }
@@ -92,8 +95,8 @@ export default [
         x: 90,
         y: 90,
         anchor: anchor.bottomRight,
-        width: 20,
-        height: 10,
+        width: 15,
+        height: 8,
         content: BtnNext,
         callback: id => {
             const el = document.getElementById(id);

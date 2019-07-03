@@ -9,7 +9,7 @@
 
     onMount(() => {
         frameNumberPool.subscribe(value => {
-            if (value !== 4) return;
+            if (value !== 5) return;
             TweenMax.to('#bus', 4, {left: '100%', onComplete: goToPlaytimeScene});
             TweenMax.to('#bus', .3, {y: -8, repeat: -1, yoyo: true, yoyoEase: true});
             TweenMax.to('#front-wheel, #rear-wheel', 1, {rotation: 360, repeat: -1});

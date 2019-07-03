@@ -21,7 +21,7 @@
         const swipe = new Hammer(document.querySelector('#pool'));
         swipe.on('swipe', function(ev) {
         	if(ev.deltaX > 0) return;
-            monsterX += ev.distance / 5;
+            monsterX += ev.distance / 2;
             waterX += 60;
             TweenMax.to('#swimming-monster', 0.25, {bottom: 5});
             TweenMax.to('#swimming-monster', 0.25, {bottom: -15, delay: 0.25});

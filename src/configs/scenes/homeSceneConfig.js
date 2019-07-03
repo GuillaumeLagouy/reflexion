@@ -30,7 +30,8 @@ export default [
                 backgroundImage: 'none',
                 webkitBorderImage: 'none',
             });
-            TweenMax.to(el, 2, {autoAlpha: 1, onComplete: () => {
+            TweenMax.from(el, 3, {scale: .4});
+            TweenMax.to(el, 3, {autoAlpha: 1, delay: 1, onComplete: () => {
                 frameNumberHome.update(n => n + 1);
             }});
         },
@@ -79,7 +80,7 @@ export default [
             });
             frameNumberHome.subscribe(value => {
                 if(value !== 3) return;
-                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 1, onComplete: () => {
+                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 2, onComplete: () => {
                         frameNumberHome.update(n => n + 1);
                 }});
             });
@@ -104,10 +105,8 @@ export default [
             });
             frameNumberHome.subscribe(value => {
                 if(value !== 5) return;
-                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 1, onComplete: () => {
-                        frameNumberHome.update(n => n + 1);
-                        // ⚠️ L'update est récupéré dans le composant Bathroom puis réenvoyé dans le config,
-                        // Pour le dev' je récupère directement cette update.
+                TweenMax.to(el, 1, {autoAlpha: 1, rotation: '-4deg', delay: 1.5, onComplete: () => {
+                    frameNumberHome.update(n => n + 1);
                 }});
             })
         },
@@ -118,7 +117,7 @@ export default [
         x: 50,
         y: 45,
         anchor: anchor.center,
-        width: 50,
+        width: 40,
         height: 75,
         content: Mirror,
         callback: id => {
@@ -128,24 +127,27 @@ export default [
                 opacity: 0,
                 backgroundColor: 'white',
                 zIndex: 4,
+                border: 0,
+                backgroundImage: 'none',
+                webkitBorderImage: 'none',
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 6) return;
+                if(value !== 7) return;
                 const school = document.getElementById('s7-school');
                 const house = document.getElementById('s7-house');
                 const bathroom = document.getElementById('s7-bathroom');
                 const stain = document.getElementById('s7-stain');
 
-                TweenMax.from(el, 1, {scale: 1.1});
-                TweenMax.to(el, 1, {autoAlpha: 1});
+                TweenMax.from(el, 1, {scale: 1.1, delay: 1});
+                TweenMax.to(el, 1, {autoAlpha: 1, delay: 1});
 
-                const tl = new TimelineMax({delay: 0.5, onComplete: () => {
+                const tl = new TimelineMax({delay: 1, onComplete: () => {
                     frameNumberHome.update(n => n + 1);
                 }});
-                tl.to(school, 0.5, {x: '-= 500px', autoAlpha: 0}, 0)
-                    .to(house, 0.5, {x: '+= 500px', autoAlpha: 0}, 0)
-                    .to(bathroom, 0.5, {x: '-= 500px', autoAlpha: 0}, 0)
-                    .to(stain, 0.5, {scale: 0.5, autoAlpha: 0}, 0);
+                tl.to(school, 2, {x: '-= 500px', autoAlpha: 0}, 0)
+                    .to(house, 2, {x: '+= 500px', autoAlpha: 0}, 0)
+                    .to(bathroom, 2, {x: '-= 500px', autoAlpha: 0}, 0)
+                    .to(stain, .2, {scale: 0.5, autoAlpha: 0}, 0);
             });
         },
     },
@@ -168,8 +170,8 @@ export default [
                 zIndex: 5,
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 7) return;
-                const tl = new TimelineMax({delay: 2, onComplete: () => {
+                if(value !== 8) return;
+                const tl = new TimelineMax({delay: 3, onComplete: () => {
                     frameNumberHome.update(n => n + 1);
                 }});
                 tl.from(el, 1, {x: '-=200px'}, 0)
@@ -184,7 +186,7 @@ export default [
         y: 92,
         anchor: anchor.center,
         width: 25,
-        height: 10,
+        height: 8,
         content: BtnRemember,
         callback: id => {
             const el = document.getElementById(id);
@@ -195,11 +197,12 @@ export default [
                 borderImage: 'none',
                 webkitBorderImage: 'none',
                 zIndex: 6,
+                overflow: 'visible',
             });
             frameNumberHome.subscribe(value => {
-                if(value !== 8) return;
-                TweenMax.from(el, 0.5, {y: '+=100px'});
-                TweenMax.to(el, 0.5, {autoAlpha: 1});
+                if(value !== 9) return;
+                TweenMax.from(el, 0.5, {y: '+=100px', delay: 2});
+                TweenMax.to(el, 0.5, {autoAlpha: 1, delay: 2});
             });
         },
     }

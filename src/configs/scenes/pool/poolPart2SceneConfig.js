@@ -1,13 +1,39 @@
-import anchor from '../../constants/anchor';
+import anchor from '../../../constants/anchor';
 import TweenMax from 'gsap';
-import {frameNumberPool} from '../../stores/frameStore';
-import ChangingRooms from '../../components/frames/swimming-pool/ChangingRooms.svelte';
-import Room from '../../components/frames/swimming-pool/Room.svelte';
-import Next from '../../components/Next.svelte';
-import Bus from '../../components/frames/swimming-pool/Bus.svelte';
-import SwimmingMonster from '../../components/frames/swimming-pool/SwimmingMonster.svelte';
+import {frameNumberPool} from '../../../stores/frameStore';
+import ChangingRooms from '../../../components/frames/swimming-pool/ChangingRooms.svelte';
+import Room from '../../../components/frames/swimming-pool/Room.svelte';
+import Next from '../../../components/frames/swimming-pool/Next.svelte';
+import Bus from '../../../components/frames/swimming-pool/Bus.svelte';
+import Question from '../../../components/frames/swimming-pool/Question.svelte';
+import SwimmingMonster from '../../../components/frames/swimming-pool/SwimmingMonster.svelte';
+import TimelineMax from "gsap/TimelineMax";
 
 export default [
+    {
+        id: 'scene3-question',
+        x: 50,
+        y: 20,
+        anchor: anchor.center,
+        content: Question,
+        width: 50,
+        height: 8,
+        callback: id => {
+            const el = document.getElementById(id);
+            Object.assign(el.style, {
+                opacity: 0,
+                visibility: 'hidden',
+                border: 0,
+                borderImage: 'none',
+                webkitBorderImage: 'none',
+            });
+            frameNumberPool.subscribe(value => {
+                if(value !== 1) return;
+                TweenMax.to(el, 1, {autoAlpha: 1});
+            })
+        }
+    },
+
     {
         id: 'scene3-frame1',
         x: 50,
@@ -20,13 +46,9 @@ export default [
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
                 opacity: "0",
-                visibility: "hidden"
+                visibility: "hidden",
             });
-            TweenMax.from(el, 1, {top: "100%"});
-            TweenMax.to(el, 1, {autoAlpha: 1});
-            frameNumberPool.subscribe(value => {
-                if (value !== 0) TweenMax.to(el, 0, {autoAlpha: 0, delay: 1});
-            });
+            frameNumberPool.subscribe(value => value === 1 ? TweenMax.to(el, 1, {autoAlpha: 1}) : TweenMax.to(el, 0, {autoAlpha: 0, delay: 1}));
         }
     },
 
@@ -46,33 +68,30 @@ export default [
                 backgroundColor: "white",
             });
             frameNumberPool.subscribe(value => {
-                if(value === 1) TweenMax.to(el, 0.2, {autoAlpha: 1});
+                if (value === 2) TweenMax.to(el, 0.2, {autoAlpha: 1});
             });
         }
     },
     {
         id: 'scene3-frame3',
-        x: 90,
+        x: 85,
         y: 90,
         width: 15,
-        height: 10,
+        height: 8,
         anchor: anchor.center,
         content: Next,
         callback: (id) => {
             const el = document.querySelector(`#${id}`);
             Object.assign(el.style, {
-                opacity: "0",
-                visibility: "hidden",
-                backgroundColor: "white",
+                backgroundColor: 'white',
+                display: 'none',
                 zIndex: "1"
             });
             frameNumberPool.subscribe(value => {
-               value === 2? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}):null;
-            });
-            el.addEventListener('touchstart', function () {
-                frameNumberPool.update(n => n = 3);
-                TweenMax.to('#scene3-frame2', 1, {autoAlpha: 0, delay: 1});
-                TweenMax.to(el, 1, {autoAlpha: 0, delay: 1.1});
+                if(value !== 3) return;
+                const tl = new TimelineMax();
+                tl.to(el, 1, {display: 'block', opacity: 1, delay: 2});
+                tl.to(el, 1, {x: 10, repeat: -1, yoyo:true});
             });
         }
     },
@@ -91,8 +110,10 @@ export default [
                 visibility: "hidden",
             });
             frameNumberPool.subscribe(value => {
-                if(value !== 3) TweenMax.to(el, 2, {autoAlpha: 0});
-                else TweenMax.to(el, 1, {autoAlpha: 1, delay: 2.1});
+                value === 4 ? TweenMax.to(el, 1, {autoAlpha: 1, delay: 1.1}) : TweenMax.to(el, 1, {
+                    autoAlpha: 0,
+                    delay: 1.1
+                });
             });
         }
     },
@@ -109,13 +130,14 @@ export default [
             Object.assign(el.style, {
                 opacity: "0",
                 visibility: "hidden",
-                border: "transparent",
+                border: 0,
+                webkitBorderImage: 'none',
                 zIndex: "1"
             });
             frameNumberPool.subscribe(value => {
-                if (value !== 4) return;
+                if (value !== 5) return;
                 TweenMax.to(el, 0, {autoAlpha: 1});
             });
         }
-    }
+    },
 ];
