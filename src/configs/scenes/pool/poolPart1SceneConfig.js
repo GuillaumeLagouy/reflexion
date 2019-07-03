@@ -45,7 +45,7 @@ export default [
     {
         id: 's3-time',
         x: 50,
-        y: 58,
+        y: 56,
         anchor: anchor.center,
         width: 30,
         height: 10,

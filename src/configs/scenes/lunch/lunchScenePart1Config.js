@@ -48,7 +48,7 @@ export default [
     {
         id: 's5-time',
         x: 50,
-        y: 60,
+        y: 56,
         anchor: anchor.center,
         width: 30,
         height: 10,
