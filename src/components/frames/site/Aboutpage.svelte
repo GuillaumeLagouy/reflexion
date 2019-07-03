@@ -35,7 +35,7 @@
     }
 
     function start() {
-        if(screen.width < 1366 && screen.width > 700) activeSceneNb.update((value => value = 1));
+        if(screen.width < 1400 && screen.width > 700) activeSceneNb.update((value => value = 1));
         else {
             const parent = this.parentNode;
             this.remove();
