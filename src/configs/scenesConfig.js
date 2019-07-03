@@ -30,7 +30,7 @@ export default [
         id: 'homepage-scene',
         config: homePageConfig,
         sequence: 0,
-    },/*
+    },
 
     {
         id: 'wakeup-scene',
@@ -129,12 +129,12 @@ export default [
                 disableScroll();
             });
         }
-    },*/
+    },
 
     {
         id: 'lunch-scene-part1',
         config: lunchScenePart1Config,
-        sequence: 1,
+        sequence: 7,
         callback: id => {
             const el = document.getElementById(id);
             jump(el, {
@@ -154,7 +154,7 @@ export default [
     {
         id: 'lunch-scene-part2',
         config: lunchScenePart2Config,
-        sequence: 1,
+        sequence: 7,
         callback: id => {
             const el = document.getElementById(id);
 
