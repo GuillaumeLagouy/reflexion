@@ -35,23 +35,18 @@
     }
 
     function start() {
-        /*if(screen.width < 1366 && screen.width > 700) { // condition tablette
-                    activeSceneNb.update((value => value = 1));
-                    // TODO : Go to first scene
-                }
-                else {
-                    const parent = this.parentNode;
-                    this.remove();
-                    parent.style.top = "50vh";
-                    const img = document.createElement('img');
-                    const p = document.createElement('p');
-                    p.innerHTML = 'Cette expérience se joue sur tablette';
-                    img.src = './assets/png/homepage/pad.png';
-                    parent.appendChild(img);
-                    parent.appendChild(p);
-                }*/
-                activeSceneNb.update((value => value = 1));
-                // TODO : Go to first scene
+        if(screen.width < 1366 && screen.width > 700) activeSceneNb.update((value => value = 1));
+        else {
+            const parent = this.parentNode;
+            this.remove();
+            parent.style.top = "50vh";
+            const img = document.createElement('img');
+            const p = document.createElement('p');
+            p.innerHTML = 'Cette expérience se joue sur tablette';
+            img.src = './assets/png/homepage/pad.png';
+            parent.appendChild(img);
+            parent.appendChild(p);
+         }
     }
 
 </script>
@@ -99,9 +94,9 @@
 
     h1 {
         width: 100%;
-        background-image: url("./assets/png/about-page/header.png");
+        background-image: url("./assets/png/about-page/header_tache.png");
         background-size: 100%;
-        background-position: -575px -650px;
+        background-position: left top;
         background-repeat: no-repeat;
         position: absolute;
         left: 0;
@@ -238,12 +233,11 @@
     }
 
     footer div:first-of-type {
-        background-image: url("./assets/png/about-page/footer.png");
-        background-size: cover;
+        background-image: url("./assets/png/about-page/footer_tache.png");
+        background-size: 100%;
         background-repeat: no-repeat;
         width: 80%;
-        background-position-y: -10vh;
-        background-position-x: -40vh;
+        background-position: bottom left;
         position: relative;
     }
 
@@ -262,6 +256,34 @@
     footer div:last-of-type img {
         display: block;
         margin: 10% auto;
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            max-width: 60vw;
+            left: 5%;
+        }
+
+        h1:after {
+            background-size:100%;
+        }
+
+        #team {
+            flex-wrap: wrap;
+        }
+
+        .team-container {
+            width: 50%;
+        }
+
+        nav {
+            flex-direction: column;
+            text-align: right;
+        }
+
+        .language-links {
+            margin-bottom: 10%;
+        }
     }
 
 </style>
