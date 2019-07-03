@@ -16,12 +16,12 @@
         calendarElm.style.zIndex = '1';
         document.getElementById('calendar-circle').style.display = 'block';
         TweenMax.to('#calendar-circle', 1, { scale: 1.2, opacity: 0, repeat: -1});
+        nextScene();
     }
 
     function select(){
         const calendarSelectElm = document.getElementById('calendarSelect');
         calendarSelectElm.style.zIndex = '2';
-        nextScene();
     }
 
     function nextScene() {

@@ -31,7 +31,7 @@ export default [
             el.addEventListener('click', ()=>{
                 TweenMax.to(el, .6, {opacity:0, display: 'none'});
                 a.kill();
-                frameNumber.update(n => n + 1);
+                frameNumber.update(n => n = 1);
             })
         }
     },
@@ -58,7 +58,7 @@ export default [
                 const tl = new TimelineMax();
                 tl.to(el, 1, {opacity: 1, display: 'block'});
                 tl.to(el, 1, {display: 'none', delay: 1.5, onComplete: () => {
-                    frameNumber.update(n => n + 1);
+                    frameNumber.update(n => n = 2);
                 }});
             });
         }
@@ -87,7 +87,7 @@ export default [
                 el.addEventListener('click', () => {
                     a.kill();
                     TweenMax.to(el, .3, {y: -150, rotation: 0});
-                    frameNumber.update(n => n + 1);
+                    frameNumber.update(n => n = 3);
                 })
             });
         }

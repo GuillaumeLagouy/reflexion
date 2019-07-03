@@ -1,4 +1,9 @@
 <script>
+    import {gender} from '../../../stores/frameStore';
+    import {get} from 'svelte/store';
+    let genderValue = get(gender);
+    let string = genderValue === 'male' ? ' mon chéri' : ' ma chérie';
+
 
 </script>
 
@@ -27,6 +32,6 @@
 
 <div class="frame-container">
     <div class="bubble-container">
-        <p><span class="big">Comment S'est passée <br> ta journée mon chéri ?</p>
+        <p><span class="big">Comment s'est passée <br> ta journée {string} ?</p>
     </div>
 </div>
