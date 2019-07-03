@@ -261,7 +261,6 @@
     @media (max-width: 768px) {
         h1 {
             max-width: 60vw;
-            left: 5%;
         }
 
         h1:after {
@@ -283,6 +282,21 @@
 
         .language-links {
             margin-bottom: 10%;
+        }
+
+        footer {
+          font-size: 13px;
+          flex-wrap: wrap;
+          flex-direction: column-reverse;
+        }
+
+        footer div:last-of-type {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        footer div:last-of-type img {
+            margin: 0 10px;
         }
     }
 
