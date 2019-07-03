@@ -16,7 +16,6 @@
         const frame = document.querySelector('#scene2-frame5');
         const phone = document.querySelector('#phone-hitbox');
         const feed = document.querySelector('#social-media-feed');
-        const lastPhoto = document.querySelectorAll('.feed')[4];
 
         function setActive(e, item) {
             const actions = item.querySelectorAll('.like, .retweet');
@@ -35,15 +34,12 @@
 
         function move(e) {
             e.preventDefault();
-            let feed5 = document.querySelectorAll('.publication')[4].src;
             if (yStart < e.touches[0].clientY && translate < 0) translate += 8;
             else if (yStart > e.touches[0].clientY && translate > -maximumSize - 100) translate -= 8;
             document.querySelectorAll('#social-media-feed .feed').forEach((item) => {
                 item.style.transform = `translateY(${translate}px)`;
             });
             if (translate < -maximumSize - 99) {
-                const width = lastPhoto.querySelector('.publication').offsetWidth;
-                const height = lastPhoto.querySelector('.publication').offsetHeight;
                 phone.removeEventListener('touchmove', move);
                 TweenMax.to('#bus-scene', .5, {opacity: 0, onComplete: () => {
                         activeSceneNb.update(n => n = 5);

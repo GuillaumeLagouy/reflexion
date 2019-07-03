@@ -20,5 +20,5 @@
 </style>
 
 <div class="maxim-container">
-    <p>Ceux qui te jugent comptent-ils pour toi ? Pose-toi cette question et tu sauras quelle importance accorder à leurs remarques.</p>
+    <p>Ceux qui te jugent comptent-ils pour toi&nbsp;? Pose-toi cette question et tu sauras quelle importance accorder à leurs remarques.</p>
 </div>
