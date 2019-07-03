@@ -11,6 +11,7 @@ import TweenMax from 'gsap';
 import {frameNumberBus} from '../../stores/frameStore';
 import {activeSceneNb} from '../../stores/scenesStore';
 import Title from "../../components/Title.svelte";
+import Time from "../../components/Time.svelte";
 
 export default [
     {
@@ -57,12 +58,12 @@ export default [
     {
         id:'s2-time',
         x: 50,
-        y: 70,
+        y: 73,
         anchor: anchor.center,
         width: 30,
         height: 10,
-        content: Title,
-        title: "7 : 00",
+        content: Time,
+        time: "7 : 00",
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {

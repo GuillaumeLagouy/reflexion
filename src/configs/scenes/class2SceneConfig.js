@@ -132,7 +132,7 @@ export default [
                tl.to('#s6-alone', 1, {display: 'none'});
                setTimeout(() => {
                    frameNumberClass.update(n => n + 1);
-               }, 5000);
+               }, 2000);
                //tl.to('#class-scene-part2', 1, {opacity: 0, delay: 3});
             });
 
@@ -158,11 +158,12 @@ export default [
             });
             frameNumberClass.subscribe(value => {
                 if(value !== 5) return;
-                TweenMax.to(el, 1, {display: 'block', delay: 3});
-                TweenMax.to('#s6-360', .2, {visibility: 'hidden', delay: 3.6});
-                setTimeout(() => {
-                    activeSceneNb.update(n => n + 1);
-                }, 5000);
+                TweenMax.to(el, 1, {display: 'block', delay: 9.5, onComplete: () => {
+                    setTimeout(() => {
+                        activeSceneNb.update(n => n + 1);
+                    }, 1000)
+                }});
+                TweenMax.to('#s6-360', .2, {visibility: 'hidden', delay: 10});
             });
         }
     },

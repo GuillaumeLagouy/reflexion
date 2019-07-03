@@ -7,7 +7,7 @@
     onMount(() => {
         frameNumberClass.subscribe(value => {
             if(value !== 3) return;
-            TweenMax.to('#drop', 1, {y: '+=100px', delay: 1, onComplete: () => {
+            TweenMax.to('#drop', 1, {y: '+=100px', delay: 1.5, onComplete: () => {
                 frameNumberClass.update(n => n + 1);
             }});
         });

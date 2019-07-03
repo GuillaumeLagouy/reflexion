@@ -2,6 +2,7 @@ import TweenMax from "gsap";
 import anchor from "../../../constants/anchor";
 
 import Title from "../../../components/Title.svelte";
+import Time from "../../../components/Time.svelte";
 import ScrollDown from "../../../components/instructions/ScrollDown.svelte";
 import Bell from "../../../components/frames/lunch/Bell.svelte";
 
@@ -51,8 +52,8 @@ export default [
         anchor: anchor.center,
         width: 30,
         height: 10,
-        content: Title,
-        title: '12 : 00',
+        content: Time,
+        time: '12 : 00',
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
