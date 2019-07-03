@@ -33,9 +33,8 @@
     });
 
     function start() {
-        /*if(screen.width < 1366 && screen.width > 700) { // condition tablette
+        if(screen.width < 1366 && screen.width > 700) { // condition tablette
             activeSceneNb.update((value => value = 1));
-            // TODO : Go to first scene
         }
         else {
             const parent = this.parentNode;
@@ -47,9 +46,8 @@
             img.src = './assets/png/homepage/pad.png';
             parent.appendChild(img);
             parent.appendChild(p);
-        }*/
+        }
         activeSceneNb.update((value => value = 1));
-        // TODO : Go to first scene
     }
 
     function sound() {
@@ -89,6 +87,7 @@
         top: 60vh;
         width: 100vw;
         text-align: center;
+        z-index: 1;
     }
 
     #start button {
@@ -155,6 +154,18 @@
     }
     #sleep-img{
         width: 400px;
+    }
+
+
+    @media (max-width: 768px) {
+        #sleep {
+            bottom: 0;
+            right: 0;
+        }
+
+        #animation {
+            top: 0;
+        }
     }
 </style>
 

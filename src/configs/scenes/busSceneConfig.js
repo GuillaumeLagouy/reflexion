@@ -37,7 +37,7 @@ export default [
     {
         id: 's2-title',
         x: 50,
-        y: 65,
+        y: 57,
         anchor: anchor.center,
         width: 30,
         height: 10,
@@ -58,7 +58,7 @@ export default [
     {
         id:'s2-time',
         x: 50,
-        y: 73,
+        y: 63,
         anchor: anchor.center,
         width: 30,
         height: 10,
