@@ -33,8 +33,12 @@
     });
 
     function start() {
-        if(screen.width < 1366 && screen.width > 700) { // condition tablette
-            activeSceneNb.update((value => value = 1));
+        if(screen.width < 1400 && screen.width > 700) { // condition tablette
+            TweenMax.to('#trace', 3, {scale: 3, rotate: 180, onComplete: () => {
+                activeSceneNb.update((value => value = 1));
+            }});
+            TweenMax.to('#animation, nav, #sleep', 1, {yPercent: -50, autoAlpha: 0, delay: 0.5});
+            TweenMax.to('#start', 1, {yPercent: 50, autoAlpha: 0, delay: 0.5});
         }
         else {
             const parent = this.parentNode;
@@ -47,7 +51,6 @@
             parent.appendChild(img);
             parent.appendChild(p);
         }
-        activeSceneNb.update((value => value = 1));
     }
 
     function sound() {

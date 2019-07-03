@@ -59,9 +59,9 @@ export default [
 
     {
         id: 's9-maxim',
-        x: -3,
-        y: 103,
-        anchor: anchor.bottomLeft,
+        x: 105,
+        y: -5,
+        anchor: anchor.topRight,
         width: 55,
         height: 40,
         content: Maxim,

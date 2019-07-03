@@ -46,10 +46,10 @@ export default [
         callback: id => {
             const el = document.getElementById(id);
             Object.assign(el.style, {
-                backgroundImage: 'url("./assets/png/playtime/S4_Ring.png")',
+                backgroundImage: 'url("./assets/gif/SchoolRing.gif")',
                 backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center center',
-                backgroundSize: '100%',
+                backgroundPosition: 'center -120px',
+                backgroundSize: '250%',
             })
         }
     },

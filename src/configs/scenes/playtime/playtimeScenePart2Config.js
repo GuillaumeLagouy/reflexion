@@ -28,16 +28,18 @@ export default [
                 border: 0,
             });
             frameNumberPlaytime.subscribe(value => {
-                if(value !== 1) return;
-                TweenMax.to(el, 1, {autoAlpha: 1, onComplete: () => {
-                    frameNumberPlaytime.update(n => n = 2);
-                }});
+                if (value !== 1) return;
+                TweenMax.to(el, 1, {
+                    autoAlpha: 1, onComplete: () => {
+                        frameNumberPlaytime.update(n => n = 2);
+                    }
+                });
             })
         }
     },
 
     {
-        id:'s4-find',
+        id: 's4-find',
         x: 7,
         y: 7,
         anchor: anchor.topLeft,
@@ -56,10 +58,12 @@ export default [
                 overflow: 'visible',
             });
             frameNumberPlaytime.subscribe(value => {
-                if(value !== 2) return;
-                TweenMax.to(el, 1, {autoAlpha: 1, onComplete: () => {
-                    frameNumberPlaytime.update(n => n = 3);
-                }});
+                if (value !== 2) return;
+                TweenMax.to(el, 1, {
+                    autoAlpha: 1, onComplete: () => {
+                        frameNumberPlaytime.update(n => n = 3);
+                    }
+                });
             })
         }
     },
@@ -79,7 +83,7 @@ export default [
                 zIndex: 2,
             });
             frameNumberPlaytime.subscribe(value => {
-                if(value !== 3) return;
+                if (value !== 3) return;
                 el.addEventListener('click', () => {
                     const find = document.getElementById('s4-find');
                     TweenMax.to(find, .3, {autoAlpha: 0});
@@ -88,16 +92,16 @@ export default [
                         display: 'block',
                         opacity: 1,
                     })
-                      .to(el, .5, {
-                          width: 650,
-                          height: 500,
-                          top: '-=300',
-                          left: '-=300',
-                          backgroundColor: 'white',
-                          onComplete: () => {
-                              frameNumberPlaytime.update(n => n = 4);
-                          }
-                    }, 2)
+                        .to(el, .5, {
+                            width: 650,
+                            height: 500,
+                            top: '-=300',
+                            left: '-=300',
+                            backgroundColor: 'white',
+                            onComplete: () => {
+                                frameNumberPlaytime.update(n => n = 4);
+                            }
+                        }, 2)
                 });
             })
         }
@@ -115,13 +119,19 @@ export default [
             Object.assign(el.style, {
                 display: 'none',
                 zIndex: 3,
+                border: 0,
+                webkitBorderImage: 'none'
             });
             frameNumberPlaytime.subscribe(value => {
-                if(value !== 5) return;
+                if (value !== 5) return;
                 el.style.display = 'block';
-                addBubble(200, el, 500, 200, 20,() => {
+                addBubble(200, el, 500, 200, 20, () => {
                     setTimeout(() => {
-                        activeSceneNb.update(n => n + 1);
+                        TweenMax.to('#playtime-scene-part2', 0.5, {
+                            autoAlpha: 0, onComplete: () => {
+                                activeSceneNb.update(n => n + 1);
+                            }
+                        });
                     }, 1000);
                 });
             });
