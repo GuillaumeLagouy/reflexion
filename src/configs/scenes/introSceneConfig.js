@@ -41,8 +41,7 @@ export default [
                 sound.stop();
                 TweenMax.to(el, .6, {opacity:0, display: 'none'});
                 a.kill();
-                frameNumber.update(n => n + 1);
-
+                frameNumber.update(n => n = 1);
             })
         }
     },
@@ -115,10 +114,8 @@ export default [
                 el.addEventListener('click', () => {
                     a.kill();
                     TweenMax.to(el, .3, {y: -150, rotation: 0});
-
                     sound.stop();
-
-                    frameNumber.update(n => n + 1);
+                    frameNumber.update(n => n = 3);
                 })
             });
         }

@@ -42,7 +42,6 @@
                 item.style.transform = `translateY(${translate}px)`;
             });
             if (translate < -maximumSize - 99) {
-                console.log('test');
                 const width = lastPhoto.querySelector('.publication').offsetWidth;
                 const height = lastPhoto.querySelector('.publication').offsetHeight;
                 phone.removeEventListener('touchmove', move);

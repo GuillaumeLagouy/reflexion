@@ -348,48 +348,28 @@
     #male-0, #female-0 {
         top: 36.5%;
         left: 36.5%;
+        width: 8%;
     }
 
-    #male-1 {
-        left: 43.5%;
-        top: 41.5%;
+    #male-1, #female-1 {
+        left: 44%;
+        top: 41%;
     }
 
-    #male-2 {
-        left: 51.25%;
-        top: 38%;
+    #male-2, #female-2  {
+        left: 51%;
+        top: 37%;
     }
 
-    #male-3 {
+    #male-3 , #female-3 {
         left: 63%;
         top: 39%;
     }
 
-    #male-4 {
+    #male-4, #female-4 {
+        left: 65.5%;
+        top: 56%;
         width: 9.5%;
-        left: 65.5%;
-        top: 55%;
-    }
-
-    #female-1 {
-        left: 43.5%;
-        top: 42%;
-    }
-
-    #female-2 {
-        left: 51.5%;
-         top: 37%;
-    }
-
-    #female-3 {
-        left: 65.5%;
-        top: 40%;
-    }
-
-    #female-4 {
-        left: 68%;
-        top: 57%;
-        width: 10%;
     }
 
     #s3-monster {
